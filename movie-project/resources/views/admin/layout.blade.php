@@ -28,7 +28,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+      @yield('css')
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> @yield('css')
 </head>
@@ -315,8 +315,8 @@ desired effect
                           </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-list"></i><span>#Name</span></a></li>
-                            <li><a href="#"><i class="fa fa-plus"></i><span>#Name</span></a></li>
+                            <li><a href="/admin/type/list"><i class="fa fa-list"></i><span>Danh sách thể loại</span></a></li>
+                            <li><a href="/admin/type/create"><i class="fa fa-plus"></i><span>Thêm thể loại</span></a></li>
                         </ul>
                     </li>
                     <li class="treeview">
