@@ -21,6 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('admin/dist/css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter page. However, you can choose any other skin. Make sure you apply the skin class to the body tag so the changes take effect. -->
     <link rel="stylesheet" href="{{ asset('admin/dist/css/skins/_all-skins.min.css') }}">
+    <!-- The toast component is like an alert box that is only shown for a couple of seconds when something happens -->
     <link rel="stylesheet" href="{{ asset('admin/bower_components/toastr/toastr.min.css') }}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -62,7 +63,7 @@ desired effect
             <!-- Logo -->
             <a href="index2.html" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>A</b>LT</span>
+                <span class="logo-mini"><b>A</b>D</span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><b>Admin</b></span>
             </a>
@@ -271,7 +272,7 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-list"></i><span> #Name</span></a></li>
+                            <li><a href="#"><i class="fa fa-list"></i><span>#Name</span></a></li>
                             <li><a href="#"><i class="fa fa-plus"></i><span>#Name</span></a></li>
                         </ul>
                     </li>
@@ -326,8 +327,8 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-list"></i><span>#Name</span></a></li>
-                            <li><a href="#"><i class="fa fa-plus"></i><span>#Name</span></a></li>
+                            <li><a href="{{ route('admin_country_list') }}"><i class="fa fa-list"></i><span>Danh sách quốc gia</span></a></li>
+                            <li><a href="{{ route('admin_country_create') }}"><i class="fa fa-plus"></i><span>Thêm quốc gia</span></a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -564,6 +565,7 @@ desired effect
     <script src="{{ asset('admin/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
+    <!-- The toast component is like an alert box that is only shown for a couple of seconds when something happens -->
     <script src="{{ asset('admin/bower_components/toastr/toastr.min.js') }}"></script>
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
     Both of these plugins are recommended to enhance the user experience. -->
