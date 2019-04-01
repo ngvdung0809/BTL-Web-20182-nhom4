@@ -15,4 +15,6 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('/index',function () {
         return view('admin.layout');
     });
+    
+
 });
