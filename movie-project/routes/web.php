@@ -24,6 +24,7 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('edit/{id}','Admin\TypeController@PostEditType')->name('admin_type_update');
         Route::get('delete/{id}','Admin\TypeController@DeleteType')->name('admin_type_delete');
     });
+    
     Route::group(['prefix' => 'contact'], function () {
         Route::get('list','Admin\ContactController@GetListContact')->name('admin_contact_list');
         Route::get('show/{id}','Admin\ContactController@GetShowContact')->name('admin_contact_show');
