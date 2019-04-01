@@ -14,19 +14,22 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('/index',function () {
         return view('admin.layout');
     });
-<<<<<<< HEAD
-    
+
+
     Route::group(['prefix' => 'type'], function () {
-        Route::get('list','Admin\TypeController@GetListType');
-        Route::get('create','Admin\TypeController@GetNewType');
-        Route::post('create','Admin\TypeController@PostNewType');
-        Route::get('edit/{id}','Admin\TypeController@GetEditType');
-        Route::post('edit/{id}','Admin\TypeController@PostEditType');
-        Route::get('delete/{id}','Admin\TypeController@DeleteType');
+        Route::get('list','Admin\TypeController@GetListType')->name('admin_typet_list');
+        Route::get('create','Admin\TypeController@GetNewType')->name('admin_type_create');
+        Route::post('create','Admin\TypeController@PostNewType')->name('admin_type_store');
+        Route::get('edit/{id}','Admin\TypeController@GetEditType')->name('admin_type_edit');
+        Route::post('edit/{id}','Admin\TypeController@PostEditType')->name('admin_type_update');
+        Route::get('delete/{id}','Admin\TypeController@DeleteType')->name('admin_type_delete');
+    });
+    Route::group(['prefix' => 'contact'], function () {
+        Route::get('list','Admin\ContactController@GetListContact')->name('admin_contact_list');
+        Route::get('show/{id}','Admin\ContactController@GetShowContact')->name('admin_contact_show');
+        Route::get('delete/{id}','Admin\ContactController@DeleteContact')->name('admin_contact_delete');
     });
 
-
-=======
 
     Route::group(['prefix'=>'country'],function(){
         Route::get('/list','Admin\CountryController@index')->name('admin_country_list');
@@ -39,5 +42,5 @@ Route::group(['prefix'=>'admin'],function(){
 
         Route::post('/delete/{id}','Admin\CountryController@destroy')->name('admin_country_delete');
     });
->>>>>>> 6fca92fb10e6e77d5840f538c9edca846e4aa408
+
 });

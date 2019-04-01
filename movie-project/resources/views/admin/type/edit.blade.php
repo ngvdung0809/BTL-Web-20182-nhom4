@@ -24,13 +24,13 @@ Thể loại
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">Tên thể loại</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail3" placeholder="Tên thể loại" name="name" value="{{$type->name}}">
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="Tên thể loại" name="name" value="{{$type->name}}" required>
                  </div>
             </div>
             <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Tên viết tắt</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Tên viết tắt" name="abbrev" value="{{$type->abbrev}}">
+                    <input type="text" class="form-control" id="inputPassword3" placeholder="Tên viết tắt" name="abbrev" value="{{$type->abbrev}}" required>
                   </div>
             </div>
             </div>
