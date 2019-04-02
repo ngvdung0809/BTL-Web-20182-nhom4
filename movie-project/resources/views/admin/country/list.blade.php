@@ -3,6 +3,17 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
 @endsection
+@section('page-header')
+    <h1>
+        Quốc Gia
+        <small>Danh sách</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin_country_list') }}">Quốc Gia</a></li>
+        <li class="active">Danh sách</li>
+    </ol>
+@endsection
 @section('content')
 <section class="content">
     <div class="row">
@@ -40,17 +51,20 @@
                                     <td>
                                         <form method="post" action="{{ route('admin_country_delete',['id'=> $country->id ]) }}">
                                             @csrf
-                                            <div class="modal fade" id="delete_country_{{ $country->id }}" role="dialog">
+                                            <div class="modal modal-danger fade" id="delete_country_{{ $country->id }}" role="dialog">
                                               <div class="modal-dialog">
                                                 <div class="modal-content">
-                                                  <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title">Bạn có muốn xóa quốc gia {{ $country->name }} không?</h4>
-                                                  </div>
-                                                  <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                                                    <button type="submit" class="btn btn-danger">Xóa</button>
-                                                  </div>
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h class="modal-title">Delete</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h4 class="modal-title">Bạn có muốn xóa quốc gia {{ $country->name }} không?</h4>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Đóng</button>
+                                                        <button type="submit" class="btn btn-default">Xóa</button>
+                                                    </div>
                                                 </div>
                                               </div>
                                             </div>

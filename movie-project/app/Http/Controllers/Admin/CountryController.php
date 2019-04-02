@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Country\CreateRequest;
+use App\Http\Requests\Country\EditRequest;
 use App\Models\Country;
 
 class CountryController extends Controller
@@ -35,13 +37,8 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'abbrev' => ['required', 'string', 'max:255', 'unique:country']
-        ]);
-
         $country = new Country();
         $country->name = $request->name;
         $country->abbrev = $request->abbrev;
@@ -80,11 +77,10 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditRequest $request, $id)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'abbrev' => ['required', 'string', 'max:255', 'unique:country,abbrev,' . $id]
+            'abbrev'=>['unique:country,abbrev,'. $id],
         ]);
 
         $country = Country::find($id);
