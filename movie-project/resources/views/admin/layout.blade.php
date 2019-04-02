@@ -299,14 +299,14 @@ desired effect
                         </ul>
                     </li>
                     <li class="treeview">
-                        <a href="#"><i class="fa fa-industry"></i> <span>Quản lý nhà xuất bản</span>
+                        <a href="#"><i class="fa fa-industry"></i> <span>Quản lý nhà sản xuất</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-list"></i><span>#Name</span></a></li>
-                            <li><a href="#"><i class="fa fa-plus"></i><span>#Name</span></a></li>
+                            <li><a href="{{ route('admin_publisher_list')}}"><i class="fa fa-list"></i><span>Danh sách nhà sản xuất</span></a></li>
+                            <li><a href="#"><i class="fa fa-plus"></i><span>Thêm mới</span></a></li>
                         </ul>
                     </li>
                     <li class="treeview">
