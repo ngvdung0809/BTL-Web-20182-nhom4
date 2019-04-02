@@ -44,4 +44,16 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('/delete/{id}','Admin\CountryController@destroy')->name('admin_country_delete');
     });
 
+    Route::group(['prefix'=>'publisher'],function(){
+        Route::get('/list','Admin\PublisherController@index')->name('admin_publisher_list');
+
+        Route::get('/create','Admin\PublisherController@create')->name('admin_publisher_create');
+        Route::post('/store','Admin\PublisherController@store')->name('admin_publisher_store');
+
+        Route::get('/edit/{id}','Admin\PublisherController@edit')->name('admin_publisher_edit');
+        Route::post('/update/{id}','Admin\PublisherController@update')->name('admin_publisher_update');
+
+        Route::post('/delete/{id}','Admin\PublisherController@destroy')->name('admin_publisher_delete');
+    });
+
 });
