@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('title','Tạo quốc gia mới')
+@section('title','Tạo quảng cáo mới')
 @section('content')
     <div class="box">
         <div class="box-header with-border">
