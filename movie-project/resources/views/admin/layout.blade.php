@@ -396,8 +396,8 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-list"></i><span>#Name</span></a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-plus-sign"></i><span>#Name</span></a></li>
+                            <li><a href="{{ route('admin_adventisment_list')}}"><i class="fa fa-list"></i><span>Danh sách quảng cáo</span></a></li>
+                            <li><a href="{{ route('admin_adventisment_create') }}"><i class="glyphicon glyphicon-plus-sign"></i><span>Thêm mới</span></a></li>
                         </ul>
                     </li>
 
