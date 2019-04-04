@@ -60,4 +60,13 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('/delete/{id}','Admin\PublisherController@destroy')->name('admin_publisher_delete');
     });
 
+    Route::group(['prefix'=>'adventisment'],function(){
+        Route::get('/list','Admin\AdventismentController@index')->name('admin_adventisment_list');
+        Route::get('/create','Admin\AdventismentController@create')->name('admin_adventisment_create');
+        Route::post('/store','Admin\AdventismentController@store')->name('admin_adventisment_store');
+        Route::get('/edit/{id}','Admin\AdventismentController@edit')->name('admin_adventisment_edit');
+        Route::post('/update/{id}','Admin\AdventismentController@update')->name('admin_adventisment_update');
+        Route::post('/delete/{id}','Admin\AdventismentController@destroy')->name('admin_adventisment_delete');
+    });
+    
 });
