@@ -272,8 +272,8 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-list"></i><span>#Name</span></a></li>
-                            <li><a href="#"><i class="fa fa-plus"></i><span>#Name</span></a></li>
+                            <li><a href="{{ route('admin_user_list') }}"><i class="fa fa-list"></i><span>Danh sách người dùng</span></a></li>
+                            <li><a href="{{ route('admin_user_create') }}"><i class="fa fa-plus"></i><span>Thêm người dùng mới</span></a></li>
                         </ul>
                     </li>
                     <li class="treeview">
