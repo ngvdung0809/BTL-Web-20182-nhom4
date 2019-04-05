@@ -11,8 +11,15 @@ return [
         'AVATAR_FOLDER' =>  'user_avatar'
     ],
 
+
     'PUBLISHER_IMAGE' => [
     	'DEFAULT_PUBLISHER_LOGO' => 'avatar_default/publisher_logo.png',
     	'PUBLISHER_LOGO_FOLDER' => 'publisher_logo'
+    ],
+
+    'PERSON_IMG' => [
+    	'IMG_PATH' => 'person_img',
+        'IMG_DEFAULT' => 'person_img/person_default.jpg'
+
     ],
 ];
