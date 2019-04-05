@@ -3,6 +3,17 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
 @endsection
+@section('page-header')
+    <h1>
+        Nhà sản xuất
+        <small><b>Danh sách</b></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ route('admin_index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin_publisher_list') }}">NSX</a></li>
+        <li class="active">Danh sách</li>
+    </ol>
+@endsection
 @section('content')
 <section class="content">
     <div class="row">
@@ -22,11 +33,11 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Logo</th>
                                     <th>Name</th>
                                     <th>Address</th>
                                     <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Logo</th>
+                                    <th>Phone</th>                                   
                                     <th>Other</th>
                                     <th>Sửa</th>
                                     <th>Xóa</th>
@@ -36,11 +47,14 @@
                                 @foreach($publishers as $p)
                                 <tr>
                                     <td>{{ $p->id }}</td>
+                                    <td>
+                                        <img class="img-circle" src="{{ asset('/storage/' . $p->logo) }}" 
+                                        alt="{{ $p->name . ' logo' }}" height="70" width="70">
+                                    </td>
                                     <td>{{ $p->name }}</td>
                                     <td>{{ $p->address }}</td>
                                     <td>{{ $p->email }}</td>
-                                    <td>{{ $p->phone }}</td>
-                                    <td>{{ $p->logo }}</td>
+                                    <td>{{ $p->phone }}</td>                                   
                                     <td>{{ $p->other_description }}</td>
                                     <td>
                                         <a href="{{ route('admin_publisher_edit', $p->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>

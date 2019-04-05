@@ -1,5 +1,21 @@
 @extends('admin.layout')
 @section('title','Tạo nhà sản xuất mới')
+@section('css')
+    <link href="{{ asset('admin/bower_components/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/dist/css/AdminLTE.min.css') }}" rel="stylesheet">
+@endsection
+@section('page-header')
+    <h1>
+        Nhà sản xuất
+        <small><b>Thêm mới</b></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ route('admin_index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin_publisher_list') }}">NSX</a></li>
+        <li class="active">Thêm mới</li>
+    </ol>
+@endsection
 @section('content')
     <div class="box">
         <div class="box-header with-border">
@@ -10,9 +26,27 @@
         </div>
 
         <div class="box-body">
-            <form  method="post" action="{{ route('admin_publisher_store') }}">
+            <form  method="post" action="{{ route('admin_publisher_store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="box-body">
+                    <div class="form-group">
+                        <label for="logo">Logo</label>
+                        <div class="box-body">
+                            <div class="col-md-4 col-md-offset-4">
+                                <img class="profile-user-img img-responsive img-circle" src="{{asset('/storage/' . 'avatar_default/publisher_logo.png') }}" alt="Logo" id="logo_default">
+                                <div align="center">
+                                    <input type="file" id="logo" name="logo" accept="image/*" required/>
+                                </div>
+
+                                @if ($errors->has('logo'))
+                                    <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $errors->first('logo') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group {{ $errors->first('name') ? 'has-error' : ''}}">
                         <label for="name">Name</label>
                         <input id="name" type="text" class="form-control" placeholder="Nhập tên nhà sản xuất" name="name" value="{{ old('name') }}" required>
@@ -43,15 +77,7 @@
                         @if ($errors->has('phone'))
                             <span class="help-block">{{ $errors->first('phone') }}</span>
                         @endif
-                    </div>
-
-                    <div class="form-group {{ $errors->first('logo') ? 'has-error' : ''}}">
-                        <label for="logo">Logo</label>
-                        <input class="form-control" type="text" id="logo" name="logo" placeholder="Logo nhà sản xuất" value="{{ old('logo') }}" required>
-                        @if ($errors->has('logo'))
-                            <span class="help-block">{{ $errors->first('logo') }}</span>
-                        @endif
-                    </div>
+                    </div> 
 
                     <div class="form-group {{ $errors->first('other_description') ? 'has-error' : ''}}">
                         <label for="other_description">Other Description</label>
@@ -68,4 +94,10 @@
             </form>
         </div>
     </div>
+@endsection
+@section('js')
+    <script src="{{ asset('admin/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('admin/bower_components/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('admin/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('js/admin/publisher/create.js') }}"></script>
 @endsection
