@@ -14,7 +14,7 @@ Route::group(['prefix'=>'admin'],function(){
 
     Route::get('/index',function () {
         return view('admin.layout');
-    });
+    })->name('admin_index');
 
     Route::group(['prefix'=>'user'],function(){
         Route::get('/list','Admin\UserController@index')->name('admin_user_list');
