@@ -32,6 +32,20 @@
                             <h3 class="profile-username text-center">{{ $film->username }}</h3>
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
+                                    <b>Đánh giá phim</b>
+                                    <a class="pull-right">
+                                        @for ($i = 0; $i < 10; $i++)
+                                            @if ($rate - $i >= 1)
+                                                <i class="fa fa-star"></i>
+                                            @elseif (($rate - $i > 0.5) &&  ($rate - $i < 1))
+                                                <i class="fa fa-star-half-o"></i>
+                                            @else
+                                                <i class="fa fa-star-o"></i>
+                                            @endif
+                                        @endfor
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
                                     <b>Like</b> <a class="pull-right">{{ $film->liked }}</a>
                                 </li>
                                 <li class="list-group-item">

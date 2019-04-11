@@ -95,4 +95,8 @@ Route::group(['prefix'=>'admin'],function(){
             Route::post('/delete/{id}','Admin\ActorController@destroy')->name('admin_actor_delete');
     });
 
+    Route::group(['prefix'=>'rate'],function(){
+        Route::get('/list','Admin\RateController@index')->name('admin_rate_list');
+    });
+
 });
