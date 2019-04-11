@@ -8,7 +8,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ route('admin_index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ route('admin_adventisment_list') }}">Quảng Cáo</a></li>
-        <li class="active">Sửa</li>
+        <li class="active">Sửa QC</li>
     </ol>
 @endsection
 @section('content')
