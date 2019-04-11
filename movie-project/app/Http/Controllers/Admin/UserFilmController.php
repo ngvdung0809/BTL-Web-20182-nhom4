@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Film;
 
-class RateController extends Controller
+class UserFilmController extends Controller
 {
     public function index()
     {
         $films = Film::all();
-        return view('admin.rate.list', ['films'=>$films]);
+        return view('admin.user_film.list', ['films'=>$films]);
     }
 }
