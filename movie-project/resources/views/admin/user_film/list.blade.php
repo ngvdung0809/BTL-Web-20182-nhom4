@@ -10,7 +10,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="{{ route('admin_user_list') }}">Đánh giá</a></li>
+        <li><a href="{{ route('admin_user_film_list') }}">Đánh giá</a></li>
         <li class="active">Danh sách</li>
     </ol>
 @endsection
@@ -64,5 +64,5 @@
     <script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('admin/bower_components/fastclick/lib/fastclick.js') }}"></script>
-    <script src="{{ asset('js/admin/rate/list.js') }}"></script>
+    <script src="{{ asset('js/admin/user_film/list.js') }}"></script>
 @endsection
