@@ -84,12 +84,18 @@ class FilmController extends Controller
     public function show($id)
     {
         $film = Film::find($id);
+        $liked = 0;
+        $view = 0;
+        $share = 0;
         $rate = 0;
         foreach ($film->user as $user) {
+            $liked = $liked + $user->pivot->liked;
+            $view = $view + $user->pivot->view;
+            $share = $share + $user->pivot->share;
             $rate = $rate + $user->pivot->point;
         }
         $rate = $rate/count($film->user);
-        return view('admin.film.view', ['film'=>$film, 'rate'=>$rate]);
+        return view('admin.film.view', ['film'=>$film, 'rate'=>$rate, 'liked'=>$liked, 'view'=>$view, 'share'=>$share]);
     }
 
     /**

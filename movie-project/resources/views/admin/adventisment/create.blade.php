@@ -1,5 +1,16 @@
 @extends('admin.layout')
 @section('title','Tạo quảng cáo mới')
+@section('page-header')
+    <h1>
+        Quảng Cáo
+        <small><b>Danh sách</b></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ route('admin_index') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin_adventisment_list') }}">Quảng Cáo</a></li>
+        <li class="active">Tạo Mới QC</li>
+    </ol>
+@endsection
 @section('content')
     <div class="box">
         <div class="box-header with-border">

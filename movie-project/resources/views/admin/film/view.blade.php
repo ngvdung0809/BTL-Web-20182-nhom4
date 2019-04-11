@@ -46,13 +46,13 @@
                                     </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Like</b> <a class="pull-right">{{ $film->liked }}</a>
+                                    <b>Like</b> <a class="pull-right">{{ $liked }}</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>view</b> <a class="pull-right">{{ $film->view }}</a>
+                                    <b>View</b> <a class="pull-right">{{ $view }}</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Share</b> <a class="pull-right">{{ $film->share }}</a>
+                                    <b>Share</b> <a class="pull-right">{{ $share }}</a>
                                 </li>
                             </ul>
                             <div class="list-group-item">

@@ -10,7 +10,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="{{ route('admin_user_list') }}">Đánh giá</a></li>
+        <li><a href="{{ route('admin_user_film_list') }}">Đánh giá</a></li>
         <li class="active">Danh sách</li>
     </ol>
 @endsection
@@ -34,6 +34,9 @@
                                     <th>Họ tên người dùng</th>
                                     <th>Id film</th>
                                     <th>Tên phim</th>
+                                    <th>Like</th>
+                                    <th>View</th>
+                                    <th>Share</th>
                                     <th>Điểm đánh giá</th>
                                 </tr>
                             </thead>
@@ -46,6 +49,21 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $film->id }}</td>
                                         <td>{{ $film->name }}</td>
+                                        <td>
+                                            @if ($user->pivot->liked == 1)
+                                                <span class="label label-primary">Liked</span>
+                                            @else
+                                                <span class="label label-danger">No like</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $user->pivot->view }}</td>
+                                        <td>
+                                            @if ($user->pivot->share == 1)
+                                                <span class="label label-primary">Share</span>
+                                            @else
+                                                <span class="label label-danger">No Share</span>
+                                            @endif
+                                        </td>
                                         <td>{{ $user->pivot->point }}</td>
                                     </tr>
                                     @endforeach
@@ -64,5 +82,5 @@
     <script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('admin/bower_components/fastclick/lib/fastclick.js') }}"></script>
-    <script src="{{ asset('js/admin/rate/list.js') }}"></script>
+    <script src="{{ asset('js/admin/user_film/list.js') }}"></script>
 @endsection

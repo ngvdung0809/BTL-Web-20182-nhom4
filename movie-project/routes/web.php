@@ -96,7 +96,7 @@ Route::group(['prefix'=>'admin'],function(){
     });
 
     Route::group(['prefix'=>'rate'],function(){
-        Route::get('/list','Admin\RateController@index')->name('admin_rate_list');
+        Route::get('/list','Admin\UserFilmController@index')->name('admin_user_film_list');
     });
 
 });
