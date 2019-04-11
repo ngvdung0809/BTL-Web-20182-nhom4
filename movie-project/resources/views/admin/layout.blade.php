@@ -385,7 +385,7 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-list"></i><span>#Name</span></a></li>
+                            <li><a href="{{ route('admin_rate_list') }}"><i class="fa fa-list"></i><span>Danh sách đánh giá</span></a></li>
                         </ul>
                     </li>
 

@@ -24,7 +24,6 @@ class FilmController extends Controller
     public function index()
     {
         $films = Film::all();
-
         return view('admin.film.list', ['films'=>$films]);
     }
 
@@ -85,7 +84,12 @@ class FilmController extends Controller
     public function show($id)
     {
         $film = Film::find($id);
-        return view('admin.film.view', ['film'=>$film]);
+        $rate = 0;
+        foreach ($film->user as $user) {
+            $rate = $rate + $user->pivot->point;
+        }
+        $rate = $rate/count($film->user);
+        return view('admin.film.view', ['film'=>$film, 'rate'=>$rate]);
     }
 
     /**
