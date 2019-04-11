@@ -6,7 +6,7 @@ return [
         'NO_ROLE' => 0
     ],
 
-    'USER_AVATAR' => [
+    'USER_AVATAR' => [ 
         'AVATAR_DEFAULT' => 'avatar_default/user_default.jpg',
         'AVATAR_FOLDER' =>  'user_avatar'
     ],
@@ -22,4 +22,10 @@ return [
         'IMG_DEFAULT' => 'person_img/person_default.jpg'
 
     ],
+
+    'AVENTISMENT_IMG' => [
+        'IMG_PATH' => 'aventisment_img',
+        'IMG_DEFAULT' => 'aventisment_img/default.png'
+    ]
+        
 ];
