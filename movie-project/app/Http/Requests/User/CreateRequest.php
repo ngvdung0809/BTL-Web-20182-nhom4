@@ -61,7 +61,7 @@ class CreateRequest extends FormRequest
             'phone.min'=>'Số điện thoại nhỏ nhất 9 kí tự',
             'phone.max'=>'Số điện thoại lớn nhất 255 kí tự',
 
-            'country_d.required'=>'Bạn chưa chọn quốc gia',
+            'country_id.required'=>'Bạn chưa chọn quốc gia',
 
             'password.required'=>'Bạn chưa nhập mật khẩu',
             'password.min'=>'Mật khẩu nhỏ nhất 6 kí tự',

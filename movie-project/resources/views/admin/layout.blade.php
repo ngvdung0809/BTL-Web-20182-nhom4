@@ -338,8 +338,8 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-list"></i><span>#Name</span></a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-plus-sign"></i><span>#Name</span></a></li>
+                            <li><a href="{{ route('admin_film_list') }}"><i class="fa fa-list"></i><span>Danh sách phim</span></a></li>
+                            <li><a href="{{ route('admin_film_create') }}"><i class="glyphicon glyphicon-plus-sign"></i><span>Thêm phim</span></a></li>
                             <li class="treeview">
                                 <a href="#"><i class="fa fa-file-movie-o "></i> <span>Quản lý chi tiết phim</span>
                                     <span class="pull-right-container">
@@ -385,7 +385,7 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-list"></i><span>#Name</span></a></li>
+                            <li><a href="{{ route('admin_user_film_list') }}"><i class="fa fa-list"></i><span>Danh sách đánh giá</span></a></li>
                         </ul>
                     </li>
 
