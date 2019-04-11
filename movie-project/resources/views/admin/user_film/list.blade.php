@@ -34,6 +34,9 @@
                                     <th>Họ tên người dùng</th>
                                     <th>Id film</th>
                                     <th>Tên phim</th>
+                                    <th>Like</th>
+                                    <th>View</th>
+                                    <th>Share</th>
                                     <th>Điểm đánh giá</th>
                                 </tr>
                             </thead>
@@ -46,6 +49,21 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $film->id }}</td>
                                         <td>{{ $film->name }}</td>
+                                        <td>
+                                            @if ($user->pivot->liked == 1)
+                                                <span class="label label-primary">Liked</span>
+                                            @else
+                                                <span class="label label-danger">No like</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $user->pivot->view }}</td>
+                                        <td>
+                                            @if ($user->pivot->share == 1)
+                                                <span class="label label-primary">Share</span>
+                                            @else
+                                                <span class="label label-danger">No Share</span>
+                                            @endif
+                                        </td>
                                         <td>{{ $user->pivot->point }}</td>
                                     </tr>
                                     @endforeach
