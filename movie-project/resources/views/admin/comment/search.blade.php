@@ -21,7 +21,11 @@
             <div class="box">
                 <div class="box-header with-border">
                     <div class="col-md-4">
-                        <h3 class="box-title">Tìm kiếm cho <em style="color: #3178ea;">{{ $content }}</em></h3>
+                        @if($type == 'film')
+                            <h3 class="box-title">Tìm kiếm phim với từ khóa: <em style="color: #ed1f10;text-decoration: underline;">{{ $content }}</em></h3>
+                        @else
+                             <h3 class="box-title">Tìm kiếm người dùng với từ khóa: <em style="color: #ed1f10;text-decoration: underline;">{{ $content }}</em></h3>
+                        @endif
                     </div>
                 </div>
                 <div class="box-body">
