@@ -99,4 +99,10 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/list','Admin\UserFilmController@index')->name('admin_user_film_list');
     });
 
+    Route::group(['prefix'=>'comment'],function(){
+        Route::get('/list','Admin\CommentController@index')->name('admin_comment_list');
+        Route::post('/delete/{id}','Admin\CommentController@destroy')->name('admin_comment_delete');
+        Route::get('/search', 'Admin\CommentController@search')->name('admin_comment_search');
+    });
+
 });
