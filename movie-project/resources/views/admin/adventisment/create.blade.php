@@ -21,22 +21,32 @@
         </div>
 
         <div class="box-body">
-            <form  method="post" action="{{ route('admin_adventisment_store') }}">
-                @csrf
+            <form  method="post" action="{{ route('admin_adventisment_store') }}" enctype="multipart/form-data">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
                 <div class="box-body">
+                    <div class="form-group">
+                        <label for="image">Image*</label>
+                        <div class="box-body">
+                            <div class="col-md-4 col-md-offset-4">
+                                <img class="profile-user-img img-responsive img-circle" src="{{asset('/storage/' . 'adventisment_img/default.png') }}" alt="Image" id="image_default">
+                                <div align="center">
+                                    <input type="file" id="image" name="image" accept="image/*" />
+                                </div>
+
+                                @if ($errors->has('image'))
+                                    <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group {{ $errors->first('name') ? 'has-error' : ''}}">
                         <label for="name">Name*</label>
                         <input id="name" type="text" class="form-control" placeholder="Vui lòng nhập vào tên quảng cáo" name="name" value="{{ old('name') }}" required>
                         @if ($errors->has('name'))
                             <span class="help-block">{{ $errors->first('name') }}</span>
-                        @endif
-                    </div>
-
-                    <div class="form-group {{ $errors->first('image') ? 'has-error' : ''}}">
-                        <label for="image">Image*</label>
-                        <input class="form-control" type="text" id="image" name="image" placeholder="Vui lòng nhập vào link ảnh quảng cáo" value="{{ old('image') }}" required>
-                        @if ($errors->has('image'))
-                            <span class="help-block">{{ $errors->first('image') }}</span>
                         @endif
                     </div>
 
@@ -63,4 +73,10 @@
             </form>
         </div>
     </div>
+@endsection
+@section('js')
+    <script src="{{ asset('admin/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('admin/bower_components/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('admin/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('js/admin/adventisment/create.js') }}"></script>
 @endsection

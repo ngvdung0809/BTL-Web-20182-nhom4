@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Adventisment;
 use App\Http\Requests\AdventismentRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Config;
 
 class AdventismentController extends Controller
 {
@@ -23,8 +26,14 @@ class AdventismentController extends Controller
     public function store(AdventismentRequest $request){ 
 
         $ads = new Adventisment();
+        if ($request->hasFile('image')) {
+            $path = Storage::disk('public')->put(Config::get('constants.ADVENTISMENT_IMG.IMG_PATH'), $request->image);
+            $ads->image = $path;
+        }else{
+            $ads->image = Config::get('constants.ADVENTISMENT_IMG.IMG_DEFAULT');
+        }
         $ads->name = $request->name;
-        $ads->image = $request->image;
+        
         $ads->link=$request->link;
         $ads->active=$request->active;
         $ads->save();
@@ -41,9 +50,15 @@ class AdventismentController extends Controller
 
     public function update(AdventismentRequest $request,$id){ 
         $ads=  Adventisment::find($id);
+        if ($request->hasFile('image')) {
+            $path = Storage::disk('public')->put(Config::get('constants.ADVENTISMENT_IMG.IMG_PATH'), $request->image);
+            if($ads->image != Config::get('constants.ADVENTISMENT_IMG.IMG_DEFAULT')){
+                Storage::disk('public')->delete($ads->image);
+            }
+            $ads->image = $path;
+        }
 
         $ads->name = $request->name;
-        $ads->image = $request->image;
         $ads->link=$request->link;
         $ads->active=$request->active;
         $ads->save();
@@ -54,7 +69,13 @@ class AdventismentController extends Controller
 
     public function destroy($id){ 
         $ads=Adventisment::find($id);
-        $ads->delete();
-        return redirect()->route('admin_adventisment_list')->with('success', 'Thông tin quảng cáo  '. $ads->name.' đã được xóa thành công');
+        if($ads->delete()){
+            if($ads->image != Config::get('constants.ADVENTISMENT_IMG.IMG_DEFAULT')){
+                Storage::disk('public')->delete($ads->image);
+            }
+            return redirect()->route('admin_adventisment_list')->with('success', 'Xóa quảng cáo'. $ads->name .' thành công');
+        }else{
+            return redirect()->route('admin_adventisment_list')->with('errors', 'Error');
+        }
     }
 }
