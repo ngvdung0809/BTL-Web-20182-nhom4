@@ -113,6 +113,7 @@ class FilmController extends Controller
         foreach ($film->actor as $actor) {
             $film->actorId = $film->actor->pluck('id')->all();
         }
+         $film->actorId = $film->actor->pluck('id')->all();
         $publishers = Publisher::all();
         $directors = Person::where('job', 'director')->get();
         $actors = Person::where('job', 'actor')->get();

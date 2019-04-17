@@ -374,7 +374,7 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-list"></i><span>#Name</span></a></li>
+                            <li><a href="{{ route('admin_comment_list') }}"><i class="fa fa-list"></i><span>Danh sách bình luận</span></a></li>
                         </ul>
                     </li>
 

@@ -31,9 +31,9 @@ return [
 
     ],
 
-    'AVENTISMENT_IMG' => [
-        'IMG_PATH' => 'aventisment_img',
-        'IMG_DEFAULT' => 'aventisment_img/default.png'
+    'ADVENTISMENT_IMG' => [
+        'IMG_PATH' => 'adventisment_img',
+        'IMG_DEFAULT' => 'adventisment_img/default.png'
     ]
         
 ];

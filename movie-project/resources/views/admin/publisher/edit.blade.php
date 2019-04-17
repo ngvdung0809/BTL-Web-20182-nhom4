@@ -46,9 +46,15 @@
                 </div>
             </div>
                 <div class="box-body">
-                     <div class="form-group {{ $errors->first('name') ? 'has-error' : ''}}">
+                    <div class="form-group {{ $errors->first('name') ? 'has-error' : ''}}">
                         <label for="name">Name</label>
-                        <input id="name" type="text" class="form-control" placeholder="Nhập tên nhà sản xuất" name="name" value="{{ $p->name }}" required>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-edit"></i>
+                            </div>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Nhập tên nhà sản xuất" value="{{ $p->name }}" required>
+                        </div>
+
                         @if ($errors->has('name'))
                             <span class="help-block">{{ $errors->first('name') }}</span>
                         @endif
@@ -56,7 +62,13 @@
 
                     <div class="form-group {{ $errors->first('address') ? 'has-error' : ''}}">
                         <label for="address">Address</label>
-                        <input class="form-control" type="text" id="address" name="address" placeholder="Nhập địa chỉ nhà sản xuất" value="{{ $p->address }}" required>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-address-book"></i>
+                            </div>
+                            <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" placeholder="Nhập địa chỉ nhà sản xuất" value="{{ $p->address }}" required>
+                        </div>
+                       
                         @if ($errors->has('address'))
                             <span class="help-block">{{ $errors->first('address') }}</span>
                         @endif
@@ -64,7 +76,12 @@
 
                     <div class="form-group {{ $errors->first('email') ? 'has-error' : ''}}">
                         <label for="email">Email</label>
-                        <input class="form-control" type="email" id="email" name="email" placeholder="Nhập địa chỉ email của nhà sản xuất" value="{{ $p->email }}" required>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="Nhập email nhà sản xuất" value="{{ $p->email }}" required>
+                        </div>
                         @if ($errors->has('email'))
                             <span class="help-block">{{ $errors->first('email') }}</span>
                         @endif
@@ -72,7 +89,12 @@
 
                     <div class="form-group {{ $errors->first('phone') ? 'has-error' : ''}}">
                         <label for="phone">Phone</label>
-                        <input class="form-control" type="text" id="phone" name="phone" placeholder="Nhập số ĐT nhà sản xuất" value="{{ $p->phone }}" required>
+                       <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" placeholder="Nhập số điện thoại nhà sản xuất" value="{{ $p->phone }}" required>
+                        </div>
                         @if ($errors->has('phone'))
                             <span class="help-block">{{ $errors->first('phone') }}</span>
                         @endif
@@ -80,7 +102,12 @@
 
                     <div class="form-group {{ $errors->first('other_description') ? 'has-error' : ''}}">
                         <label for="other_description">Other Description</label>
-                        <input class="form-control" type="text" id="other_description" name="other_description" placeholder="Mô tả khác" value="{{ $p->other_description }}">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-coffee"></i>
+                            </div>
+                            <input id="other_description" type="text" class="form-control{{ $errors->has('other_description') ? ' is-invalid' : '' }}" name="other_description" placeholder="Mô tả khác" value="{{ $p->other_description }}" required>
+                        </div>
                         @if ($errors->has('other_description'))
                             <span class="help-block">{{ $errors->first('other_description') }}</span>
                         @endif

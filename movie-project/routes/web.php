@@ -99,6 +99,23 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('/list','Admin\UserFilmController@index')->name('admin_user_film_list');
     });
 
+
+    Route::group(['prefix'=>'comment'],function(){
+        Route::get('/list','Admin\CommentController@index')->name('admin_comment_list');
+        Route::post('/delete/{id}','Admin\CommentController@destroy')->name('admin_comment_delete');
+        Route::get('/search', 'Admin\CommentController@search')->name('admin_comment_search');
+    });
+
+
+     Route::group(['prefix'=>'server'],function(){
+            Route::get('/list','Admin\ServerController@index')->name('admin_server_list');
+            Route::get('/create','Admin\ServerController@create')->name('admin_server_create');
+            Route::post('/store','Admin\ServerController@store')->name('admin_server_store');
+            Route::get('/edit/{id}','Admin\ServerController@edit')->name('admin_server_edit');
+            Route::post('/update/{id}','Admin\ServerController@update')->name('admin_server_update');
+            Route::post('/delete/{id}','Admin\ServerController@destroy')->name('admin_server_delete');
+    });
+
 });
 
 Route::group(['prefix'=>'home'],function(){
