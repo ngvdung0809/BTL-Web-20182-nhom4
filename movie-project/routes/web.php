@@ -100,3 +100,9 @@ Route::group(['prefix'=>'admin'],function(){
     });
 
 });
+
+Route::group(['prefix'=>'home'],function(){
+    Route::get('/index',function () {
+        return view('home.layout');
+    })->name('home_index');
+});
