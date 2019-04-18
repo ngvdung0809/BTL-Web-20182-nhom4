@@ -6,7 +6,7 @@ return [
         'NO_ROLE' => 0
     ],
 
-    'USER_AVATAR' => [ 
+    'USER_AVATAR' => [
         'AVATAR_DEFAULT' => 'avatar_default/user_default.jpg',
         'AVATAR_FOLDER' =>  'user_avatar'
     ],
@@ -34,6 +34,10 @@ return [
     'ADVENTISMENT_IMG' => [
         'IMG_PATH' => 'adventisment_img',
         'IMG_DEFAULT' => 'adventisment_img/default.png'
-    ]
-        
+    ],
+
+    'FILM_EPISODE' => [
+        'FILM_EPISODE_FOLDER_IMAGE' => 'film_episode_folder_image',
+    ],
+
 ];

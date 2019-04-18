@@ -98,13 +98,14 @@ Route::group(['prefix'=>'admin'],function(){
     Route::group(['prefix'=>'rate'],function(){
         Route::get('/list','Admin\UserFilmController@index')->name('admin_user_film_list');
     });
+
     Route::group(['prefix'=>'episode'],function(){
-        Route::get('/{id}/list','Admin\FilmEpisodeController@index')->name('admin_film_episode_list');
+        // Route::get('/{id}/list','Admin\FilmEpisodeController@index')->name('admin_film_episode_list');
         Route::get('/{id}/create','Admin\FilmEpisodeController@create')->name('admin_film_episode_create');
         Route::post('/{id}/store','Admin\FilmEpisodeController@store')->name('admin_film_episode_store');
-        Route::get('{filmId}/edit/{id}','Admin\FilmEpisodeController@edit')->name('admin_film_episode_edit');
-        Route::post('{filmId}/update/{id}','Admin\FilmEpisodeController@update')->name('admin_film_episode_update');
-        Route::post('{fimlId}/delete/{id}','Admin\FilmEpisodeController@destroy')->name('admin_film_episode_delete');
+        Route::get('/edit/{id}','Admin\FilmEpisodeController@edit')->name('admin_film_episode_edit');
+        Route::post('/update/{id}','Admin\FilmEpisodeController@update')->name('admin_film_episode_update');
+        Route::get('/delete/{id}','Admin\FilmEpisodeController@destroy')->name('admin_film_episode_delete');
     });
 
 
