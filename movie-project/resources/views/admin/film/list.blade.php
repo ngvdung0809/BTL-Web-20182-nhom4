@@ -54,7 +54,11 @@
                                         </a>
                                     </td>
                                     <td>{{ $film->tag }}</td>
-                                    <td>{{ $film->publisher->name }}</td>
+                                    <td>
+                                        @if (!empty($film->publisher))
+                                            {{ $film->publisher->name }}
+                                        @endif
+                                    </td>
                                     <td>
                                         @if (!empty($film->director))
                                             {{ $film->director->name }}
@@ -67,7 +71,11 @@
                                             @endif
                                         @endforeach
                                     </td>
-                                    <td>{{ $film->country->name }}</td>
+                                    <td>
+                                        @if (!empty($film->country))
+                                            {{ $film->country->name }}
+                                        @endif
+                                    </td>
                                     <td>{{ \Carbon\Carbon::parse($film->released)->format('d/m/Y') }}</td>
                                     <td>
                                         <a href="{{ route('admin_film_edit', ['id' => $film->id] )}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
