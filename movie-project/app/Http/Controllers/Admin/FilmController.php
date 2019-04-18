@@ -88,13 +88,15 @@ class FilmController extends Controller
         $view = 0;
         $share = 0;
         $rate = 0;
-        foreach ($film->user as $user) {
-            $liked = $liked + $user->pivot->liked;
-            $view = $view + $user->pivot->view;
-            $share = $share + $user->pivot->share;
-            $rate = $rate + $user->pivot->point;
+        if (count($film->user) > 0) {
+            foreach ($film->user as $user) {
+                $liked = $liked + $user->pivot->liked;
+                $view = $view + $user->pivot->view;
+                $share = $share + $user->pivot->share;
+                $rate = $rate + $user->pivot->point;
+            }
+            $rate = $rate/count($film->user);
         }
-        $rate = $rate/count($film->user);
         return view('admin.film.view', ['film'=>$film, 'rate'=>$rate, 'liked'=>$liked, 'view'=>$view, 'share'=>$share]);
     }
 
@@ -113,7 +115,6 @@ class FilmController extends Controller
         foreach ($film->actor as $actor) {
             $film->actorId = $film->actor->pluck('id')->all();
         }
-         $film->actorId = $film->actor->pluck('id')->all();
         $publishers = Publisher::all();
         $directors = Person::where('job', 'director')->get();
         $actors = Person::where('job', 'actor')->get();

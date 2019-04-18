@@ -29,7 +29,7 @@
                     <div class="box box-primary">
                         <div class="box-body box-profile">
                             <img class="img-responsive" src="{{ asset('/storage/' . $film->image) }}" alt="">
-                            <h3 class="profile-username text-center">{{ $film->username }}</h3>
+                            <h3 class="profile-username text-center">{{ $film->name }}</h3>
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
                                     <b>Đánh giá phim</b>
@@ -82,7 +82,7 @@
                                 </strong>
                                 <p class="text-muted">
                                     @foreach ($film->type as $type)
-                                          {{ $type->name }}
+                                        {{ $type->name }}
                                     @endforeach
                                 </p>
                                 <hr>
@@ -101,7 +101,9 @@
                                     Nhà xuất bản
                                 </strong>
                                 <p class="text-muted">
-                                    {{ $film->publisher->name }}
+                                    @if (!empty($film->publisher))
+                                        {{ $film->publisher->name }}
+                                    @endif
                                 </p>
                                 <hr>
 
@@ -110,7 +112,9 @@
                                    Quốc gia
                                 </strong>
                                 <p class="text-muted">
-                                    {{ $film->country->name }}
+                                    @if (!empty($film->country))
+                                        {{ $film->country->name }}
+                                    @endif
                                 </p>
                                 <hr>
                             </div>
