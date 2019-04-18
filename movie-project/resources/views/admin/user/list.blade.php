@@ -58,7 +58,11 @@
                                     <td>{{ $user->birth_day }}</td>
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->country->name }}</td>
+                                    <td>
+                                        @if (!empty($user->country))
+                                            {{ $user->country->name }}
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ route('admin_user_edit', ['id' => $user->id] )}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                     </td>

@@ -46,7 +46,10 @@
                                 <tr>
                                     <td>{{ $ad->id }}</td>
                                     <td>{{ $ad->name }}</td>
-                                    <td>{{ $ad->image }}</td>
+                                    <td>
+                                        <img class="img-circle" src="{{ asset('/storage/' . $ad->image) }}" 
+                                        alt="{{ $ad->name . ' image' }}" height="70" width="70">
+                                    </td>
                                     <td>{{ $ad->link }}</td>
                                     <td>{{ $ad->active }}</td>
                                     <td>

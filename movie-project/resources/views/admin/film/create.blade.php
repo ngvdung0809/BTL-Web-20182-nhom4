@@ -102,7 +102,7 @@
                     <div class="input-group-addon">
                         <i class="fa fa-tasks"></i>
                     </div>
-                    <select class="form-control {{ $errors->has('type_id') ? ' is-invalid' : '' }}" id="type_id" name="type_id[]" value="{{ old('type_id') }}" placeholder="Vui lòng Chọn thể loại phim" multiple required>
+                    <select class="form-control {{ $errors->has('type_id') ? ' is-invalid' : '' }}" id="type_id" name="type_id[]" placeholder="Vui lòng Chọn thể loại phim" multiple required>
                         <option value=""></option>
                         @if (!(empty($typies)))
                             @foreach ($typies as $type)
@@ -171,7 +171,7 @@
                     <div class="input-group-addon">
                         <i class="fa fa-user"></i>
                     </div>
-                    <select class="actor_id form-control {{ $errors->has('actor_id') ? ' is-invalid' : '' }}" name="actor_id[]" value="{{ old('actor_id') }}" placeholder="Vui lòng Chọn diễn viên" multiple required>
+                    <select class="actor_id form-control {{ $errors->has('actor_id') ? ' is-invalid' : '' }}" name="actor_id[]" placeholder="Vui lòng Chọn diễn viên" multiple required>
                         <option value=""></option>
                         @if (!(empty($actors)))
                             @foreach ($actors as $actor)
