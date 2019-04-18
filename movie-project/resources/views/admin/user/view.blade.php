@@ -98,7 +98,9 @@
                                      Country
                                 </strong>
                                 <p class="text-muted">
-                                    {{ $user->country->name }}
+                                    @if (!empty($user->country))
+                                        {{ $user->country->name }}
+                                    @endif
                                 </p>
                                 <hr>
                             </div>
