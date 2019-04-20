@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Server\ServerRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Server;
-use App\Models\Film_Episode;
+use App\Models\FilmEpisode;
 
 class ServerController extends Controller
 {
@@ -20,7 +20,7 @@ class ServerController extends Controller
     
     public function create()
     {
-        $getfilm_episodes = Film_Episode::all();
+        $getfilm_episodes = FilmEpisode::all();
         return view('admin.server.create', ['getfilm_episodes' => $getfilm_episodes]);
     }
 
@@ -48,7 +48,7 @@ class ServerController extends Controller
     public function edit($id)
     {
         $server = Server::find($id);
-        $getfilm_episodes = Film_Episode::all();
+        $getfilm_episodes = FilmEpisode::all();
         return view('admin.server.edit', ['server' => $server, 'getfilm_episodes' => $getfilm_episodes]);
     }
 
