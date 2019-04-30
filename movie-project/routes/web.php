@@ -131,4 +131,10 @@ Route::group(['prefix'=>'home'],function(){
     Route::get('/index',function () {
         return view('home.layout');
     })->name('home_index');
+
+    Route::group(['prefix'=>'user_profile'],function(){
+        Route::get('/index',function () {
+            return view('home.user_profile.layout');
+        })->name('home_user_profile_index');
+    });
 });
