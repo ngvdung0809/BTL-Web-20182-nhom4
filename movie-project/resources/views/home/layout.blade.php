@@ -28,6 +28,9 @@
 	<!-- CSS files -->
 	<link rel="stylesheet" href="{{ asset('home/css/plugins.css') }}">
 	<link rel="stylesheet" href="{{ asset('home/css/style.css') }}">
+
+    <!-- The toast component is like an alert box that is only shown for a couple of seconds when something happens -->
+    <link rel="stylesheet" href="{{ asset('admin/bower_components/toastr/toastr.min.css') }}">
     @yield('css')
 
 </head>
@@ -216,11 +219,28 @@
 	</div>
 </footer>
 <!-- end of footer section-->
-
+    <!-- JS files -->
     <script src="{{ asset('home/js/jquery.js') }}"></script>
     <script src="{{ asset('home/js/plugins.js') }}"></script>
     <script src="{{ asset('home/js/plugins2.js') }}"></script>
     <script src="{{ asset('home/js/custom.js') }}"></script>
+
+    <!-- The toast component is like an alert box that is only shown for a couple of seconds when something happens -->
+    <script src="{{ asset('admin/bower_components/toastr/toastr.min.js') }}"></script>
+    <script>
+        @if(Session::has('success'))
+            toastr.success('{{ Session::get("success") }}');
+            // <?php  //session()->forget('success'); ?>
+        @endif
+        @if(Session::has('error'))
+            toastr.error('{{ Session::get("error") }}');
+        @endif
+        @if($errors -> any())
+            @foreach($errors -> all() as $error)
+                toastr.error('{{ $error }}');
+            @endforeach
+        @endif
+    </script>
     @yield('js')
 </body>
 
