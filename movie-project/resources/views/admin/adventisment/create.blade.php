@@ -1,5 +1,10 @@
 @extends('admin.layout')
 @section('title','Tạo quảng cáo mới')
+@section('css')
+    <link href="{{ asset('admin/bower_components/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/dist/css/AdminLTE.min.css') }}" rel="stylesheet">
+@endsection
 @section('page-header')
     <h1>
         Quảng Cáo
@@ -44,7 +49,12 @@
 
                     <div class="form-group {{ $errors->first('name') ? 'has-error' : ''}}">
                         <label for="name">Name*</label>
-                        <input id="name" type="text" class="form-control" placeholder="Vui lòng nhập vào tên quảng cáo" name="name" value="{{ old('name') }}" required>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Vui lòng nhập vòng tên quảng cáo" value="{{ old('name') }}" required>
+                        </div>
                         @if ($errors->has('name'))
                             <span class="help-block">{{ $errors->first('name') }}</span>
                         @endif
