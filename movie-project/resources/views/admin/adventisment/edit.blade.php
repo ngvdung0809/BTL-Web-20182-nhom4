@@ -44,7 +44,12 @@
 
                     <div class="form-group {{ $errors->first('name') ? 'has-error' : ''}}">
                         <label for="name">Name*</label>
-                        <input id="name" type="text" class="form-control" placeholder="Vui lòng nhập vào tên quảng cáo" name="name" value="{{ $ads->name }}" required>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Vui lòng nhập vòng tên quảng cáo" value="{{ old('name') }}" required>
+                        </div>
                         @if ($errors->has('name'))
                             <span class="help-block">{{ $errors->first('name') }}</span>
                         @endif
