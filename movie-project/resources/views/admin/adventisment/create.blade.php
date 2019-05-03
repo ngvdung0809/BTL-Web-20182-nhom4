@@ -62,7 +62,14 @@
 
                     <div class="form-group {{ $errors->first('link') ? 'has-error' : ''}}">
                         <label for="link">Link*</label>
-                        <input id="link" type="text" class="form-control" placeholder="Vui lòng nhập vào link quảng cáo" name="link" value="{{ old('link') }}" required>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                            <input id="link" type="link" class="form-control{{ $errors->has('link') ? ' is-invalid' : '' }}" name="link"  placeholder="Vui lòng nhập vào link" value="{{ old('link') }}" required>
+                        </div>
+                    
+                    
                         @if ($errors->has('link'))
                             <span class="help-block">{{ $errors->first('link') }}</span>
                         @endif
