@@ -70,7 +70,13 @@
 
                     <div class="form-group {{ $errors->first('active') ? 'has-error' : ''}}">
                         <label for="active">Active*</label>
-                        <input id="active" type="text" class="form-control" placeholder="Vui lòng nhập vào trạng thái" name="active" value="{{ $ads->active }}" required>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa  fa-expeditedssl"></i>
+                            </div>
+                                <input id="active" type="text" class="form-control{{ $errors->has('active') ? ' is-invalid' : '' }}" name="active" placeholder="Vui lòng chọn trạng thái" value="{{ old('active') }}" required>
+                        
+                        </div>
                         @if ($errors->has('active'))
                             <span class="help-block">{{ $errors->first('active') }}</span>
                         @endif
