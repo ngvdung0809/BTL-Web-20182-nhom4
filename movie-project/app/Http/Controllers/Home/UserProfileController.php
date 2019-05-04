@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\EditRequest;
+use App\Http\Requests\User\ChangePasswordRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Config;
 use App\Models\User;
@@ -48,5 +50,30 @@ class UserProfileController extends Controller
         } else{
             return redirect()->back()->with('errors', 'Error');
         }
+    }
+
+    public function showChangePassword($id)
+    {
+        $user = User::find($id);
+        return view('home.user_profile.change_password', ['user'=>$user]);
+    }
+
+    public function updateChangePassword(ChangePasswordRequest $request, $id)
+    {
+        $user = User::find($id);
+
+        if (!(Hash::check($request->get('current-password'), $user->password))) {
+            // The passwords matches
+            return redirect()->back()->with("error","Mật khẩu không chính xác. Vui lòng thử lại.");
+        }
+        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+            //Current password and new password are same
+            return redirect()->back()->with("error","Mật khẩu mới phải khác mật khẩu hiện tại. Vui lòng chọn mật khẩu khác.");
+        }
+
+        //Change Password
+        $user->password = bcrypt($request->get('new-password'));
+        $user->save();
+        return redirect()->back()->with("success","Thay đổi mật khẩu thành công");
     }
 }

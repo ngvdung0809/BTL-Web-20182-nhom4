@@ -17,7 +17,7 @@
         <div class="user-fav">
             <p>Khác</p>
             <ul>
-                <li><a href="#">Thay đổi mật khẩu</a></li>
+                <li><a href="{{ route('home_user_profile_view_change_password', ['id'=>$user->id]) }}">Thay đổi mật khẩu</a></li>
                 <li><a href="#">Đăng xuất</a></li>
             </ul>
         </div>

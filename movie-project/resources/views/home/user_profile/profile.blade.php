@@ -16,7 +16,7 @@
                     <div class="form-style-1 user-pro">
                         <form class="user" method="post" action="{{ route('home_user_profile_update_profile', ['id'=>$user->id]) }}" enctype="multipart/form-data">
                             @csrf
-                            <h4>Chi tiết hồ sơ</h4>
+                            <h4 style="text-align: center">Chi tiết hồ sơ</h4>
                             <div class="row">
                                 <div class="col-md-12 form-it {{ $errors->first('username') ? 'has-error' : ''}}">
                                     <label>Ảnh đại diện *</label><br>

@@ -136,9 +136,15 @@ Route::group(['prefix'=>'home'],function(){
         Route::get('/index',function () {
             return view('home.user_profile.layout');
         })->name('home_user_profile_index');
+
         Route::group(['prefix'=>'/profile'],function(){
             Route::get('/view/{id}', 'Home\UserProfileController@showProfile')->name('home_user_profile_view_profile');
             Route::post('/update/{id}', 'Home\UserProfileController@updateProfile')->name('home_user_profile_update_profile');
+        });
+
+        Route::group(['prefix'=>'/change_password'],function(){
+            Route::get('/view/{id}', 'Home\UserProfileController@showChangePassword')->name('home_user_profile_view_change_password');
+            Route::post('/update/{id}', 'Home\UserProfileController@updateChangePassword')->name('home_user_profile_update_change_password');
         });
     });
 });
