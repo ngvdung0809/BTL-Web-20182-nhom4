@@ -11,7 +11,7 @@
     <div class="page-single">
         <div class="container">
             <div class="row ipad-width">
-                @include('home.user_profile.side_bar', ['path'=>'/storage/'.$user->image])
+                @include('home.user_profile.side_bar', ['path'=>'/storage/'.$user->image, 'pageNow'=>'Profile'])
                 <div class="col-md-9 col-sm-12 col-xs-12">
                     <div class="form-style-1 user-pro">
                         <form class="user" method="post" action="{{ route('home_user_profile_update_profile', ['id'=>$user->id]) }}" enctype="multipart/form-data">
@@ -21,8 +21,11 @@
                                 <div class="col-md-12 form-it {{ $errors->first('username') ? 'has-error' : ''}}">
                                     <label>Ảnh đại diện *</label><br>
                                     <div class="col-md-4 col-md-offset-4">
-                                        <img  src="{{ asset('/storage/' . $user->image) }}" alt="" id="image_default" style="border-radius: 50%;">
-                                        <input type="file" class="form-it" id="image" name="image" accept="image/*" />
+                                        <img  src="{{ asset('/storage/' . $user->image) }}" alt="" id="image_show_profile" style="border-radius: 50%;">
+                                        <div class="col-md-8 col-md-offset-2">
+                                            <label for="image_profile" class="redbtn" style="text-align: center">Chọn ảnh</label>
+                                        </div>
+                                        <input type="file" class="form-it" id="image_profile" name="image" accept="image/*" style="width: 100%; display: none;"/>
 
                                         @if ($errors->has('image'))
                                             <span class="invalid-feedback" role="alert">
@@ -162,4 +165,5 @@
     <script src="{{ asset('home/bower_components/moment/min/moment.min.js') }}"></script>
     <script src="{{ asset('home/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('js/home/user_profile/profile.js') }}"></script>
+    <script src="{{ asset('js/home/user_profile/change_avatar.js') }}"></script>
 @endsection

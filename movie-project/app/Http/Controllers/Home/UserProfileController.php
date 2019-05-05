@@ -76,4 +76,22 @@ class UserProfileController extends Controller
         $user->save();
         return redirect()->back()->with("success","Thay đổi mật khẩu thành công");
     }
+
+    public function changeAvatar(Request $request, $id){
+        if ($request->ajax()) {
+            $user = User::find($id);
+            if ($request->hasFile('image_directly')) {
+                $path = Storage::disk('public')->put(Config::get('constants.USER_AVATAR.AVATAR_FOLDER'), $request->image_directly);
+                if($user->image != Config::get('constants.USER_AVATAR.AVATAR_DEFAULT')){
+                    Storage::disk('public')->delete($user->image);
+                }
+                $user->image = $path;
+                $user->save();
+            }
+
+            return $user;
+        }
+
+        return null;
+    }
 }

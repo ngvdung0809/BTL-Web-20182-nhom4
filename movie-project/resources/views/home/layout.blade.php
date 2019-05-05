@@ -18,6 +18,8 @@
 	<meta name="author" content="">
 	<link rel="profile" href="#">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!--Google Font-->
     <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
 

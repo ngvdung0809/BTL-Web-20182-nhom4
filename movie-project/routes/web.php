@@ -146,5 +146,7 @@ Route::group(['prefix'=>'home'],function(){
             Route::get('/view/{id}', 'Home\UserProfileController@showChangePassword')->name('home_user_profile_view_change_password');
             Route::post('/update/{id}', 'Home\UserProfileController@updateChangePassword')->name('home_user_profile_update_change_password');
         });
+
+        Route::post('/change_avatar/{id}', 'Home\UserProfileController@changeAvatar')->name('home_user_profile_change_avatar');
     });
 });

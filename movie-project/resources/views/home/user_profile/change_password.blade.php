@@ -9,7 +9,7 @@
     <div class="page-single">
         <div class="container">
             <div class="row ipad-width">
-                @include('home.user_profile.side_bar', ['path'=>'/storage/'.$user->image])
+                @include('home.user_profile.side_bar', ['path'=>'/storage/'.$user->image, 'pageNow'=>'Change PassWord'])
                 <div class="col-md-9 col-sm-12 col-xs-12">
                     <div class="form-style-1 user-pro">
                         <form class="password" method="post" action="{{ route('home_user_profile_update_change_password', ['id'=>$user->id]) }}">
@@ -58,5 +58,5 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('js/home/user_profile/change_password.js') }}"></script>
+    <script src="{{ asset('js/home/user_profile/change_avatar.js') }}"></script>
 @endsection
