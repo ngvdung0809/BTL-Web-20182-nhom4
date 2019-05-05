@@ -10,7 +10,7 @@ $(document).ready(function(){
         var userId = $('#image_directly').data('user_id');
         var formData = new FormData(this);
         $.ajax({
-            url: '/home/user/change_avatar/' + userId,
+            url: '/home/user/' + userId + '/change_avatar',
             type: "POST",
             dataType: 'json',
             data: formData,

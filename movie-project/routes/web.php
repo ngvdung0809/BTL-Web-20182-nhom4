@@ -132,21 +132,17 @@ Route::group(['prefix'=>'home'],function(){
         return view('home.layout');
     })->name('home_index');
 
-    Route::group(['prefix'=>'/user'],function(){
-        Route::get('/index',function () {
-            return view('home.user_profile.layout');
-        })->name('home_user_profile_index');
-
+    Route::group(['prefix'=>'/user/{user_id}'],function(){
         Route::group(['prefix'=>'/profile'],function(){
-            Route::get('/view/{id}', 'Home\UserProfileController@showProfile')->name('home_user_profile_view_profile');
-            Route::post('/update/{id}', 'Home\UserProfileController@updateProfile')->name('home_user_profile_update_profile');
+            Route::get('/view', 'Home\UserProfileController@showProfile')->name('home_user_profile_view_profile');
+            Route::post('/update', 'Home\UserProfileController@updateProfile')->name('home_user_profile_update_profile');
         });
 
         Route::group(['prefix'=>'/change_password'],function(){
-            Route::get('/view/{id}', 'Home\UserProfileController@showChangePassword')->name('home_user_profile_view_change_password');
-            Route::post('/update/{id}', 'Home\UserProfileController@updateChangePassword')->name('home_user_profile_update_change_password');
+            Route::get('/view', 'Home\UserProfileController@showChangePassword')->name('home_user_profile_view_change_password');
+            Route::post('/update', 'Home\UserProfileController@updateChangePassword')->name('home_user_profile_update_change_password');
         });
 
-        Route::post('/change_avatar/{id}', 'Home\UserProfileController@changeAvatar')->name('home_user_profile_change_avatar');
+        Route::post('/change_avatar', 'Home\UserProfileController@changeAvatar')->name('home_user_profile_change_avatar');
     });
 });
