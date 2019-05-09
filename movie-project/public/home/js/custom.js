@@ -444,8 +444,10 @@ $(function(){
 	//==js for login and sign up
 	var loginLink = $(".loginLink");
 	var signupLink = $(".signupLink");
+    var changeAvatarLink = $(".changeAvatarLink");
 	var loginct = $( "#login-content" );
 	var signupct= $("#signup-content");
+    var changeAvatarct = $( "#changeAvatar-content" );
 	var loginWrap = $(".login-wrapper");
 	var overlay = $(".overlay");
 	loginWrap.each( function(){
@@ -482,6 +484,22 @@ $(function(){
 				}, 350);
 			}
 		});
+    });
+    //pop up for changeAvatar form
+    changeAvatarLink.on('click', function(event){
+        event.preventDefault();
+        changeAvatarct.parents(overlay).addClass("openform");
+        $(document).on('click', function(e){
+        var target = $(e.target);
+        if ($(target).hasClass("overlay")){
+                $(target).find(changeAvatarct).each( function(){
+                    $(this).removeClass("openform");
+                });
+                setTimeout( function(){
+                    $(target).removeClass("openform");
+                }, 350);
+            }
+        });
     });
     // close popup for mobile
     var closebt = $(".close");
