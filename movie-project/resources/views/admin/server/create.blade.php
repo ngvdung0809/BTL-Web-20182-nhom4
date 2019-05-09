@@ -42,7 +42,7 @@
                         <br>
                         <select class="form-control" id="episode_id" name ="episode_id" required>
                             @foreach($getfilm_episodes as $getfilm_episode)
-                            <option value="{{$getfilm_episode->id}}">{{$getfilm_episode->film_id}} - {{$getfilm_episode->episode}}</option>
+                            <option value="{{$getfilm_episode->id}}">{{$getfilm_episode->film_id}} tập {{$getfilm_episode->episode}}</option>
                             @endforeach
                         </select>                        
                         @if ($errors->has('episode_id'))
