@@ -1,7 +1,7 @@
 <div class="page-single" id="favorist_film" data-user_id="{{ $user->id }}">
     <div class="container">
         <div class="row ipad-width">
-            @include('home.user_profile.side_bar', ['path'=>'/storage/'.$user->image, 'active'=>'Favorist Film'])
+            @include('home.user_profile.side_bar', ['path'=>'/storage/'.$user->image, 'active'=>$active])
             <div class="col-md-9 col-sm-12 col-xs-12">
                 <div class="topbar-filter user">
                 <label id='result'>Tìm thấy <span style="color: blue">{{ count($films) }}</span> phim</label>
@@ -27,11 +27,13 @@
             <div class="flex-wrap-movielist user-fav-list">
                 @foreach ($films as $key => $film)
                     <div class="page-disactive" id="film_{{ $key }}">
-                        <div class="movie-item-style-2">
+                        <div class="movie-item-style-2 userrate">
                             <img src="{{ '/storage/'.$film->image }}" alt="" style="height: 400px; width: 250px">
                             <div class="mv-item-infor">
-                                <h6 class="name"><a href="#">{{ $film->name }} <span class="released"> ( {{ date('Y', strtotime($film->released)) }} )</span></a></h6>
+                                <h6 class="name"><a href="#">{{ $film->name }} <span class="released time sm"> ( {{ date('Y', strtotime($film->released)) }} )</span></a></h6>
+                                <p class="time sm-text">Đánh giá</p>
                                 <p class="rate"><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
+                                <p class="time sm-text">Nội dung</p>
                                 <p class="describe">{{ $film->content }}</p>
                                 <p class="run-time"> Thời lượng: 2h21’.<span>MMPA: PG-13.</span><span>Ngày phát hành: {{ date('d/m/Y', strtotime($film->released)) }}</span></p>
                                 <p class="publisher">Hãng sản xuất: <a href="#">{{ $film->publisher->name }}</a></p>

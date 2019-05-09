@@ -18,8 +18,8 @@
     </div>
 @endsection
 @section('content')
-    @include('home.user_profile.header', ['pageHeader'=>$user->name, 'pageNow'=>'Phim yêu thích'])
-    @include('home.user_profile.user_film', ['user'=>$user, 'films'=>$films, 'active'=>'Favorist Film'])
+    @include('home.user_profile.header', ['pageHeader'=>$user->name, 'pageNow'=>'Phim xem sau'])
+    @include('home.user_profile.user_film', ['user'=>$user, 'films'=>$films, 'active'=>'Film Watch Later'])
 @endsection
 @section('js')
     <script src="{{ asset('js/home/user_profile/change_avatar.js') }}"></script>

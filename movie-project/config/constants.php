@@ -43,7 +43,8 @@ return [
     'USER_FILM' => [
         'LIKE' => 1,
         'VIEW' => 1,
-        'SHARE' => 1
+        'SHARE' => 1,
+        'WATCHLATER'=>1
     ],
 
 ];

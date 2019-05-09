@@ -107,4 +107,17 @@ class UserProfileController extends Controller
 
         return view('home.user_profile.favorist_film', ['user'=>$user, 'films'=>$films]);
     }
+
+    public function showFilmWatchLater($id)
+    {
+        $user = User::find($id);
+        $films = [];
+        foreach ($user->film as $film) {
+            if($film->pivot->watch_later == Config::get('constants.USER_FILM.WATCHLATER')){
+                array_push($films, $film);
+            }
+        }
+
+        return view('home.user_profile.film_watch_later', ['user'=>$user, 'films'=>$films]);
+    }
 }

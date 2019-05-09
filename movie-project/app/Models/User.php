@@ -54,6 +54,6 @@ class User extends Authenticatable
 
     public function film()
     {
-        return $this->beLongsToMany('App\Models\Film', 'user_film', 'user_id', 'film_id')->withPivot('id', 'liked', 'view', 'share', 'point');
+        return $this->beLongsToMany('App\Models\Film', 'user_film', 'user_id', 'film_id')->withPivot('id', 'liked', 'view', 'share', 'point', 'watch_later');
     }
 }
