@@ -70,30 +70,29 @@
 							<a href="#page-top"></a>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
-							Trang chủ <i class="fa fa-angle-down" aria-hidden="true"></i>
-							</a>
-							<ul class="dropdown-menu level1">
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-							</ul>
+							<a class="btn btn-default dropdown-toggle lv1">Trang chủ</a>
 						</li>
 						<li class="dropdown first">
 							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
 							Thể loại<i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Name<i class="ion-ios-arrow-forward"></i></a>
-									<ul class="dropdown-menu level2">
-										<li><a href="#">Name</a></li>
-										<li><a href="#">Name</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li class="it-last"><a href="#">Name</a></li>
+                            @foreach ($typeHome as $key=>$type)
+                                @if ($key % 5 == 0)
+                                    <li>
+                                        <ul class="nav navbar-nav">
+                                @endif
+                                            <li><a href="#">{{ $type->name }}</a></li>
+                                @if ($key % 5 == 4)
+                                        </ul>
+                                    </li>
+                                @endif
+                            @endforeach
+
+                                @if (count($typeHome) % 5 != 0)
+                                        </ul>
+                                    </li>
+                                @endif
 							</ul>
 						</li>
 						<li class="dropdown first">
@@ -101,54 +100,35 @@
 							Quốc gia <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li class="it-last"><a href="#">Name</a></li>
+                            @foreach ($countryHome as $key=>$country)
+                                @if ($key % 5 == 0)
+                                    <li>
+                                        <ul class="nav navbar-nav">
+                                @endif
+                                            <li><a href="#">{{ $country->name }}</a></li>
+                                @if ($key % 5 == 4)
+                                        </ul>
+                                    </li>
+                                @endif
+                            @endforeach
+
+                                @if (count($countryHome) % 5 != 0)
+                                        </ul>
+                                    </li>
+                                @endif
 							</ul>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-							Phim lẻ <i class="fa fa-angle-down" aria-hidden="true"></i>
-							</a>
-							<ul class="dropdown-menu level1">
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li class="it-last"><a href="#">Name</a></li>
-							</ul>
+							<a class="btn btn-default dropdown-toggle lv1">Phim lẻ</a>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-							Phim bộ <i class="fa fa-angle-down" aria-hidden="true"></i>
-							</a>
-							<ul class="dropdown-menu level1">
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li class="it-last"><a href="#">Name</a></li>
-							</ul>
+							<a class="btn btn-default dropdown-toggle lv1">Phim bộ</a>
 						</li>
                         <li class="dropdown first">
-                            <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-                            Trailer <i class="fa fa-angle-down" aria-hidden="true"></i>
-                            </a>
-                            <ul class="dropdown-menu level1">
-                                <li><a href="#">Name</a></li>
-                                <li><a href="#">Name</a></li>
-                                <li><a href="#">Name</a></li>
-                                <li class="it-last"><a href="#">Name</a></li>
-                            </ul>
+                            <a class="btn btn-default dropdown-toggle lv1">Phim mới</a>
                         </li>
                         <li class="dropdown first">
-                            <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-                            Phim mới <i class="fa fa-angle-down" aria-hidden="true"></i>
-                            </a>
-                            <ul class="dropdown-menu level1">
-                                <li><a href="#">Name</a></li>
-                                <li><a href="#">Name</a></li>
-                                <li><a href="#">Name</a></li>
-                                <li class="it-last"><a href="#">Name</a></li>
-                            </ul>
+                            <a class="btn btn-default dropdown-toggle lv1">Phim chiếu rạp</a>
                         </li>
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">

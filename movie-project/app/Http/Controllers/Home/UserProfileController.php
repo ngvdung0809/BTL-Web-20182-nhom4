@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Config;
 use App\Models\User;
 use App\Models\Country;
 
-class UserProfileController extends Controller
+class UserProfileController extends HomeController
 {
 
     public function showProfile($id)

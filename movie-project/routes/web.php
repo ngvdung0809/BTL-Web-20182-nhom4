@@ -128,9 +128,7 @@ Route::group(['prefix'=>'admin'],function(){
 });
 
 Route::group(['prefix'=>'home'],function(){
-    Route::get('/index',function () {
-        return view('home.layout');
-    })->name('home_index');
+    Route::get('/index','Home\HomeController@showHome')->name('home_index');
 
     Route::group(['prefix'=>'/user/{user_id}'],function(){
         Route::group(['prefix'=>'/profile'],function(){
