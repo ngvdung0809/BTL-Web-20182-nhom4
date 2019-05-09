@@ -132,6 +132,9 @@ Route::group(['prefix'=>'home'],function(){
         return view('home.layout');
     })->name('home_index');
 
+    Route::get('/publisher/{id}', 'Home\PublisherController@view')->name('home_publisher_view');
+    Route::get('/publisher_search', 'Home\PublisherController@search')->name('home_publisher_search');
+    
     Route::group(['prefix'=>'/user/{user_id}'],function(){
         Route::group(['prefix'=>'/profile'],function(){
             Route::get('/view', 'Home\UserProfileController@showProfile')->name('home_user_profile_view_profile');
