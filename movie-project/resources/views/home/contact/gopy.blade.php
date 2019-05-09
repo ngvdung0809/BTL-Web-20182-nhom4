@@ -51,7 +51,7 @@
                         <div class="form-group {{ $errors->first('other_description') ? 'has-error' : ''}}">
                             <label for="other_description">Nội Dung</label>
                             <div class="input-group">
-                                <input id="other_description" type="text" class="form-control{{ $errors->has('other_description') ? ' is-invalid' : '' }}" name="other_description"  placeholder="Nội dung góp ý" value="{{ old('other_description') }}">
+                                <input id="other_description" type="text" class="form-control{{ $errors->has('other_description') ? ' is-invalid' : '' }}" name="other_description"  placeholder="Nhập nội dung góp ý" value="{{ old('other_description') }}">
                             </div>
 
                             @if ($errors->has('other_description'))
