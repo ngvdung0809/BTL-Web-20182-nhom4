@@ -44,7 +44,12 @@
 
                     <div class="form-group {{ $errors->first('name') ? 'has-error' : ''}}">
                         <label for="name">Name*</label>
-                        <input id="name" type="text" class="form-control" placeholder="Vui lòng nhập vào tên quảng cáo" name="name" value="{{ $ads->name }}" required>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Vui lòng nhập vòng tên quảng cáo" value="{{ old('name') }}" required>
+                        </div>
                         @if ($errors->has('name'))
                             <span class="help-block">{{ $errors->first('name') }}</span>
                         @endif
@@ -52,7 +57,12 @@
 
                     <div class="form-group {{ $errors->first('link') ? 'has-error' : ''}}">
                         <label for="link">Link*</label>
-                        <input id="link" type="text" class="form-control" placeholder="Vui lòng nhập vào link quảng cáo" name="link" value="{{ $ads->link }}" required>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                            <input id="link" type="link" class="form-control{{ $errors->has('link') ? ' is-invalid' : '' }}" name="link"  placeholder="Vui lòng nhập vào link" value="{{ old('link') }}" required>
+                        </div>
                         @if ($errors->has('link'))
                             <span class="help-block">{{ $errors->first('link') }}</span>
                         @endif
@@ -60,7 +70,13 @@
 
                     <div class="form-group {{ $errors->first('active') ? 'has-error' : ''}}">
                         <label for="active">Active*</label>
-                        <input id="active" type="text" class="form-control" placeholder="Vui lòng nhập vào trạng thái" name="active" value="{{ $ads->active }}" required>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa  fa-expeditedssl"></i>
+                            </div>
+                                <input id="active" type="text" class="form-control{{ $errors->has('active') ? ' is-invalid' : '' }}" name="active" placeholder="Vui lòng chọn trạng thái" value="{{ old('active') }}" required>
+                        
+                        </div>
                         @if ($errors->has('active'))
                             <span class="help-block">{{ $errors->first('active') }}</span>
                         @endif
