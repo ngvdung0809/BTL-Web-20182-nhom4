@@ -12,7 +12,7 @@ class ContactController extends Controller
         return view('home.contact.gopy');
     }
 
-    public function phanhoi(){
+    public function create_baoloi(){
         return view('home.contact.phanhoi');
     }
 }

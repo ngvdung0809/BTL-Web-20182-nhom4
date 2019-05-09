@@ -37,7 +37,7 @@
                         <div class="form-group {{ $errors->first('role') ? 'has-error' : ''}}">
                             <label for="role">Chủ Đề</label>
                             <div class="input-group">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"   value="GÓP Ý" disabled>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"   value="BÁO LỖI" >
                             </div>
 
                             @if ($errors->has('role'))

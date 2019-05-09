@@ -285,7 +285,7 @@
                     <li><a href="#">Hỏi đáp</a></li>
                     <li><a href="#">Liên hệ</a></li>
                     <li><a href="{{route('home_contact_gopy')}}">Góp ý</a></li>
-                    <li><a href="#">Báo lỗi</a></li>
+                    <li><a href="{{route('home_contact_phanhoi')}}">Báo lỗi</a></li>
                 </ul>
 			</div>
 		</div>

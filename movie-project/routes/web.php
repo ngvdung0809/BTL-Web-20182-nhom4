@@ -134,6 +134,6 @@ Route::group(['prefix'=>'home'],function(){
 
     Route::group(['prefix' => 'contact'], function () {
         Route::get('gopy','Home\ContactController@create_gopy')->name('home_contact_gopy');
-        Route::get('phanhoi','Home\ContactController@GetShowContact')->name('home_contact_show');
+        Route::get('phanhoi','Home\ContactController@create_baoloi')->name('home_contact_phanhoi');
     });
 });
