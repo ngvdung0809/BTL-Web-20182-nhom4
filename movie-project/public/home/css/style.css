@@ -4314,6 +4314,19 @@ ul {
   font-size: 16px;
   font-weight: 400;
 }
+.movie-item-style-2 .mv-item-infor .point {
+  font-size: 12px;
+}
+.movie-item-style-2 .mv-item-infor .point i {
+  color: #f5b50a;
+  font-size: 22px;
+  margin-right: 5px;
+}
+.movie-item-style-2 .mv-item-infor .point span {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+}
 .movie-item-style-2 .mv-item-infor p {
   margin-bottom: 0;
 }

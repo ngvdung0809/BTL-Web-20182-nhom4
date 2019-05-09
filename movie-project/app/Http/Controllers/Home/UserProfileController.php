@@ -120,4 +120,17 @@ class UserProfileController extends Controller
 
         return view('home.user_profile.film_watch_later', ['user'=>$user, 'films'=>$films]);
     }
+
+    public function showRateFilm($id)
+    {
+        $user = User::find($id);
+        $films = [];
+        foreach ($user->film as $film) {
+            if($film->pivot->point != 0){
+                array_push($films, $film);
+                $film->point = $film->pivot->point;
+            }
+        }
+        return view('home.user_profile.rate_film', ['user'=>$user, 'films'=>$films]);
+    }
 }
