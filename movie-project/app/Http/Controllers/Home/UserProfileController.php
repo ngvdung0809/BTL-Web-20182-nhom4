@@ -94,4 +94,17 @@ class UserProfileController extends Controller
 
         return null;
     }
+
+    public function showFavoristFilm($id)
+    {
+        $user = User::find($id);
+        $films = [];
+        foreach ($user->film as $film) {
+            if($film->pivot->liked == Config::get('constants.USER_FILM.LIKE')){
+                array_push($films, $film);
+            }
+        }
+
+        return view('home.user_profile.favorist_film', ['user'=>$user, 'films'=>$films]);
+    }
 }

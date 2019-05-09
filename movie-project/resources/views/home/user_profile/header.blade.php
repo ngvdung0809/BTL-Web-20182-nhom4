@@ -3,9 +3,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="hero-ct">
-                    <h1>{{ $pageHeader }} Profile</h1>
+                    <h1>Hồ sơ {{ $pageHeader }}</h1>
                     <ul class="breadcumb">
-                        <li class="active"><a href="#">Home</a></li>
+                        <li class="active"><a href="#">Trang chủ</a></li>
+                        <li> <span class="ion-ios-arrow-right"></span>Hồ sơ</li>
                         <li> <span class="ion-ios-arrow-right"></span>{{ $pageNow }}</li>
                     </ul>
                 </div>

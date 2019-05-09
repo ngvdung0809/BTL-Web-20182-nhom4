@@ -144,5 +144,12 @@ Route::group(['prefix'=>'home'],function(){
         });
 
         Route::post('/change_avatar', 'Home\UserProfileController@changeAvatar')->name('home_user_profile_change_avatar');
+
+        Route::group(['prefix'=>'/film'],function(){
+            Route::get('/watch_later', 'Home\UserProfileController@showFilmWatchLater')->name('home_user_profile_view_film_watch_later');
+            Route::get('/favorist', 'Home\UserProfileController@showFavoristFilm')->name('home_user_profile_view_favorist_film');
+            Route::get('/review', 'Home\UserProfileController@showFilmReview')->name('home_user_profile_view_film_review');
+            Route::get('watch_history', 'Home\UserProfileController@showFilmWatchHistory')->name('home_user_profile_view_film_watch_history');
+        });
     });
 });

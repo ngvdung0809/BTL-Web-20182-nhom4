@@ -5302,7 +5302,8 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 @media (max-width: 767px) {
   .pagination {
@@ -8285,4 +8286,10 @@ footer.full-width-ft .ft-copyright {
   color: #8c9296;
   font-family: 'Dosis', sans-serif;
   font-weight: 700;
+}
+.page-disactive {
+  display: none;
+}
+.page-active {
+  display: block;
 }

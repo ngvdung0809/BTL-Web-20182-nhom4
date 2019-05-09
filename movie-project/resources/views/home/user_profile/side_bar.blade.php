@@ -7,17 +7,17 @@
         <div class="user-fav">
             <p>Chi tiết tài khoản</p>
             <ul>
-                <li class="{{ $pageNow == 'Profile' ? 'active' : '' }}"><a href="{{ route('home_user_profile_view_profile', ['id'=>$user->id]) }}">Hồ sơ người dùng</a></li>
-                <li><a href="">Phim xem sau</a></li>
-                <li><a href="">Phim đã thích</a></li>
-                <li><a href="">Phim đã đánh giá</a></li>
-                <li><a href="">Lịch sử xem phim</a></li>
+                <li class="{{ $active == 'Profile' ? 'active' : '' }}"><a href="{{ route('home_user_profile_view_profile', ['user_id'=>$user->id]) }}">Hồ sơ người dùng</a></li>
+                <li class="{{ $active == 'Film Watch Later' ? 'active' : '' }}"><a href="{{ route('home_user_profile_view_film_watch_later', ['user_id'=>$user->id]) }}">Phim xem sau</a></li>
+                <li class="{{ $active == 'Favorist Film' ? 'active' : '' }}"><a href="{{ route('home_user_profile_view_favorist_film', ['user_id'=>$user->id]) }}">Phim yêu thích</a></li>
+                <li class="{{ $active == 'Film Review' ? 'active' : '' }}"><a href="{{ route('home_user_profile_view_film_review', ['user_id'=>$user->id]) }}">Phim đã đánh giá</a></li>
+                <li class="{{ $active == 'Film Watch History' ? 'active' : '' }}"><a href="{{ route('home_user_profile_view_film_watch_history', ['user_id'=>$user->id]) }}">Lịch sử xem phim</a></li>
             </ul>
         </div>
         <div class="user-fav">
             <p>Khác</p>
             <ul>
-                <li class="{{ $pageNow == 'Change PassWord' ? 'active' : '' }}"><a href="{{ route('home_user_profile_view_change_password', ['id'=>$user->id]) }}">Thay đổi mật khẩu</a></li>
+                <li class="{{ $active == 'Change PassWord' ? 'active' : '' }}"><a href="{{ route('home_user_profile_view_change_password', ['user_id'=>$user->id]) }}">Thay đổi mật khẩu</a></li>
                 <li><a href="#">Đăng xuất</a></li>
             </ul>
         </div>

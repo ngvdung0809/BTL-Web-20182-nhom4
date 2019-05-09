@@ -1,5 +1,5 @@
 @extends('home.layout')
-@section('title', 'User Profile')
+@section('title', 'Hồ sơ người dùng')
 @section('css')
     <link href="{{ asset('home/bower_components/select2/dist/css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('home/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
@@ -7,16 +7,16 @@
 @section('search')
 @endsection
 @section('content')
-    @include('home.user_profile.header', ['pageHeader'=>$user->name, 'pageNow'=>'Profile'])
+    @include('home.user_profile.header', ['pageHeader'=>$user->name, 'pageNow'=>'Thông tin người dùng'])
     <div class="page-single">
         <div class="container">
             <div class="row ipad-width">
-                @include('home.user_profile.side_bar', ['path'=>'/storage/'.$user->image, 'pageNow'=>'Profile'])
+                @include('home.user_profile.side_bar', ['path'=>'/storage/'.$user->image, 'active'=>'Profile'])
                 <div class="col-md-9 col-sm-12 col-xs-12">
                     <div class="form-style-1 user-pro">
                         <form class="user" method="post" action="{{ route('home_user_profile_update_profile', ['id'=>$user->id]) }}" enctype="multipart/form-data">
                             @csrf
-                            <h4 style="text-align: center">Chi tiết hồ sơ</h4>
+                            <h4 style="text-align: center">Thông tin chi tiết</h4>
                             <div class="row">
                                 <div class="col-md-12 form-it {{ $errors->first('username') ? 'has-error' : ''}}">
                                     <label>Ảnh đại diện *</label><br>
@@ -149,8 +149,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-2">
-                                    <input class="submit" type="submit" value="Update">
+                                <div class="col-md-4 col-md-offset-4 form-it">
+                                    <input class="submit" type="submit" value="Cập nhật">
                                 </div>
                             </div>
                         </form>

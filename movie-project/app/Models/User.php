@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->beLongsTo('App\Models\Country', 'country_id');
     }
+
+    public function film()
+    {
+        return $this->beLongsToMany('App\Models\Film', 'user_film', 'user_id', 'film_id')->withPivot('id', 'liked', 'view', 'share', 'point');
+    }
 }

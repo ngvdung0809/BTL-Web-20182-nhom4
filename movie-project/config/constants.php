@@ -40,4 +40,10 @@ return [
         'FILM_EPISODE_FOLDER_IMAGE' => 'film_episode_folder_image',
     ],
 
+    'USER_FILM' => [
+        'LIKE' => 1,
+        'VIEW' => 1,
+        'SHARE' => 1
+    ],
+
 ];
