@@ -7,6 +7,7 @@ use App\Http\Requests\Server\ServerRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Server;
 use App\Models\FilmEpisode;
+use App\Models\Film;
 
 class ServerController extends Controller
 {
@@ -21,6 +22,10 @@ class ServerController extends Controller
     public function create()
     {
         $getfilm_episodes = FilmEpisode::all();
+        foreach ($getfilm_episodes as $getfilm_episode ) {
+            $getfilmname = Film::find($getfilm_episode->film_id)->name;
+            $getfilm_episode->film_id = $getfilmname;
+        }
         return view('admin.server.create', ['getfilm_episodes' => $getfilm_episodes]);
     }
 
@@ -49,6 +54,10 @@ class ServerController extends Controller
     {
         $server = Server::find($id);
         $getfilm_episodes = FilmEpisode::all();
+        foreach ($getfilm_episodes as $getfilm_episode ) {
+            $getfilmname = Film::find($getfilm_episode->film_id)->name;
+            $getfilm_episode->film_id = $getfilmname;
+        }
         return view('admin.server.edit', ['server' => $server, 'getfilm_episodes' => $getfilm_episodes]);
     }
 

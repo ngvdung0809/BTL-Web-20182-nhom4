@@ -21,7 +21,7 @@ return [
     ],
 
     'PUBLISHER_IMAGE' => [
-    	'DEFAULT_PUBLISHER_LOGO' => 'avatar_default/publisher_logo.png',
+    	'DEFAULT_PUBLISHER_LOGO' => 'publisher_logo/publisher_logo.png',
     	'PUBLISHER_LOGO_FOLDER' => 'publisher_logo'
     ],
 
@@ -38,6 +38,13 @@ return [
 
     'FILM_EPISODE' => [
         'FILM_EPISODE_FOLDER_IMAGE' => 'film_episode_folder_image',
+    ],
+
+    'USER_FILM' => [
+        'LIKE' => 1,
+        'VIEW' => 1,
+        'SHARE' => 1,
+        'WATCHLATER'=>1
     ],
 
 ];
