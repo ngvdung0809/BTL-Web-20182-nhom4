@@ -62,23 +62,5 @@ class CommentController extends Controller
     }
 
 
-    public function PostComment(Request $request){
-        if(Auth::check()){
-            $comment = $request->comment;
-            $film_id=$request->id;
-            $newComment=new Comment();
-            $newComment->film_id=$film_id;
-            $newComment->comment=$comment;
-            $newComment->user_id=Auth::user()->id;
-            $newComment->save();
-            $true="true";
-            $data=view("home/watch-film/comment",compact('newComment'))->render();
-            return response()->json(['html'=>$data,'success'=>$true]);
-        }else{
-            $data="Bạn chưa đăng nhập";
-            $false="false";
-            return response()->json(['html'=>$data,'success'=>$false]);
-        }
-
-    }
+    
 }

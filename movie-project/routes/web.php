@@ -132,14 +132,14 @@ Route::group(['prefix'=>'home'],function(){
         return view('home.layout');
     })->name('home_index');
 
-<<<<<<< HEAD
 
-    Route::get('/watch/film/{id}','Admin\FilmEpisodeController@watch')->name('watch_film');
-    Route::post('/comment','Admin\CommentController@PostComment');
-=======
+
+    Route::get('/watch/film/{id}','Home\WatchFilmController@watch')->name('watch_film');
+    Route::post('/comment','Home\WatchFilmController@PostComment');
+
     Route::get('/publisher/{id}', 'Home\PublisherController@view')->name('home_publisher_view');
     Route::get('/publisher_search', 'Home\PublisherController@search')->name('home_publisher_search');
-    
+
     Route::group(['prefix'=>'/user/{user_id}'],function(){
         Route::group(['prefix'=>'/profile'],function(){
             Route::get('/view', 'Home\UserProfileController@showProfile')->name('home_user_profile_view_profile');
@@ -160,5 +160,5 @@ Route::group(['prefix'=>'home'],function(){
             Route::get('watch_history', 'Home\UserProfileController@showFilmWatchHistory')->name('home_user_profile_view_film_watch_history');
         });
     });
->>>>>>> 61b81e6a5116d602a7bbc1425df36a874e2631a0
+
 });
