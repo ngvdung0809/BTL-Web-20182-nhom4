@@ -1,11 +1,11 @@
 @extends('home.layout')
-@section('title','Góp ý người dùng')
+@section('title','Báo lỗi người dùng')
 @section('content')
 <div class="page-single">
     <div class="container">
         <div class="row ipad-width2">
 	        <div class="form-style-1 user-pro">
-                <form  method="get" action="{{ route('admin_user_store') }}" enctype="multipart/form-data">
+                <form  method="post" action="{{ route('admin_user_store') }}" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="box-body">
                         <div class="form-group {{ $errors->first('name') ? 'has-error' : ''}}">

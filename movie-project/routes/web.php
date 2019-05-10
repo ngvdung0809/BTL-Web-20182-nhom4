@@ -133,7 +133,9 @@ Route::group(['prefix'=>'home'],function(){
     })->name('home_index');
 
     Route::group(['prefix' => 'contact'], function () {
-        Route::get('gopy','Home\ContactController@create_gopy')->name('home_contact_gopy');
-        Route::get('phanhoi','Home\ContactController@create_baoloi')->name('home_contact_phanhoi');
+        Route::get('/gopy','Home\ContactController@create_gopy')->name('home_contact_gopy');
+        Route::get('/phanhoi','Home\ContactController@create_baoloi')->name('home_contact_phanhoi');
+        Route::post('/gopystore','Home\ContactController@gopystore')->name('home_gopy_store');
+        //Route::post('/baoloistore','Home\ContactController@store')->name('admin_baoloi_store');
     });
 });
