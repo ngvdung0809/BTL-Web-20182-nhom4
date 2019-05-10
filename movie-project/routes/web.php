@@ -131,4 +131,8 @@ Route::group(['prefix'=>'home'],function(){
     Route::get('/index',function () {
         return view('home.layout');
     })->name('home_index');
+
+
+    Route::get('/watch/film/{id}','Admin\FilmEpisodeController@watch')->name('watch_film');
+    Route::post('/comment','Admin\CommentController@PostComment');
 });

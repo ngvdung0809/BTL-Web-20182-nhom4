@@ -52,4 +52,7 @@ class Film extends Model
     public function film_episode(){
         return $this->hasMany('App\Models\FilmEpisode','film_id');
     }
+    public function comments(){
+       return $this->hasMany('App\Models\Comment','film_id');
+    }
 }

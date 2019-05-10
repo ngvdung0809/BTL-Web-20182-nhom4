@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
 use App\Models\FilmEpisode;
 use App\Models\Film;
+use App\Models\Server;
 use App\Http\Requests\FilmEpisode\FilmEpisodeRequest;
 use App\Http\Requests\FilmEpisode\UpdateFilmEpisodeRequest;
+use Illuminate\Support\Facades\DB;
 class FilmEpisodeController extends Controller
 {
 
@@ -80,5 +82,20 @@ class FilmEpisodeController extends Controller
         Storage::disk('public')->delete($filmEpisode->image);
         $filmEpisode->delete();
         return redirect()->route('admin_film_view',['id'=>$filmId])->with('success', 'Xóa tập phim thành công');
+    }
+
+    public function watch($id){
+        if(FilmEpisode::where('id',$id)->exists()){
+            $filmEpisode = FilmEpisode::find($id);
+            $number_link = Server::where('episode_id',$id)->count();
+            $episode = FilmEpisode::where('film_id',$filmEpisode->film_id);
+            $sortEpisode = $episode->orderBy('episode', 'ASC')->get();
+            return view('home.watch-film.film',['filmEpisode'=>$filmEpisode,'number_link'=>$number_link,'sortEpisode'=>$sortEpisode]);
+
+        }else{
+            return response()->json([
+                'message' => 'Trang khong ton tai',
+            ], 404);
+        }
     }
 }
