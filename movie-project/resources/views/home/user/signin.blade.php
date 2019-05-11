@@ -6,7 +6,8 @@
 		<div class="row ipad-width">
 			<div class="col-md-9 col-sm-12 col-xs-12">
 				<div class="form-style-1 user-pro">
-					<form method="post" action="#"  enctype="multipart/form-data">
+					<form method="post" action="{{route('home_user_dangkytk')}}"  enctype="multipart/form-data">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="form-group {{ $errors->first('username') ? 'has-error' : ''}}">
                 			<label for="username">Username*</label>
                 			<div class="input-group">
@@ -152,9 +153,7 @@
 						</div>
 
 						<div class="box-footer">
-                        	<button type="submit" class="btn btn-primary">
-                            	Gửi
-                        	</button>
+           	 				<button type="submit">Đăng ký</button>
                     	</div>
 					</form>
 				</div>

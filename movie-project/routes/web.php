@@ -139,6 +139,11 @@ Route::group(['prefix'=>'home'],function(){
         Route::post('/baoloistore','Home\ContactController@baoloistore')->name('home_baoloi_store');
     });
 
-    Route::get('/signin','Home\SigninController@signin')->name('home_user_signin');
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('/signin','Home\SigninController@signin')->name('home_user_signin');
+        Route::post('/store','Home\SigninController@store')->name('home_user_dangkytk');
+    });
+
+    
     
 });
