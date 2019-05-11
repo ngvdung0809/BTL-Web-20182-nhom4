@@ -17,7 +17,17 @@ return [
     ],
 
     'FILM' => [
-        'FILM_TRAILER_FOLDER' =>  'trailer_film_folder'
+        'FILM_TRAILER_FOLDER' =>  'trailer_film_folder',
+        'SLIDE' => 1,
+        'SERIES_FILM' => 1,
+        'RETAIL_FILM' => 1,
+        'DEMO_FILM' => 1,
+        'THEATERS_FILM'=>1,
+    ],
+
+    'FILM_STATUS' => [
+        'COMPLETED' => 1,
+        'TRAILER'=>0,
     ],
 
     'PUBLISHER_IMAGE' => [
@@ -28,12 +38,20 @@ return [
     'PERSON_IMG' => [
     	'IMG_PATH' => 'person_img',
         'IMG_DEFAULT' => 'person_img/person_default.jpg'
+    ],
 
+    'PERSON'=>[
+        'ACTOR' => 'actor',
+        'DIRECTOR' => 'directoR',
     ],
 
     'ADVENTISMENT_IMG' => [
         'IMG_PATH' => 'adventisment_img',
-        'IMG_DEFAULT' => 'adventisment_img/default.png'
+        'IMG_DEFAULT' => 'adventisment_img/default.png',
+    ],
+
+    'ADVENTISMENT' => [
+        'ACTIVE'=>1,
     ],
 
     'FILM_EPISODE' => [
@@ -44,7 +62,7 @@ return [
         'LIKE' => 1,
         'VIEW' => 1,
         'SHARE' => 1,
-        'WATCHLATER'=>1
+        'WATCHLATER'=> 1
     ],
 
 ];

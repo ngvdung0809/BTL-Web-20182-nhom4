@@ -39,7 +39,7 @@
 <body>
 <!--preloading-->
 <div id="preloader">
-    <a href="#"><img class="logo" src="{{ asset('home/images/logo.png') }}" alt="" width="119" height="58"></a>
+    <a href="#"><img class="logo" src="{{ asset('home/images/logo.png') }}" alt="" style="width: 400px; height: 200px"></a>
     <div id="status">
         <span></span>
         <span></span>
@@ -61,7 +61,7 @@
 							<span></span>
 						</div>
 				    </div>
-				    <a href="#"><img class="logo" src="{{ asset('home/images/logo.png') }}" alt="" width="100" height="50"></a>
+				    <a href="#"><img class="logo" src="{{ asset('home/images/logo.png') }}" alt="" style="width: 100px; height: 50"></a>
 			    </div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -125,7 +125,7 @@
 							<a class="btn btn-default dropdown-toggle lv1">Phim bộ</a>
 						</li>
                         <li class="dropdown first">
-                            <a class="btn btn-default dropdown-toggle lv1">Phim mới</a>
+                            <a class="btn btn-default dropdown-toggle lv1">Phim thuyết minh</a>
                         </li>
                         <li class="dropdown first">
                             <a class="btn btn-default dropdown-toggle lv1">Phim chiếu rạp</a>

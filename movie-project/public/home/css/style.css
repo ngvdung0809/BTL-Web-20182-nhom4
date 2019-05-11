@@ -5104,6 +5104,9 @@ ul {
 .sidebar .celebrities a.btn:hover {
   color: #dcf836;
 }
+.celebrities {
+  margin-bottom: 50px;
+}
 .sidebar .sb-search input {
   font-family: 'Nunito', sans-serif;
   font-size: 12px;
