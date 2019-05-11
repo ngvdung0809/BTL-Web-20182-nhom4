@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Contact;
 
-class ContactController extends Controller
+class ContactController extends HomeController
 {
     //
     public function create_gopy(){
@@ -21,8 +21,8 @@ class ContactController extends Controller
     public function gopystore(Request $request){
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'unique:publisher'],   
-            'message' => ['required','min:1'],     
+            'email' => ['required', 'email', 'unique:publisher'],
+            'message' => ['required','min:1'],
         ]);
         $p = new Contact();
 
@@ -39,8 +39,8 @@ class ContactController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:publisher'],
-            'subject'=>['required','min:1'] , 
-            'message' => ['required','min:1'],     
+            'subject'=>['required','min:1'] ,
+            'message' => ['required','min:1'],
         ]);
         $p = new Contact();
 

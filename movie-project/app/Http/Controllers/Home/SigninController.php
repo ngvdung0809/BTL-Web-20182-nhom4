@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Config;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 
-class SigninController extends Controller
+class SigninController extends HomeController
 {
     public function signin(){
 
@@ -29,7 +29,7 @@ class SigninController extends Controller
             'email' => ['required', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'min:9', 'max:15'],
             'country_id' => ['required', 'numeric'],
-            'password' => ['required', 'min:6', 'confirmed']     
+            'password' => ['required', 'min:6', 'confirmed']
         ]);
 
 

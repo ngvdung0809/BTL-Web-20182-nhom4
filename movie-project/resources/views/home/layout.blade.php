@@ -23,8 +23,6 @@
 
     <!--Google Font-->
     <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
-    <link rel="stylesheet" href="{{ asset('admin\bower_components\Ionicons\css\ionicons.css') }}">
-
 
 	<!-- Mobile specific meta -->
 	<meta name=viewport content="width=device-width, initial-scale=1">
@@ -35,7 +33,7 @@
 	<link rel="stylesheet" href="{{ asset('home/css/style.css') }}">
 
     <!-- The toast component is like an alert box that is only shown for a couple of seconds when something happens -->
-    <link rel="stylesheet" href="{{ asset('admin/bower_components/toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('home/bower_components/toastr/toastr.min.css') }}">
     @yield('css')
 
 </head>
@@ -60,7 +58,7 @@
                     <input type="text" name="username" id="username" placeholder="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
                 </label>
         	</div>
-           
+
             <div class="row">
             	<label for="password">
                     Password:
@@ -207,13 +205,13 @@
 						<div class="modal" id="ContributorModal">
 						    <div class="modal-dialog">
 						      <div class="modal-content">
-						      
+
 						        <!-- Modal Header -->
 						        <div class="modal-header">
 						          <h1 class="modal-title" style="color: red; text-align: center;">NHÓM 4</h1>
 						          <button type="button" class="close" data-dismiss="modal">×</button>
 						        </div>
-						        
+
 						        <!-- Modal body -->
 						        <div class="modal-body">
 						          <h3>Đoàn Văn Phú</h3>
@@ -240,44 +238,44 @@
 						          	<li><i class="icon ion-ios-arrow-right"></i> Trang home: Actor, Director, xử lí một phần footer.</li>
 						          </ul>
 						        </div>
-						        
+
 						        <!-- Modal footer -->
 						        <div class="modal-footer">
 						          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 						        </div>
-						        
+
 						      </div>
 						    </div>
 						  </div>
 					</li>
-						
+
 					<li><a href="{{ route('home_faq') }}">Hướng dẫn sử dụng</a></li>
 					<li><a data-toggle="modal" href="#ContactADsModal" >Liên hệ quảng cáo</a>
 						<div class="modal" id="ContactADsModal">
 						    <div class="modal-dialog">
 						      <div class="modal-content">
-						      
+
 						        <!-- Modal Header -->
 						        <div class="modal-header">
 						          <h1 class="modal-title" style="color: #6242f4; text-align: center;">Liên hệ quảng cáo</h1>
 						          <button type="button" class="close" data-dismiss="modal">×</button>
 						        </div>
-						        
+
 						        <!-- Modal body -->
-						        <div class="modal-body">						          
-						          <p><i class="icon ion-android-call"></i> Tổng đài hỗ trợ hợp tác: 1900000000 - nhánh 4 (hỗ trợ 8AM - 6PM) </p>						          
-						          <br>						          
-						          <p><i class="icon ion-android-mail"></i> Gửi yêu cầu quảng cáo: quangcao@bestfilm.local (hỗ trợ 24/24h) </p>						          
-						          <br>						          
+						        <div class="modal-body">
+						          <p><i class="icon ion-android-call"></i> Tổng đài hỗ trợ hợp tác: 1900000000 - nhánh 4 (hỗ trợ 8AM - 6PM) </p>
+						          <br>
+						          <p><i class="icon ion-android-mail"></i> Gửi yêu cầu quảng cáo: quangcao@bestfilm.local (hỗ trợ 24/24h) </p>
+						          <br>
 						          <p><i class="icon ion-android-pin"></i> Địa chỉ: Tầng 2, tòa nhà TC, số 104 Lê Thanh Nghị, Bách Khoa, Hai Bà Trưng, Hà Nội. </p>
-						          
+
 						        </div>
-						        
+
 						        <!-- Modal footer -->
 						        <div class="modal-footer">
 						          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 						        </div>
-						        
+
 						      </div>
 						    </div>
 						 </div>
@@ -303,28 +301,28 @@
 						<div class="modal" id="ContactModal">
 						    <div class="modal-dialog">
 						      <div class="modal-content">
-						      
+
 						        <!-- Modal Header -->
 						        <div class="modal-header">
 						          <h1 class="modal-title" style="color: #6242f4; text-align: center;">Thông tin liên hệ</h1>
 						          <button type="button" class="close" data-dismiss="modal">×</button>
 						        </div>
-						        
+
 						        <!-- Modal body -->
-						        <div class="modal-body">						          
-						          <p><i class="icon ion-android-call"></i> Tổng đài hỗ trợ: 1900000000 - nhánh 0 (hỗ trợ 8AM - 6PM) </p>						          
-						          <br>						          
-						          <p><i class="icon ion-android-mail"></i> Gửi yêu cầu quảng cáo: contact@bestfilm.local (hỗ trợ 24/24h) </p>						          
-						          <br>						          
+						        <div class="modal-body">
+						          <p><i class="icon ion-android-call"></i> Tổng đài hỗ trợ: 1900000000 - nhánh 0 (hỗ trợ 8AM - 6PM) </p>
+						          <br>
+						          <p><i class="icon ion-android-mail"></i> Gửi yêu cầu quảng cáo: contact@bestfilm.local (hỗ trợ 24/24h) </p>
+						          <br>
 						          <p><i class="icon ion-android-pin"></i> Địa chỉ: Tầng 2, tòa nhà TC, số 104 Lê Thanh Nghị, Bách Khoa, Hai Bà Trưng, Hà Nội. </p>
-						          
+
 						        </div>
-						        
+
 						        <!-- Modal footer -->
 						        <div class="modal-footer">
 						          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 						        </div>
-						        
+
 						      </div>
 						    </div>
 						  </div>
@@ -350,20 +348,10 @@
     <script src="{{ asset('home/js/plugins.js') }}"></script>
     <script src="{{ asset('home/js/plugins2.js') }}"></script>
     <script src="{{ asset('home/js/custom.js') }}"></script>
-<<<<<<< HEAD
-	<script src="{{ asset('admin/bower_components/toastr/toastr.min.js') }}"></script>
-	<script src="{{ asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-    <script src="{{ asset('admin/bower_components/fastclick/lib/fastclick.js') }}"></script>
-	<script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
-	<script>
-=======
 
     <!-- The toast component is like an alert box that is only shown for a couple of seconds when something happens -->
-    <script src="{{ asset('admin/bower_components/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('home/bower_components/toastr/toastr.min.js') }}"></script>
     <script>
->>>>>>> b8fd56cf8b9ce06278dcbd3bb996cd54c8b5d324
         @if(Session::has('success'))
             toastr.success('{{ Session::get("success") }}');
             // <?php  //session()->forget('success'); ?>
