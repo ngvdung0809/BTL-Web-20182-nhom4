@@ -48,6 +48,40 @@
         <span></span>
     </div>
 </div>
+
+<div class="login-wrapper" id="login-content">
+    <div class="login-content">
+        <a href="#" class="close">x</a>
+        <h3>Login</h3>
+        <form method="post" action="#">
+        	<div class="row">
+        		 <label for="username">
+                    Username:
+                    <input type="text" name="username" id="username" placeholder="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
+                </label>
+        	</div>
+           
+            <div class="row">
+            	<label for="password">
+                    Password:
+                    <input type="password" name="password" id="password" placeholder="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
+                </label>
+            </div>
+            <div class="row">
+            	<div class="remember">
+					<div>
+						<input type="checkbox" name="remember" value="Remember me"><span>Remember me</span>
+					</div>
+            		<a href="#">Quên mật khẩu ?</a>
+            	</div>
+            </div>
+           <div class="row">
+           	 <button type="submit">Đăng nhập</button>
+           </div>
+        </form>
+    </div>
+</div>
+
 <!--end of preloading-->
 
 <!-- BEGIN | Header -->
@@ -136,7 +170,7 @@
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
 						<li class="btn loginLink"><a href="#">Đăng nhập</a></li>
-						<li class="btn signupLink"><a href="#">Đăng kí</a></li>
+						<li class="btn signin"><a href="{{route('home_user_signin')}}">Đăng kí</a></li>
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->
@@ -295,8 +329,8 @@
 						    </div>
 						  </div>
                     </li>
-                    <li><a href="#">Góp ý</a></li>
-                    <li><a href="#">Báo lỗi</a></li>
+                    <li><a href="{{route('home_contact_gopy')}}">Góp ý</a></li>
+                    <li><a href="{{route('home_contact_phanhoi')}}">Báo lỗi</a></li>
                 </ul>
 			</div>
 		</div>
@@ -316,10 +350,20 @@
     <script src="{{ asset('home/js/plugins.js') }}"></script>
     <script src="{{ asset('home/js/plugins2.js') }}"></script>
     <script src="{{ asset('home/js/custom.js') }}"></script>
+<<<<<<< HEAD
+	<script src="{{ asset('admin/bower_components/toastr/toastr.min.js') }}"></script>
+	<script src="{{ asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('admin/bower_components/fastclick/lib/fastclick.js') }}"></script>
+	<script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
+	<script>
+=======
 
     <!-- The toast component is like an alert box that is only shown for a couple of seconds when something happens -->
     <script src="{{ asset('admin/bower_components/toastr/toastr.min.js') }}"></script>
     <script>
+>>>>>>> b8fd56cf8b9ce06278dcbd3bb996cd54c8b5d324
         @if(Session::has('success'))
             toastr.success('{{ Session::get("success") }}');
             // <?php  //session()->forget('success'); ?>
