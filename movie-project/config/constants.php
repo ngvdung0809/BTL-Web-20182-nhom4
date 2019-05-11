@@ -31,7 +31,7 @@ return [
     ],
 
     'PUBLISHER_IMAGE' => [
-    	'DEFAULT_PUBLISHER_LOGO' => 'avatar_default/publisher_logo.png',
+    	'DEFAULT_PUBLISHER_LOGO' => 'publisher_logo/publisher_logo.png',
     	'PUBLISHER_LOGO_FOLDER' => 'publisher_logo'
     ],
 

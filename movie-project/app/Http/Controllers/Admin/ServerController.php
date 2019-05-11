@@ -14,7 +14,7 @@ class ServerController extends Controller
  
     public function index()
     {
-        $Servers = Server::all();              
+        $Servers = Server::all();                     
         return view('admin.server.list', ['servers' => $Servers]);
     }   
 

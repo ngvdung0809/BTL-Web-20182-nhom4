@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Film;
 use App\Models\User;
 
@@ -43,7 +44,7 @@ class CommentController extends Controller
     			$id = $q->id;
     			$comments = Comment::where('film_id', $id)->get();
     		}
-    		
+
     	}else{
 			$q = DB::table('comment')
     					->join('users', 'comment.user_id', '=', 'users.id')
@@ -59,4 +60,7 @@ class CommentController extends Controller
     	}
     	return view('admin.comment.search', ['content' => $content, 'type' => $type, 'comments'=>$comments]);
     }
+
+
+    
 }

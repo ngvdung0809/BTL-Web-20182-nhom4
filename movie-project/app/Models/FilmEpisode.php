@@ -18,4 +18,8 @@ class FilmEpisode extends Model
     public function film(){
         return $this->belongsTo('App\Models\Film','film_id');
     }
+    public function server(){
+        return $this->hasMany('App\Models\Server','episode_id');
+    }
+
 }

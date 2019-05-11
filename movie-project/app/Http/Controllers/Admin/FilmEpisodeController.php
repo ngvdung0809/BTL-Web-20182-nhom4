@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
 use App\Models\FilmEpisode;
 use App\Models\Film;
+use App\Models\Server;
 use App\Http\Requests\FilmEpisode\FilmEpisodeRequest;
 use App\Http\Requests\FilmEpisode\UpdateFilmEpisodeRequest;
+use Illuminate\Support\Facades\DB;
 class FilmEpisodeController extends Controller
 {
 
@@ -81,4 +83,6 @@ class FilmEpisodeController extends Controller
         $filmEpisode->delete();
         return redirect()->route('admin_film_view',['id'=>$filmId])->with('success', 'Xóa tập phim thành công');
     }
+
+    
 }
