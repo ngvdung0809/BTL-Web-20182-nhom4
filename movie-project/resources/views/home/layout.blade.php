@@ -49,14 +49,14 @@
         	<div class="row">
         		 <label for="username">
                     Username:
-                    <input type="text" name="username" id="username" placeholder="Hugh Jackman" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
+                    <input type="text" name="username" id="username" placeholder="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
                 </label>
         	</div>
            
             <div class="row">
             	<label for="password">
                     Password:
-                    <input type="password" name="password" id="password" placeholder="******" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
+                    <input type="password" name="password" id="password" placeholder="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
                 </label>
             </div>
             <div class="row">
@@ -255,6 +255,26 @@
     <script src="{{ asset('home/js/plugins.js') }}"></script>
     <script src="{{ asset('home/js/plugins2.js') }}"></script>
     <script src="{{ asset('home/js/custom.js') }}"></script>
+	<script src="{{ asset('admin/bower_components/toastr/toastr.min.js') }}"></script>
+	<script src="{{ asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('admin/bower_components/fastclick/lib/fastclick.js') }}"></script>
+	<script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
+	<script>
+        @if(Session::has('success'))
+            toastr.success('{{ Session::get("success") }}');
+            // <?php  //session()->forget('success'); ?>
+        @endif
+        @if(Session::has('error'))
+            toastr.error('{{ Session::get("error") }}');
+        @endif
+        @if($errors -> any())
+            @foreach($errors -> all() as $error)
+                toastr.error('{{ $error }}');
+            @endforeach
+        @endif
+    </script>
     @yield('js')
 </body>
 

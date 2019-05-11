@@ -52,6 +52,6 @@ class SigninController extends Controller
         $user->other_description = 'no';
         $user->save();
 
-        return redirect()->route('home_index')->with('Đăng ký thành công');
+        return redirect()->route('home_index')->with('success','Đăng ký thành công');
     }
 }
