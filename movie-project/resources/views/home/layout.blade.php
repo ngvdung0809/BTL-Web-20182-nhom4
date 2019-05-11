@@ -350,7 +350,7 @@
     <script src="{{ asset('home/js/plugins.js') }}"></script>
     <script src="{{ asset('home/js/plugins2.js') }}"></script>
     <script src="{{ asset('home/js/custom.js') }}"></script>
-<<<<<<< HEAD
+
 	<script src="{{ asset('admin/bower_components/toastr/toastr.min.js') }}"></script>
 	<script src="{{ asset('admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
@@ -358,12 +358,12 @@
     <script src="{{ asset('admin/bower_components/fastclick/lib/fastclick.js') }}"></script>
 	<script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
 	<script>
-=======
+
 
     <!-- The toast component is like an alert box that is only shown for a couple of seconds when something happens -->
     <script src="{{ asset('admin/bower_components/toastr/toastr.min.js') }}"></script>
     <script>
->>>>>>> b8fd56cf8b9ce06278dcbd3bb996cd54c8b5d324
+		 b8fd56cf8b9ce06278dcbd3bb996cd54c8b5d324
         @if(Session::has('success'))
             toastr.success('{{ Session::get("success") }}');
             // <?php  //session()->forget('success'); ?>
