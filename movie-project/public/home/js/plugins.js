@@ -8,7 +8,7 @@
   // =========================
 
   var Dropdownhover = function (element, options) {
-    this.options    = options    
+    this.options    = options
     this.$element   = $(element)
 
     var that = this
@@ -102,23 +102,23 @@
 
     // Reset css to prevent incorrect position
     dropdown.css({ bottom: '', left: '', top: '', right: '' }).removeClass('dropdownhover-top')
-  
+
     var viewport = {
       top : win.scrollTop(),
       left : win.scrollLeft()
     };
     viewport.right = viewport.left + win.width();
     viewport.bottom = viewport.top + win.height();
-    
+
     var bounds = dropdown.offset();
       bounds.right = bounds.left + dropdown.outerWidth();
       bounds.bottom = bounds.top + dropdown.outerHeight();
     var position = dropdown.position();
       position.right = bounds.left + dropdown.outerWidth();
       position.bottom = bounds.top + dropdown.outerHeight();
-  
+
     var side = ''
-   
+
     var isSubnow = dropdown.parents('.dropdown-menu').length
 
     if(isSubnow) {
@@ -227,7 +227,7 @@
         $('[data-hover="dropdown"]').each(function () {
           $(this).removeData('bs.dropdownhover')
           if($(this).hasClass('dropdown-toggle'))
-            $(this).parent('.dropdown').find('.dropdown').andSelf().off('mouseenter.bs.dropdownhover mouseleave.bs.dropdownhover')
+            $(this).parent('.dropdown').find('.dropdown').addBack().off('mouseenter.bs.dropdownhover mouseleave.bs.dropdownhover')
           else
             $(this).find('.dropdown').off('mouseenter.bs.dropdownhover mouseleave.bs.dropdownhover')
         })
