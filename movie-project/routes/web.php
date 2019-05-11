@@ -146,23 +146,11 @@ Route::group(['prefix'=>'home'],function(){
        Route::get('/view/{id}','Home\DirectorController@view')->name('home_director_view');
 
     });
-
-      Route::get('/about',function () {
-        return view('home.about');
-    })->name('home_about');
-
-       Route::get('/faq',function () {
-        return view('home.faq');
-    })->name('home_faq');
-
-       Route::get('/dieukhoan',function () {
-        return view('home.dieukhoan');
-    })->name('home_dieukhoan');
-
-        Route::get('/privacy',function () {
-        return view('home.privacy');
-    })->name('home_privacy');
-
+    
+    Route::get('/about', 'Home\FooterController@about')->name('home_about');
+    Route::get('/faq', 'Home\FooterController@faq')->name('home_faq');
+    Route::get('/dieukhoan', 'Home\FooterController@dieukhoan')->name('home_dieukhoan');
+    Route::get('/privacy', 'Home\FooterController@privacy')->name('home_privacy');
 
 
     Route::get('/watch/film/{id}','Home\WatchFilmController@watch')->name('watch_film');
