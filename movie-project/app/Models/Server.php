@@ -8,4 +8,9 @@ class Server extends Model
 {
     //
      protected $table = 'server';
+
+      public function film_episode()
+    {
+        return $this->beLongsTo('App\Models\FilmEpisode', 'episode_id');
+    }
 }

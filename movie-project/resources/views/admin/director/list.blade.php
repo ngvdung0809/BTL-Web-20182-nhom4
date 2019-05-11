@@ -56,15 +56,15 @@
                                     <td>{{ $person->name }}</td>
                                     <td>{{ $person->gender }}</td>
                                     <td>{{ $person->birth_day }}</td>
-                                    <td>{{ $person->email }}</td>
+                                    <td style="max-width: 100px; word-wrap: break-word;">{{ $person->email }}</td>
                                     <td>{{ $person->country_id }}</td>
                                     <td><img class="director-img img-responsive" src="{{ asset('/storage/' . $person->image)}}" alt="1" height="50" width="50"></td>
-                                    <td>{{ $person->hobby }}</td>
-                                    <td>{{ $person->forte }}</td>
-                                    <td>{{ $person->job }}</td>
-                                    <td>{{ $person->story }}</td>
+                                    <td style="max-width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $person->hobby }}</td>
+                                    <td style="max-width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $person->forte }}</td>
+                                    <td >{{ $person->job }}</td>
+                                    <td style="max-width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $person->story }}</td>
                                     <td>{{ $person->view }}</td>
-                                    <td>{{ $person->description }}</td>
+                                    <td style="max-width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $person->description }}</td>
                                     <td>
                                         <a href="{{ route('admin_director_edit',$person->id )}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                     </td>

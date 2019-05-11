@@ -131,4 +131,37 @@ Route::group(['prefix'=>'home'],function(){
     Route::get('/index',function () {
         return view('home.layout');
     })->name('home_index');
+
+    Route::group(['prefix'=>'actor'],function(){
+       Route::get('/list', 'Home\ActorController@index')->name('home_actor_list');
+       Route::get('/search', 'Home\ActorController@search')->name('home_actor_search');
+       Route::get('/view/{id}','Home\ActorController@view')->name('home_actor_view');
+
+    });
+
+     Route::group(['prefix'=>'director'],function(){
+       Route::get('/list', 'Home\DirectorController@index')->name('home_director_list');
+       Route::get('/search', 'Home\DirectorController@search')->name('home_director_search');
+       Route::get('/view/{id}','Home\DirectorController@view')->name('home_director_view');
+
+    });
+
+      Route::get('/about',function () {
+        return view('home.about');
+    })->name('home_about');
+
+       Route::get('/faq',function () {
+        return view('home.faq');
+    })->name('home_faq');
+
+       Route::get('/dieukhoan',function () {
+        return view('home.dieukhoan');
+    })->name('home_dieukhoan');
+
+        Route::get('/privacy',function () {
+        return view('home.privacy');
+    })->name('home_privacy');
+
 });
+
+
