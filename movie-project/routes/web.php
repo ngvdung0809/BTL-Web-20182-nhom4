@@ -144,6 +144,64 @@ Route::group(['prefix'=>'home'],function(){
         Route::post('/store','Home\SigninController@store')->name('home_user_dangkytk');
     });
 
-    
-    
+    Route::group(['prefix'=>'actor'],function(){
+       Route::get('/list', 'Home\ActorController@index')->name('home_actor_list');
+       Route::get('/search', 'Home\ActorController@search')->name('home_actor_search');
+       Route::get('/view/{id}','Home\ActorController@view')->name('home_actor_view');
+
+    });
+
+     Route::group(['prefix'=>'director'],function(){
+       Route::get('/list', 'Home\DirectorController@index')->name('home_director_list');
+       Route::get('/search', 'Home\DirectorController@search')->name('home_director_search');
+       Route::get('/view/{id}','Home\DirectorController@view')->name('home_director_view');
+
+    });
+
+      Route::get('/about',function () {
+        return view('home.about');
+    })->name('home_about');
+
+       Route::get('/faq',function () {
+        return view('home.faq');
+    })->name('home_faq');
+
+       Route::get('/dieukhoan',function () {
+        return view('home.dieukhoan');
+    })->name('home_dieukhoan');
+
+        Route::get('/privacy',function () {
+        return view('home.privacy');
+    })->name('home_privacy');
+
+
+
+    Route::get('/watch/film/{id}','Home\WatchFilmController@watch')->name('watch_film');
+    Route::post('/comment','Home\WatchFilmController@PostComment');
+
+    Route::get('/publisher/{id}', 'Home\PublisherController@view')->name('home_publisher_view');
+    Route::get('/publisher_search', 'Home\PublisherController@search')->name('home_publisher_search');
+
+    Route::group(['prefix'=>'/user/{user_id}'],function(){
+        Route::group(['prefix'=>'/profile'],function(){
+            Route::get('/view', 'Home\UserProfileController@showProfile')->name('home_user_profile_view_profile');
+            Route::post('/update', 'Home\UserProfileController@updateProfile')->name('home_user_profile_update_profile');
+        });
+
+        Route::group(['prefix'=>'/change_password'],function(){
+            Route::get('/view', 'Home\UserProfileController@showChangePassword')->name('home_user_profile_view_change_password');
+            Route::post('/update', 'Home\UserProfileController@updateChangePassword')->name('home_user_profile_update_change_password');
+        });
+
+        Route::post('/change_avatar', 'Home\UserProfileController@changeAvatar')->name('home_user_profile_change_avatar');
+
+        Route::group(['prefix'=>'/film'],function(){
+            Route::get('/watch_later', 'Home\UserProfileController@showFilmWatchLater')->name('home_user_profile_view_film_watch_later');
+            Route::get('/favorist', 'Home\UserProfileController@showFavoristFilm')->name('home_user_profile_view_favorist_film');
+            Route::get('/rate', 'Home\UserProfileController@showRateFilm')->name('home_user_profile_view_film_review');
+            Route::get('watch_history', 'Home\UserProfileController@showFilmWatchHistory')->name('home_user_profile_view_film_watch_history');
+        });
+    });
 });
+
+

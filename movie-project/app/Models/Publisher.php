@@ -15,4 +15,7 @@ class Publisher extends Model
         'phone',
         'logo',
     ];
+    public function film(){
+    	return $this->hasMany('App\Models\Film', 'publisher_id');
+    }
 }
