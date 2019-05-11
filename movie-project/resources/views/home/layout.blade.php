@@ -74,56 +74,6 @@
     </div>
 </div>
 
-
-<div class="login-wrapper"  id="signup-content">
-    <div class="login-content">
-        <a href="#" class="close">x</a>
-        <h3>sign up</h3>
-        <form method="post" action="#">
-            <div class="row">
-                 <label for="username-2">
-                    Username:
-                    <input type="text" name="username" id="username-2" placeholder="Hugh Jackman" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
-                </label>
-            </div>
-           
-            <div class="row">
-                <label for="email-2">
-                    your email:
-                    <input type="text" name="email" id="email-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
-                </label>
-            </div>
-             <div class="row">
-                <label for="password-2">
-                    Password:
-                    <input type="password" name="password" id="password-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
-                </label>
-            </div>
-            <div class="row">
-                <label for="repassword-2">
-                    Re-Password:
-                    <input type="password" name="password" id="repassword-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
-                </label>
-            </div>
-			<div class="row">
-                <label for="phone">
-                    Phone:
-                    <input type="text" name="phone" id="phone" placeholder="" pattern="(?=^.{8,}$)" required="required" />
-                </label>
-            </div>
-			<div class ="row">
-				<label for="country">
-					Country:
-					<input type="text" name="quocgia" id="quocgia" required="required">
-				</label>
-			</div>
-
-           <div class="row">
-             <button type="submit">sign up</button>
-           </div>
-        </form>
-    </div>
-</div>
 <!--end of preloading-->
 
 <!-- BEGIN | Header -->
@@ -232,7 +182,7 @@
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
 						<li class="btn loginLink"><a href="#">Đăng nhập</a></li>
-						<li class="btn signupLink"><a href="#">Đăng kí</a></li>
+						<li class="btn signin"><a href="{{route('home_user_signin')}}">Đăng kí</a></li>
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->

@@ -138,4 +138,7 @@ Route::group(['prefix'=>'home'],function(){
         Route::post('/gopystore','Home\ContactController@gopystore')->name('home_gopy_store');
         Route::post('/baoloistore','Home\ContactController@baoloistore')->name('home_baoloi_store');
     });
+
+    Route::get('/signin','Home\SigninController@signin')->name('home_user_signin');
+    
 });

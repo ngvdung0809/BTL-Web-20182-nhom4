@@ -37,7 +37,7 @@
                         <div class="form-group {{ $errors->first('subject') ? 'has-error' : ''}}">
                             <label for="subject">Chủ Đề</label>
                             <div class="input-group">
-                                <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject"   value="GÓP Ý" disabled>
+                                <input id="subject" type="text" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" name="subject"   value="GÓP Ý" style="color: red" disabled>
                             </div>
 
                             @if ($errors->has('subject'))
