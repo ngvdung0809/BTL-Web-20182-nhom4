@@ -155,7 +155,7 @@ Route::group(['prefix'=>'home'],function(){
        Route::get('/view/{id}','Home\DirectorController@view')->name('home_director_view');
 
     });
-    
+
     Route::get('/about', 'Home\FooterController@about')->name('home_about');
     Route::get('/faq', 'Home\FooterController@faq')->name('home_faq');
     Route::get('/dieukhoan', 'Home\FooterController@dieukhoan')->name('home_dieukhoan');
@@ -187,6 +187,10 @@ Route::group(['prefix'=>'home'],function(){
             Route::get('/rate', 'Home\UserProfileController@showRateFilm')->name('home_user_profile_view_film_review');
             Route::get('watch_history', 'Home\UserProfileController@showFilmWatchHistory')->name('home_user_profile_view_film_watch_history');
         });
+    });
+
+    Route::group(['prefix'=>'/film'], function(){
+        Route::get('/list', 'Home\FilmController@index')->name('home_list_film');
     });
 });
 
