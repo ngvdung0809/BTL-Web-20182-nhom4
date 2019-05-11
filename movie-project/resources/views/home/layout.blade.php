@@ -64,11 +64,11 @@
 					<div>
 						<input type="checkbox" name="remember" value="Remember me"><span>Remember me</span>
 					</div>
-            		<a href="#">Forget password ?</a>
+            		<a href="#">Quên mật khẩu ?</a>
             	</div>
             </div>
            <div class="row">
-           	 <button type="submit">Login</button>
+           	 <button type="submit">Đăng nhập</button>
            </div>
         </form>
     </div>
