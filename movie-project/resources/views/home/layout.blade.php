@@ -246,7 +246,7 @@
 
 						      </div>
 						    </div>
-						  </div>
+						</div>
 					</li>
 
 					<li><a href="{{ route('home_faq') }}">Hướng dẫn sử dụng</a></li>
@@ -286,11 +286,8 @@
 				<h4>QUY ĐỊNH</h4>
 				<ul>
 					<li><a href="{{ route('home_dieukhoan') }}">Điều khoản sử dụng</a></li>
-
-					</li>
 					<li><a href="{{ route('home_privacy') }}">Chính sách riêng tư</a></li>
-					<li><a href="#">Khiếu nại bản quyền</a>
-					</li>
+					<li><a href="#">Khiếu nại bản quyền</a></li>
 				</ul>
 			</div>
 			<div class="flex-child-ft item5">
@@ -325,7 +322,7 @@
 
 						      </div>
 						    </div>
-						  </div>
+						</div>
                     </li>
                     <li><a href="{{route('home_contact_gopy')}}">Góp ý</a></li>
                     <li><a href="{{route('home_contact_phanhoi')}}">Báo lỗi</a></li>

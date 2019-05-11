@@ -578,9 +578,11 @@
 <div class="latestnew full-width">
     <div class="row">
         <div class="col-md-9">
-            <div class="ads adsv2">
-                <a href="{{ $adventisment->link }}"><img src="{{ asset('/storage/' . $adventisment->image) }}" alt="" style="width: 510px; height: 75px"></a>
-            </div>
+            @if(!empty($adventisment))
+                <div class="ads adsv2">
+                    <a href="{{ $adventisment->link }}"><img src="{{ asset('/storage/' . $adventisment->image) }}" alt="" style="width: 510px; height: 75px"></a>
+                </div>
+            @endif
             <div class="title-hd">
                 <h2>Trailer phim sắp chiếu</h2>
                 <a href="#" class="viewall">Xem tất cả<i class="ion-ios-arrow-right"></i></a>
