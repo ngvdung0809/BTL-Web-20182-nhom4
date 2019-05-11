@@ -9,7 +9,7 @@ use App\Models\Country;
 use App\Models\Film;
 use Illuminate\Support\Facades\DB;
 
-class ActorController extends Controller
+class ActorController extends HomeController
 {
     //
 	public function index(Request $request)

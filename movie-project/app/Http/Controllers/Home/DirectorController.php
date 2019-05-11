@@ -9,7 +9,7 @@ use App\Models\Country;
 use App\Models\Film;
 use Illuminate\Support\Facades\DB;
 
-class DirectorController extends Controller
+class DirectorController extends HomeController
 {
      //
 	public function index(Request $request)

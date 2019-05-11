@@ -92,7 +92,7 @@
 				<div class="topbar-filter">		
 					<table style="border: none;">
 						<tr>
-							<td colspan="3" style="border: none; padding-left: 50px; color: white">Page {{$persons->currentPage()}} of {{$persons->lastPage()}}: </td>
+							<td colspan="3" style="border: none; padding-left: 10px; color: white">Page {{$persons->currentPage()}} of {{$persons->lastPage()}}: </td>
 							<td colspan="15" style="border: none; align-content: left"> 
 								{{ $persons->appends(Request::query())->render() }}
 							</td>
