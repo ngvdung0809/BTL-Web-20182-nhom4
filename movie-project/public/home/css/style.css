@@ -4315,6 +4315,19 @@ ul {
   font-size: 16px;
   font-weight: 400;
 }
+.movie-item-style-2 .mv-item-infor .point {
+  font-size: 12px;
+}
+.movie-item-style-2 .mv-item-infor .point i {
+  color: #f5b50a;
+  font-size: 22px;
+  margin-right: 5px;
+}
+.movie-item-style-2 .mv-item-infor .point span {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+}
 .movie-item-style-2 .mv-item-infor p {
   margin-bottom: 0;
 }
@@ -5303,7 +5316,8 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 @media (max-width: 767px) {
   .pagination {
@@ -8436,6 +8450,7 @@ footer.full-width-ft .ft-copyright {
   color: #abb7c4;
   list-style-type:disc;
 }
+
 .about h4 {
   font-family: 'Times New Roman', sans-serif;
   font-size: 25px;
@@ -8611,3 +8626,11 @@ fieldset[disabled] .btn-danger.focus {
    margin-bottom: 30px;
    margin-top: 30px;
 }
+
+.page-disactive {
+  display: none;
+}
+.page-active {
+  display: block;
+}
+

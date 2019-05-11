@@ -15,8 +15,11 @@
 	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
-	<meta name="author" content="">
+    <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="profile" href="#">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!--Google Font-->
     <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
@@ -30,6 +33,9 @@
 	<!-- CSS files -->
 	<link rel="stylesheet" href="{{ asset('home/css/plugins.css') }}">
 	<link rel="stylesheet" href="{{ asset('home/css/style.css') }}">
+
+    <!-- The toast component is like an alert box that is only shown for a couple of seconds when something happens -->
+    <link rel="stylesheet" href="{{ asset('admin/bower_components/toastr/toastr.min.css') }}">
     @yield('css')
 
 </head>
@@ -67,30 +73,29 @@
 							<a href="#page-top"></a>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
-							Trang chủ <i class="fa fa-angle-down" aria-hidden="true"></i>
-							</a>
-							<ul class="dropdown-menu level1">
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-							</ul>
+							<a class="btn btn-default dropdown-toggle lv1">Trang chủ</a>
 						</li>
 						<li class="dropdown first">
 							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
 							Thể loại<i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Name<i class="ion-ios-arrow-forward"></i></a>
-									<ul class="dropdown-menu level2">
-										<li><a href="#">Name</a></li>
-										<li><a href="#">Name</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li class="it-last"><a href="#">Name</a></li>
+                            @foreach ($typeHome as $key=>$type)
+                                @if ($key % 5 == 0)
+                                    <li>
+                                        <ul class="nav navbar-nav">
+                                @endif
+                                            <li><a href="#">{{ $type->name }}</a></li>
+                                @if ($key % 5 == 4)
+                                        </ul>
+                                    </li>
+                                @endif
+                            @endforeach
+
+                                @if (count($typeHome) % 5 != 0)
+                                        </ul>
+                                    </li>
+                                @endif
 							</ul>
 						</li>
 						<li class="dropdown first">
@@ -98,54 +103,35 @@
 							Quốc gia <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li class="it-last"><a href="#">Name</a></li>
+                            @foreach ($countryHome as $key=>$country)
+                                @if ($key % 5 == 0)
+                                    <li>
+                                        <ul class="nav navbar-nav">
+                                @endif
+                                            <li><a href="#">{{ $country->name }}</a></li>
+                                @if ($key % 5 == 4)
+                                        </ul>
+                                    </li>
+                                @endif
+                            @endforeach
+
+                                @if (count($countryHome) % 5 != 0)
+                                        </ul>
+                                    </li>
+                                @endif
 							</ul>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-							Phim lẻ <i class="fa fa-angle-down" aria-hidden="true"></i>
-							</a>
-							<ul class="dropdown-menu level1">
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li class="it-last"><a href="#">Name</a></li>
-							</ul>
+							<a class="btn btn-default dropdown-toggle lv1">Phim lẻ</a>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-							Phim bộ <i class="fa fa-angle-down" aria-hidden="true"></i>
-							</a>
-							<ul class="dropdown-menu level1">
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li><a href="#">Name</a></li>
-								<li class="it-last"><a href="#">Name</a></li>
-							</ul>
+							<a class="btn btn-default dropdown-toggle lv1">Phim bộ</a>
 						</li>
                         <li class="dropdown first">
-                            <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-                            Trailer <i class="fa fa-angle-down" aria-hidden="true"></i>
-                            </a>
-                            <ul class="dropdown-menu level1">
-                                <li><a href="#">Name</a></li>
-                                <li><a href="#">Name</a></li>
-                                <li><a href="#">Name</a></li>
-                                <li class="it-last"><a href="#">Name</a></li>
-                            </ul>
+                            <a class="btn btn-default dropdown-toggle lv1">Phim mới</a>
                         </li>
                         <li class="dropdown first">
-                            <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-                            Phim mới <i class="fa fa-angle-down" aria-hidden="true"></i>
-                            </a>
-                            <ul class="dropdown-menu level1">
-                                <li><a href="#">Name</a></li>
-                                <li><a href="#">Name</a></li>
-                                <li><a href="#">Name</a></li>
-                                <li class="it-last"><a href="#">Name</a></li>
-                            </ul>
+                            <a class="btn btn-default dropdown-toggle lv1">Phim chiếu rạp</a>
                         </li>
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
@@ -325,11 +311,28 @@
 	</div>
 </footer>
 <!-- end of footer section-->
-
+    <!-- JS files -->
     <script src="{{ asset('home/js/jquery.js') }}"></script>
     <script src="{{ asset('home/js/plugins.js') }}"></script>
     <script src="{{ asset('home/js/plugins2.js') }}"></script>
     <script src="{{ asset('home/js/custom.js') }}"></script>
+
+    <!-- The toast component is like an alert box that is only shown for a couple of seconds when something happens -->
+    <script src="{{ asset('admin/bower_components/toastr/toastr.min.js') }}"></script>
+    <script>
+        @if(Session::has('success'))
+            toastr.success('{{ Session::get("success") }}');
+            // <?php  //session()->forget('success'); ?>
+        @endif
+        @if(Session::has('error'))
+            toastr.error('{{ Session::get("error") }}');
+        @endif
+        @if($errors -> any())
+            @foreach($errors -> all() as $error)
+                toastr.error('{{ $error }}');
+            @endforeach
+        @endif
+    </script>
     @yield('js')
 </body>
 
