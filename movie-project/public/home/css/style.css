@@ -8322,18 +8322,18 @@ footer.full-width-ft .ft-copyright {
 .viewtable table tr td{
     border: 0px;
 }
-/* styles for '...' */ 
+/* styles for '...' */
 .des {
   /* hide text if it more than N lines  */
   overflow: hidden;
   /* for set '...' in absolute position */
-  position: relative; 
+  position: relative;
   /* use this value to count block height */
   line-height: 1.2em;
   /* max-height = line-height (1.2) * lines max number (3) */
-  max-height: 4.8em; 
+  max-height: 4.8em;
   /* fix problem when last visible word doesn't adjoin right side  */
-  text-align: justify;  
+  text-align: justify;
   /* place for '...' */
   margin-right: -1em;
   padding-right: 1em;
@@ -8562,7 +8562,7 @@ fieldset[disabled] .btn-danger.focus {
    margin-top: 30px;
 }
 
-.faq a { 
+.faq a {
   color: #ffffff;
 }
 
@@ -8636,4 +8636,9 @@ fieldset[disabled] .btn-danger.focus {
 .page-active {
   display: block;
 }
-
+.comment-disactive {
+  display: none;
+}
+.comment-active {
+  display: block;
+}
