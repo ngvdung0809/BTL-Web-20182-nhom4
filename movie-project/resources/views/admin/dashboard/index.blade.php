@@ -427,7 +427,7 @@
                 @foreach ($newServer as $item)
                 <li class="item">
                         <div class="product-img">
-                          <img src="{{ asset('/storage/' . $item->episode->image) }}" alt="Product Image">
+                          <img src="{{ asset('/storage/' . $item->film_episode->image) }}" alt="Product Image">
                         </div>
                         <div class="product-info">
                           <a href="#" class="product-title">Tập {{$item->film_episode->episode}}
