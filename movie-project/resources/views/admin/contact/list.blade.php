@@ -50,8 +50,9 @@ Phản hồi
               <th>Email</th>
               <th>Subject</th>
               <th>Message</th>
-              <th>Created</th>
-              <th>Action</th>
+              <th>Created at</th>
+              <th>Show</th>
+              <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -60,10 +61,11 @@ Phản hồi
                 <td>{{$item->id}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->email}}</td>
-                <td>{{$item->email}}</td>
+                <td>{{$item->subject}}</td>
                 <td>{{$item->message}}</td>
                 <td>{{$item->created_at}}</td>
-                <td><a class="btn btn-primary" href="{{ route('admin_contact_show',$item->id )}}"><i class="fa fa-edit">Show</i> </a> <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{$item->id}}">Delete</button></td>
+                <td><a class="btn btn-primary" href="{{ route('admin_contact_show',$item->id )}}"><i class="fa fa-edit"></i> </a> </td>
+                <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{$item->id}}"><i class="fa fa-trash"></i></button></td>
             </tr>
             <div class="modal modal-danger fade" id="modal-danger{{$item->id}}">
                     <div class="modal-dialog">
