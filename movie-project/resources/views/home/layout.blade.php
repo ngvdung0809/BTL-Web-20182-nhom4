@@ -168,20 +168,20 @@
                         </li>
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
-						@if(Auth::check())
-								<li class="dropdown first">
-									<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-									{{Auth::User()->username}} <i class="fa fa-angle-down" aria-hidden="true"></i>
-									</a>
-									<ul class="dropdown-menu level1">
-										<li><a href="#">Userprofile</a></li>
-										<li><a href="{{Auth::logout()}}">Log out</a></li>
-									</ul>
-								</li>
-						@else
+						@guest
 							<li class="btn loginLink"><a href="#">Đăng nhập</a></li>
 							<li class="btn signin"><a href="{{route('home_user_signin')}}">Đăng kí</a></li>
-						@endif
+						@else
+							<li class="dropdown first">
+									<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+										{{Auth::user()->username}} <i class="fa fa-angle-down" aria-hidden="true"></i>
+									</a>
+									<ul class="dropdown-menu level1">
+										<li><a href="{{route('home_user_profile_view_profile',Auth::id())}}">Userprofile</a></li>
+										<li><a href="{{Auth::logout()}}">Log out</a></li>
+									</ul>
+							</li>
+						@endguest
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->

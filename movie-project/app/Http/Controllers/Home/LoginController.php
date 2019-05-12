@@ -9,6 +9,7 @@ use App\Models\User;
 
 class LoginController extends HomeController
 {
+
     //
     public function check(Request $request){ 
         $user=[
@@ -28,6 +29,7 @@ class LoginController extends HomeController
 
         if(Auth::attempt($user)){
             return redirect()->route('home_index')->with('success', 'Đăng nhập thành công');
+            
         }
         elseif (Auth::attempt($admin)) {
             # code...
@@ -38,4 +40,5 @@ class LoginController extends HomeController
         }
 
     }
+
 }
