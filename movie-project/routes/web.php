@@ -15,6 +15,8 @@ Route::group(['prefix'=>'admin'],function(){
         return view('admin.layout');
     })->name('admin_index');
 
+     Route::get('/dashboard','Admin\DashboardAdminController@index')->name('admin_dashboard');
+
     Route::group(['prefix'=>'user'],function(){
         Route::get('/list','Admin\UserController@index')->name('admin_user_list');
         Route::get('/view/{id}','Admin\UserController@show')->name('admin_user_view');
@@ -140,7 +142,10 @@ Route::group(['prefix'=>'home'],function(){
     Route::group(['prefix' => 'user'], function () {
         Route::get('/signin','Home\SigninController@signin')->name('home_user_signin');
         Route::post('/store','Home\SigninController@store')->name('home_user_dangkytk');
+        
     });
+
+    Route::post('logintest','Home\LoginController@check')->name('home_user_login');
 
     Route::group(['prefix'=>'actor'],function(){
        Route::get('/list', 'Home\ActorController@index')->name('home_actor_list');
