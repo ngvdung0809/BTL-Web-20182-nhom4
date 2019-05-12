@@ -2797,10 +2797,11 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1050;
+  z-index: 15000;
   -webkit-overflow-scrolling: touch;
   outline: 0;
 }
+
 .modal.fade .modal-dialog {
   transform: translate(0, -25%);
   -webkit-transform: translate(0, -25%);
@@ -4854,7 +4855,7 @@ ul {
   padding-left: 15px;
 }
 .tabs .tab-content .active {
-  margin-left: -15px;
+  margin-left: 0px;
 }
 .trailers {
   background-color: #06121e;
@@ -5103,6 +5104,9 @@ ul {
 }
 .sidebar .celebrities a.btn:hover {
   color: #dcf836;
+}
+.celebrities {
+  margin-bottom: 50px;
 }
 .sidebar .sb-search input {
   font-family: 'Nunito', sans-serif;
@@ -8299,10 +8303,337 @@ footer.full-width-ft .ft-copyright {
   color: #8c9296;
   font-family: 'Dosis', sans-serif;
   font-weight: 700;
+    font-size: 17px;
 }
+.boldviewtext {
+    font-family: 'Dosis', sans-serif;
+  font-size: 17px;
+  color: #abb7c4;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+.boldviewtext p {
+    display: inline;
+}
+.viewtable table {
+    border: 0px;
+}
+.viewtable table tr td{
+    border: 0px;
+}
+/* styles for '...' */ 
+.des {
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative; 
+  /* use this value to count block height */
+  line-height: 1.2em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 4.8em; 
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: justify;  
+  /* place for '...' */
+  margin-right: -1em;
+  padding-right: 1em;
+  color: white;
+}
+/* create the ... */
+.des:before {
+  /* points in the end */
+  content: '...';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 0;
+  bottom: 0;
+
+}
+/* hide ... if we have text, which is less than or equal to max lines */
+.des:after {
+  /* points in the end */
+  content: '';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  /* set width and height */
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  /* bg color = bg color under block */
+  background: #091a2c;
+}
+.film-items {
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.film-items .film-item {
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.film-items .film-item img {
+  margin-bottom: 15px;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.film-items .film-item h2 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.film-items .film-item h2 a {
+  font-family: 'Dosis', sans-serif;
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: none;
+}
+.film-items .film-item span {
+  font-family: 'Nunito', sans-serif;
+  font-size: #abb7c4;
+  color: #abb7c4;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.film-items .film-item:hover h2 a {
+  color: #dcf836;
+}
+.film-items .film-item:hover img {
+  -moz-opacity: 0.6;
+  -khtml-opacity: 0.6;
+  -webkit-opacity: 0.6;
+  opacity: 0.6;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+  filter: alpha(opacity=60);
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.span-film-infor {
+  text-align: center;
+}
+.film-img {
+  height: 300px;
+  width: 203px;
+}
+.film-img img {
+  height: 300px;
+  width: 203px;
+}
+.about h2 {
+  font-family: 'Dosis', sans-serif;
+  font-size: 30px;
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+.about h5 {
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 20px;
+  color: #abb7c4;
+   margin-bottom: 30px;
+}
+.about p {
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 20px;
+  color: #abb7c4;
+}
+.about ul{
+  padding-left: 50px;
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 20px;
+  color: #abb7c4;
+  list-style-type:disc;
+}
+
+.about h4 {
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 25px;
+  color: #ffffff;
+   margin-bottom: 30px;
+}
+.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.btn-danger:focus,
+.btn-danger.focus {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #761c19;
+}
+.btn-danger:hover {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+.btn-danger:active,
+.btn-danger.active,
+.open > .dropdown-toggle.btn-danger {
+  color: #fff;
+  background-color: #c9302c;
+  background-image: none;
+  border-color: #ac2925;
+}
+.btn-danger:active:hover,
+.btn-danger.active:hover,
+.open > .dropdown-toggle.btn-danger:hover,
+.btn-danger:active:focus,
+.btn-danger.active:focus,
+.open > .dropdown-toggle.btn-danger:focus,
+.btn-danger:active.focus,
+.btn-danger.active.focus,
+.open > .dropdown-toggle.btn-danger.focus {
+  color: #fff;
+  background-color: #ac2925;
+  border-color: #761c19;
+}
+.btn-danger.disabled:hover,
+.btn-danger[disabled]:hover,
+fieldset[disabled] .btn-danger:hover,
+.btn-danger.disabled:focus,
+.btn-danger[disabled]:focus,
+fieldset[disabled] .btn-danger:focus,
+.btn-danger.disabled.focus,
+.btn-danger[disabled].focus,
+fieldset[disabled] .btn-danger.focus {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.btn-danger .badge {
+  color: #d9534f;
+  background-color: #fff;
+}
+.modal p {
+  font-size: 20px;
+  color: black;
+  margin-bottom: 0px !important;
+}
+.modal h3 {
+  color: black;
+  margin-bottom: 15px !important;
+}
+.modal ul {
+  padding-left: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  color: black;
+  list-style-type:none;
+}
+.faq h2 {
+  font-family: 'Dosis', sans-serif;
+  font-size: 30px;
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+.faq h5 {
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 20px;
+  color: #abb7c4;
+   margin-bottom: 30px;
+}
+.faq p {
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 20px;
+  color: #abb7c4;
+  margin-bottom: 20px;
+}
+.faq ul{
+  padding-left: 50px;
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 20px;
+  color: #abb7c4;
+  list-style-type:disc;
+}
+.faq h4 {
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 25px;
+  color: #ffffff;
+   margin-bottom: 30px;
+   margin-top: 30px;
+}
+
+.faq a { 
+  color: #ffffff;
+}
+
+.dieukhoan h2 {
+  font-family: 'Dosis', sans-serif;
+  font-size: 30px;
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+.dieukhoan h5 {
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 20px;
+  color: #abb7c4;
+   margin-bottom: 30px;
+}
+.dieukhoan p {
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 20px;
+  color: #abb7c4;
+}
+.dieukhoan ul{
+  padding-left: 50px;
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 20px;
+  color: #abb7c4;
+  list-style-type:disc;
+}
+.dieukhoan h4 {
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 25px;
+  color: #ffffff;
+   margin-bottom: 30px;
+   margin-top: 30px;
+}
+
+.privacy h2 {
+  font-family: 'Dosis', sans-serif;
+  font-size: 30px;
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+.privacy h5 {
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 20px;
+  color: #abb7c4;
+   margin-bottom: 30px;
+}
+.privacy p {
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 20px;
+  color: #abb7c4;
+}
+.privacy ul{
+  padding-left: 50px;
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 20px;
+  color: #abb7c4;
+  list-style-type:disc;
+}
+.privacy h4 {
+  font-family: 'Times New Roman', sans-serif;
+  font-size: 25px;
+  color: #ffffff;
+   margin-bottom: 30px;
+   margin-top: 30px;
+}
+
 .page-disactive {
   display: none;
 }
 .page-active {
   display: block;
 }
+

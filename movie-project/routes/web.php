@@ -130,10 +130,38 @@ Route::group(['prefix'=>'admin'],function(){
 });
 
 Route::group(['prefix'=>'home'],function(){
-    Route::get('/index',function () {
-        return view('home.layout');
-    })->name('home_index');
+    Route::get('/index', 'Home\HomeController@showHome')->name('home_index');
 
+    Route::group(['prefix' => 'contact'], function () {
+        Route::get('/gopy','Home\ContactController@create_gopy')->name('home_contact_gopy');
+        Route::get('/phanhoi','Home\ContactController@create_baoloi')->name('home_contact_phanhoi');
+        Route::post('/gopystore','Home\ContactController@gopystore')->name('home_gopy_store');
+        Route::post('/baoloistore','Home\ContactController@baoloistore')->name('home_baoloi_store');
+    });
+
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('/signin','Home\SigninController@signin')->name('home_user_signin');
+        Route::post('/store','Home\SigninController@store')->name('home_user_dangkytk');
+    });
+
+    Route::group(['prefix'=>'actor'],function(){
+       Route::get('/list', 'Home\ActorController@index')->name('home_actor_list');
+       Route::get('/search', 'Home\ActorController@search')->name('home_actor_search');
+       Route::get('/view/{id}','Home\ActorController@view')->name('home_actor_view');
+
+    });
+
+     Route::group(['prefix'=>'director'],function(){
+       Route::get('/list', 'Home\DirectorController@index')->name('home_director_list');
+       Route::get('/search', 'Home\DirectorController@search')->name('home_director_search');
+       Route::get('/view/{id}','Home\DirectorController@view')->name('home_director_view');
+
+    });
+    
+    Route::get('/about', 'Home\FooterController@about')->name('home_about');
+    Route::get('/faq', 'Home\FooterController@faq')->name('home_faq');
+    Route::get('/dieukhoan', 'Home\FooterController@dieukhoan')->name('home_dieukhoan');
+    Route::get('/privacy', 'Home\FooterController@privacy')->name('home_privacy');
 
 
     Route::get('/watch/film/{id}','Home\WatchFilmController@watch')->name('watch_film');
@@ -162,5 +190,6 @@ Route::group(['prefix'=>'home'],function(){
             Route::get('watch_history', 'Home\UserProfileController@showFilmWatchHistory')->name('home_user_profile_view_film_watch_history');
         });
     });
-
 });
+
+

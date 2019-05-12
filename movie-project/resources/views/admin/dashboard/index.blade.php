@@ -430,10 +430,10 @@
                           <img src="{{ asset('/storage/' . $item->episode->image) }}" alt="Product Image">
                         </div>
                         <div class="product-info">
-                          <a href="#" class="product-title">Tập {{$item->episode->episode}}
+                          <a href="#" class="product-title">Tập {{$item->film_episode->episode}}
 
                           <span class="product-description">
-                                {{$item->episode->film->name}}
+                                {{$item->film_episode->film->name}}
                               </span>
                         </div>
                       </li>
