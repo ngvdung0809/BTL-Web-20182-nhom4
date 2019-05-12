@@ -191,6 +191,7 @@ Route::group(['prefix'=>'home'],function(){
 
     Route::group(['prefix'=>'/film'], function(){
         Route::get('/list', 'Home\FilmController@index')->name('home_list_film');
+        Route::get('{id}/view', 'Home\FilmController@view')->name('home_view_film');
     });
 });
 

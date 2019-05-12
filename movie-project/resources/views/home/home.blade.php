@@ -15,6 +15,7 @@
             <option data-value="rate">Đánh giá</option>
         </select>
         <input type="text" placeholder="Tìm kiếm phim yêu thích theo ......" id="search-criteria">
+        <button type="submit" class="redbtn">Search</button>
     </div>
 @endsection
 @section('content')
