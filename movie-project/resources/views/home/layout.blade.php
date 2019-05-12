@@ -51,18 +51,19 @@
     <div class="login-content">
         <a href="#" class="close">x</a>
         <h3>Login</h3>
-        <form method="post" action="#">
+        <form method="post" action="{{route('home_user_login')}}">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
         	<div class="row">
         		 <label for="username">
                     Username:
-                    <input type="text" name="username" id="username" placeholder="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
+                    <input type="text" name="username" id="username"  required="required" />
                 </label>
         	</div>
 
             <div class="row">
             	<label for="password">
                     Password:
-                    <input type="password" name="password" id="password" placeholder="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
+                    <input type="password" name="password" id="password"  required="required" />
                 </label>
             </div>
             <div class="row">
@@ -167,8 +168,20 @@
                         </li>
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
-						<li class="btn loginLink"><a href="#">Đăng nhập</a></li>
-						<li class="btn signin"><a href="{{route('home_user_signin')}}">Đăng kí</a></li>
+						@guest
+							<li class="btn loginLink"><a href="#">Đăng nhập</a></li>
+							<li class="btn signin"><a href="{{route('home_user_signin')}}">Đăng kí</a></li>
+						@else
+							<li class="dropdown first">
+									<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+										{{Auth::user()->username}} <i class="fa fa-angle-down" aria-hidden="true"></i>
+									</a>
+									<ul class="dropdown-menu level1">
+										<li><a href="{{route('home_user_profile_view_profile',Auth::id())}}">Userprofile</a></li>
+										<li><a href="{{Auth::logout()}}">Log out</a></li>
+									</ul>
+							</li>
+						@endguest
 					</ul>
 				</div>
 			<!-- /.navbar-collapse -->
