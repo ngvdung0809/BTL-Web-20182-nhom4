@@ -179,9 +179,11 @@
                                                     @endforeach
                                                 </p>
                                             </div>
-                                            <div class="ads">
-                                                <a href="{{ $adventisment->link }}"><img src="{{ asset('/storage/' . $adventisment->image) }}" alt="" style="width: 195px; height: 171px"></a>
-                                            </div>
+                                            @if(!empty($adventisment))
+                                                <div class="ads">
+                                                    <a href="{{ $adventisment->link }}"><img src="{{ asset('/storage/' . $adventisment->image) }}" alt="" style="width: 195px; height: 171px"></a>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
