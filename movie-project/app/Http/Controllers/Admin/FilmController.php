@@ -60,19 +60,42 @@ class FilmController extends Controller
             $pathTrailerFilm = Storage::disk('public')->put(Config::get('constants.FILM.FILM_TRAILER_FOLDER'), $request->trailer_link);
             $film->trailer_link = $pathTrailerFilm;
         }
+        if(!empty($request->series_film)){
+            $film->series_film = Config::get('constants.FILM.SERIES_FILM');
+        }
+        if(!empty($request->retail_film)){
+            $film->retail_film = Config::get('constants.FILM.RETAIL_FILM');
+        }
+        if(!empty($request->demo_film)){
+            $film->demo_film = Config::get('constants.FILM.DEMO_FILM');
+        }
+        if(!empty($request->theaters_film)){
+            $film->theaters_film = Config::get('constants.FILM.THEATERS_FILM');
+        }
+        if(!empty($request->slide)){
+            $film->slide = Config::get('constants.FILM.SLIDE');
+        }
         $film->name = $request->name;
         $film->tag = $request->tag;
         $film->publisher_id = $request->publisher_id;
         $film->director_id = $request->director_id;
         $film->country_id = $request->country_id;
         $film->released = $request->released;
+        $film->time = $request->time;
+        if(!empty($request->status)){
+            $film->status = $request->status;
+        }else{
+            if(!empty($request->status_text)){
+                $film->status = $request->status_text;
+            }
+        }
         $film->content = $request->content;
         $film->other_description = $request->other_description;
         $film->save();
         $film->actor()->attach($request->actor_id);
         $film->type()->attach($request->type_id);
 
-        return redirect()->route('admin_film_list')->with('success', 'Film has been added successfully');
+        return redirect()->route('admin_film_list')->with('success', 'Phim được thêm thành công');
     }
 
     /**
@@ -144,12 +167,35 @@ class FilmController extends Controller
             Storage::disk('public')->delete($film->trailer_link);
             $film->trailer_link = $pathTrailerFilm;
         }
+        if(!empty($request->series_film)){
+            $film->series_film = Config::get('constants.FILM.SERIES_FILM');
+        }
+        if(!empty($request->retail_film)){
+            $film->retail_film = Config::get('constants.FILM.RETAIL_FILM');
+        }
+        if(!empty($request->demo_film)){
+            $film->demo_film = Config::get('constants.FILM.DEMO_FILM');
+        }
+        if(!empty($request->theaters_film)){
+            $film->theaters_film = Config::get('constants.FILM.THEATERS_FILM');
+        }
+        if(!empty($request->slide)){
+            $film->slide = Config::get('constants.FILM.SLIDE');
+        }
         $film->name = $request->name;
         $film->tag = $request->tag;
         $film->publisher_id = $request->publisher_id;
         $film->director_id = $request->director_id;
         $film->country_id = $request->country_id;
         $film->released = $request->released;
+        $film->time = $request->time;
+        if(!empty($request->status)){
+            $film->status = $request->status;
+        }else{
+            if(!empty($request->status_text)){
+                $film->status = $request->status_text;
+            }
+        }
         $film->content = $request->content;
         $film->other_description = $request->other_description;
         $film->save();
@@ -158,7 +204,7 @@ class FilmController extends Controller
         $film->type()->detach();
         $film->type()->attach($request->type_id);
 
-        return redirect()->route('admin_film_list')->with('success', 'Film has been updated successfully');
+        return redirect()->route('admin_film_list')->with('success', 'Thông tin phim được cập nhật thành công');
     }
 
     /**
@@ -176,6 +222,6 @@ class FilmController extends Controller
         $film->type()->detach();
         $film->delete();
 
-        return redirect()->route('admin_film_list')->with('success', 'Film has been deleted successfully');
+        return redirect()->route('admin_film_list')->with('success', 'Phim đã được xóa thành công');
     }
 }

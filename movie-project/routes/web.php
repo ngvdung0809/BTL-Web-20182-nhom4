@@ -37,7 +37,7 @@ Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
     });
 
     Route::group(['prefix' => 'type'], function () {
-        Route::get('list','Admin\TypeController@GetListType')->name('admin_typet_list');
+        Route::get('list','Admin\TypeController@GetListType')->name('admin_type_list');
         Route::get('create','Admin\TypeController@GetNewType')->name('admin_type_create');
         Route::post('create','Admin\TypeController@PostNewType')->name('admin_type_store');
         Route::get('edit/{id}','Admin\TypeController@GetEditType')->name('admin_type_edit');
