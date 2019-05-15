@@ -106,7 +106,7 @@
 							<a href="#page-top"></a>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1">Trang chủ</a>
+							<a class="btn btn-default dropdown-toggle lv1" href="{{ route('home_index') }}">Trang chủ</a>
 						</li>
 						<li class="dropdown first">
 							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
@@ -118,7 +118,7 @@
                                     <li>
                                         <ul class="nav navbar-nav">
                                 @endif
-                                            <li><a href="#">{{ $type->name }}</a></li>
+                                            <li><a href="{{ route('home_search_film', ['name'=>'type', 'name_id'=>$type->id]) }}">{{ $type->name }}</a></li>
                                 @if ($key % 5 == 4)
                                         </ul>
                                     </li>
@@ -141,7 +141,7 @@
                                     <li>
                                         <ul class="nav navbar-nav">
                                 @endif
-                                            <li><a href="#">{{ $country->name }}</a></li>
+                                            <li><a href="{{ route('home_search_film', ['name'=>'country_id', 'name_id'=>$country->id]) }}">{{ $country->name }}</a></li>
                                 @if ($key % 5 == 4)
                                         </ul>
                                     </li>
@@ -155,16 +155,16 @@
 							</ul>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1">Phim lẻ</a>
+							<a class="btn btn-default dropdown-toggle lv1" href="{{ route('home_search_film', ['name'=>'retail_film', 'name_id'=>Config::get('constants.FILM.RETAIL_FILM')]) }}">Phim lẻ</a>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1">Phim bộ</a>
+							<a class="btn btn-default dropdown-toggle lv1" href="{{ route('home_search_film', ['name'=>'series_film', 'name_id'=>Config::get('constants.FILM.SERIES_FILM')]) }}">Phim bộ</a>
 						</li>
                         <li class="dropdown first">
-                            <a class="btn btn-default dropdown-toggle lv1">Phim thuyết minh</a>
+                            <a class="btn btn-default dropdown-toggle lv1" href="{{ route('home_search_film', ['name'=>'demo_film', 'name_id'=>Config::get('constants.FILM.DEMO_FILM')]) }}">Phim thuyết minh</a>
                         </li>
                         <li class="dropdown first">
-                            <a class="btn btn-default dropdown-toggle lv1">Phim chiếu rạp</a>
+                            <a class="btn btn-default dropdown-toggle lv1" href="{{ route('home_search_film', ['name'=>'theaters_film', 'name_id'=>Config::get('constants.FILM.THEATERS_FILM')]) }}">Phim chiếu rạp</a>
                         </li>
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">

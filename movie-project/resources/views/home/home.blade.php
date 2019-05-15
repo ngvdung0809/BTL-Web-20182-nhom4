@@ -3,20 +3,23 @@
 @section('css')
 @endsection
 @section('search')
+<form method="get" action="{{ route('home_search_like_film') }}">
     <div class="top-search">
-        <select id="search">
-            <option id="start">Chọn trường</option>
-            <option data-value="name">Tên phim</option>
-            <option data-value="director">Đạo diễn</option>
-            <option data-value="actor">Diễn viên</option>
-            <option data-value="publisher">Hãng sản xuất</option>
-            <option data-value="country">Quốc gia</option>
-            <option data-value="released">Năm phát hành</option>
-            <option data-value="rate">Đánh giá</option>
+        <select id="search" name="property" required>
+            <option value="">Chọn trường</option>
+            <option value="name">Tên phim</option>
+            <option value="type">Thể loại</option>
+            <option value="director">Đạo diễn</option>
+            <option value="actor">Diễn viên</option>
+            <option value="publisher">Hãng sản xuất</option>
+            <option value="country">Quốc gia</option>
+            <option value="released">Năm phát hành</option>
+            <option value="rate">Đánh giá</option>
         </select>
-        <input type="text" placeholder="Tìm kiếm phim yêu thích theo ......" id="search-criteria">
+        <input type="text" placeholder="Tìm kiếm phim yêu thích theo ......" id="search-criteria" name="keyword" value="{{ old('keyword') }}" required>
         <button type="submit" class="redbtn">Search</button>
     </div>
+</form>
 @endsection
 @section('content')
 <div class="slider movie-items">
@@ -143,7 +146,7 @@
             <div class="col-md-8">
                 <div class="title-hd">
                     <h2>Phim lẻ</h2>
-                    <a href="#" class="viewall">Xem tất cả <i class="ion-ios-arrow-right"></i></a>
+                    <a href="{{ route('home_search_film', ['name'=>'retail_film', 'name_id'=>Config::get('constants.FILM.RETAIL_FILM')]) }}" class="viewall">Xem tất cả <i class="ion-ios-arrow-right"></i></a>
                 </div>
                 <div class="tabs">
                     <ul class="tab-links">
@@ -222,108 +225,6 @@
                         <div id="tab14" class="tab">
                             <div class="row">
                                 <div class="slick-multiItem">
-                                    @foreach ($seriesFilmView as $film)
-                                        <div class="slide-it">
-                                            <div class="movie-item">
-                                                <div class="mv-img">
-                                                    <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
-                                                </div>
-                                                <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-                                                </div>
-                                                <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
-                                                    <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="title-hd">
-                    <h2>Phim bộ</h2>
-                    <a href="#" class="viewall">Xem tất cả<i class="ion-ios-arrow-right"></i></a>
-                </div>
-                <div class="tabs">
-                    <ul class="tab-links-2">
-                        <li class="active"><a href="#tab21">Mới cập nhật</a></li>
-                        <li><a href="#tab22">Sắp chiếu</a></li>
-                        <li><a href="#tab23">Đánh giá cao</a></li>
-                        <li><a href="#tab24">Xem nhiều </a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div id="tab21" class="tab active">
-                            <div class="row">
-                                <div class="slick-multiItem">
-                                    @foreach ($retailFilmNew as $film)
-                                        <div class="slide-it">
-                                            <div class="movie-item">
-                                                <div class="mv-img">
-                                                    <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
-                                                </div>
-                                                <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-                                                </div>
-                                                <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
-                                                    <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        <div id="tab22" class="tab">
-                           <div class="row">
-                                <div class="slick-multiItem">
-                                    @foreach ($retailFilmComingSoon as $film)
-                                        <div class="slide-it">
-                                            <div class="movie-item">
-                                                <div class="mv-img">
-                                                    <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
-                                                </div>
-                                                <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-                                                </div>
-                                                <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
-                                                    <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        <div id="tab23" class="tab">
-                            <div class="row">
-                                <div class="slick-multiItem">
-                                    @foreach ($retailFilmRate as $film)
-                                        <div class="slide-it">
-                                            <div class="movie-item">
-                                                <div class="mv-img">
-                                                    <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
-                                                </div>
-                                                <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-                                                </div>
-                                                <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
-                                                    <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        <div id="tab24" class="tab">
-                            <div class="row">
-                                <div class="slick-multiItem">
                                     @foreach ($retailFilmView as $film)
                                         <div class="slide-it">
                                             <div class="movie-item">
@@ -346,8 +247,110 @@
                     </div>
                 </div>
                 <div class="title-hd">
+                    <h2>Phim bộ</h2>
+                    <a href="{{ route('home_search_film', ['name'=>'series_film', 'name_id'=>Config::get('constants.FILM.SERIES_FILM')]) }}" class="viewall">Xem tất cả<i class="ion-ios-arrow-right"></i></a>
+                </div>
+                <div class="tabs">
+                    <ul class="tab-links-2">
+                        <li class="active"><a href="#tab21">Mới cập nhật</a></li>
+                        <li><a href="#tab22">Sắp chiếu</a></li>
+                        <li><a href="#tab23">Đánh giá cao</a></li>
+                        <li><a href="#tab24">Xem nhiều </a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab21" class="tab active">
+                            <div class="row">
+                                <div class="slick-multiItem">
+                                    @foreach ($seriesFilmNew as $film)
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab22" class="tab">
+                           <div class="row">
+                                <div class="slick-multiItem">
+                                    @foreach ($seriesFilmComingSoon as $film)
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab23" class="tab">
+                            <div class="row">
+                                <div class="slick-multiItem">
+                                    @foreach ($seriesFilmRate as $film)
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab24" class="tab">
+                            <div class="row">
+                                <div class="slick-multiItem">
+                                    @foreach ($seriesFilmView as $film)
+                                        <div class="slide-it">
+                                            <div class="movie-item">
+                                                <div class="mv-img">
+                                                    <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
+                                                </div>
+                                                <div class="hvr-inner">
+                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                </div>
+                                                <div class="title-in">
+                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title-hd">
                     <h2>Phim thuyết minh</h2>
-                    <a href="#" class="viewall">Xem tất cả<i class="ion-ios-arrow-right"></i></a>
+                    <a href="{{ route('home_search_film', ['name'=>'demo_film', 'name_id'=>Config::get('constants.FILM.DEMO_FILM')]) }}" class="viewall">Xem tất cả<i class="ion-ios-arrow-right"></i></a>
                 </div>
                 <div class="tabs">
                     <ul class="tab-links">
@@ -449,7 +452,7 @@
                 </div>
                 <div class="title-hd">
                     <h2>Phim chiếu rạp</h2>
-                    <a href="#" class="viewall">Xem tất cả<i class="ion-ios-arrow-right"></i></a>
+                    <a href="{{ route('home_search_film', ['name'=>'theaters_film', 'name_id'=>Config::get('constants.FILM.THEATERS_FILM')]) }}" class="viewall">Xem tất cả<i class="ion-ios-arrow-right"></i></a>
                 </div>
                 <div class="tabs">
                     <ul class="tab-links-2">
@@ -563,7 +566,6 @@
                                 </div>
                             </div>
                         @endforeach
-                        <a href="#" class="btn">Xem tất cả<i class="ion-ios-arrow-right"></i></a>
                     </div>
                     <div class="sb-tags sb-it">
                         <h4 class="sb-title">Thẻ nổi bật</h4>
@@ -589,7 +591,7 @@
                 @endif
                 <div class="title-hd">
                     <h2>Trailer phim sắp chiếu</h2>
-                    <a href="#" class="viewall">Xem tất cả<i class="ion-ios-arrow-right"></i></a>
+                    <a href="{{ route('home_search_film', ['name'=>'status', 'name_id'=>Config::get('constants.FILM_STATUS.TRAILER')]) }}" class="viewall">Xem tất cả<i class="ion-ios-arrow-right"></i></a>
                 </div>
                 <div class="latestnewv2">
                     @foreach ($filmCommingSoon as $film)

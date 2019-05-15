@@ -15,7 +15,7 @@ Route::group(['prefix'=>'admin'],function(){
         return view('admin.layout');
     })->name('admin_index');
 
-     Route::get('/dashboard','Admin\DashboardAdminController@index')->name('admin_dashboard');
+    Route::get('/dashboard','Admin\DashboardAdminController@index')->name('admin_dashboard');
 
     Route::group(['prefix'=>'user'],function(){
         Route::get('/list','Admin\UserController@index')->name('admin_user_list');
@@ -119,12 +119,12 @@ Route::group(['prefix'=>'admin'],function(){
 
 
      Route::group(['prefix'=>'server'],function(){
-            Route::get('/list','Admin\ServerController@index')->name('admin_server_list');
-            Route::get('/create','Admin\ServerController@create')->name('admin_server_create');
-            Route::post('/store','Admin\ServerController@store')->name('admin_server_store');
-            Route::get('/edit/{id}','Admin\ServerController@edit')->name('admin_server_edit');
-            Route::post('/update/{id}','Admin\ServerController@update')->name('admin_server_update');
-            Route::post('/delete/{id}','Admin\ServerController@destroy')->name('admin_server_delete');
+        Route::get('/list','Admin\ServerController@index')->name('admin_server_list');
+        Route::get('/create','Admin\ServerController@create')->name('admin_server_create');
+        Route::post('/store','Admin\ServerController@store')->name('admin_server_store');
+        Route::get('/edit/{id}','Admin\ServerController@edit')->name('admin_server_edit');
+        Route::post('/update/{id}','Admin\ServerController@update')->name('admin_server_update');
+        Route::post('/delete/{id}','Admin\ServerController@destroy')->name('admin_server_delete');
     });
 
 });
@@ -142,7 +142,7 @@ Route::group(['prefix'=>'home'],function(){
     Route::group(['prefix' => 'user'], function () {
         Route::get('/signin','Home\SigninController@signin')->name('home_user_signin');
         Route::post('/store','Home\SigninController@store')->name('home_user_dangkytk');
-        
+
     });
 
     Route::post('logintest','Home\LoginController@check')->name('home_user_login');
@@ -197,6 +197,8 @@ Route::group(['prefix'=>'home'],function(){
     Route::group(['prefix'=>'/film'], function(){
         Route::get('/list', 'Home\FilmController@index')->name('home_list_film');
         Route::get('{id}/view', 'Home\FilmController@view')->name('home_view_film');
+        Route::get('/search/{name}/{name_id}', 'Home\FilmController@searchFilm')->name('home_search_film');
+        Route::get('/search_like', 'Home\FilmController@searchFilmLike')->name('home_search_like_film');
     });
 });
 
