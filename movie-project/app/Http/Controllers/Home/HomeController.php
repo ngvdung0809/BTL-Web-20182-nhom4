@@ -13,6 +13,7 @@ use App\Models\UserFilm;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Config;
 use Carbon\Carbon;
+use Auth;
 
 class HomeController extends Controller
 {

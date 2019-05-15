@@ -35,7 +35,7 @@
                         <div class="movie-item-style-2 userrate">
                             <img src="{{ '/storage/'.$film->image }}" alt="" style="height: 400px; width: 250px">
                             <div class="mv-item-infor">
-                                <h6 class="name"><a href="#">{{ $film->name }} <span class="released time sm"> ( {{ date('Y', strtotime($film->released)) }} )</span></a></h6>
+                                <h6 class="name"><a  href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }} <span class="released time sm"> ( {{ date('Y', strtotime($film->released)) }} )</span></a></h6>
                                 @if ($film->series_film == Config::get('constants.FILM.SERIES_FILM'))
                                     <p class="time sm-text" style="width: 100px"><a href="{{ route('home_search_film', ['name'=>'series_film', 'name_id'=>Config::get('constants.FILM.SERIES_FILM')]) }}">Phim bộ</a></p>
                                 @endif
@@ -71,14 +71,14 @@
                                         <a href="{{ route('home_search_film', ['name'=>'type', 'name_id'=>$type->id]) }}"> {{ $type->name }} </a>
                                     @endforeach
                                 </p>
-                                <p class="publisher">Hãng sản xuất: <a href="#">{{ $film->publisher->name }}</a></p>
-                                <p class="director">Đạo diễn: <a href="#">{{ $film->director->name }}</a></p>
+                                <p class="publisher">Hãng sản xuất: <a href="{{ route('home_publisher_view', ['id'=>$film->publisher_id]) }}">{{ $film->publisher->name }}</a></p>
+                                <p class="director">Đạo diễn: <a href="{{ route('home_director_view', ['id'=>$film->director_id]) }}">{{ $film->director->name }}</a></p>
                                 <p class="actor">Diễn viên:
                                     @foreach ($film->actor as $actor)
-                                        <a href="#">{{ $actor->name }}</a>
+                                        <a href="{{ route('home_actor_view', ['id'=>$actor->id]) }}">{{ $actor->name }}</a>
                                     @endforeach
                                 </p>
-                                <p class="country">Quốc gia: <a href="#">{{ $film->country->name }}</a></p>
+                                <p class="country">Quốc gia: <a href="{{ route('home_search_film', ['name'=>'country_id', 'name_id'=>$film->country_id]) }}">{{ $film->country->name }}</a></p>
                             </div>
                         </div>
                     </div>

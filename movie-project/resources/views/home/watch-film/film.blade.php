@@ -168,12 +168,10 @@ textarea{
         $('#videoplayer').get(0).pause();
         $('#link-video').attr('src', $(this).attr('link'));
         $('#videoplayer').get(0).load();
-     //$('#'+videoID).attr('poster', newposter); //Change video poster
         $('#videoplayer').get(0).play();
     });
    function PostComment(i){
     var comment = $('#ipComment').val();
-    // alert(comment);
     var id = i;
     if (comment != "") {
         $.ajaxSetup({
@@ -186,7 +184,6 @@ textarea{
         data: { comment: comment, id: id },
         success: function (data) {
            if(data.success=="true"){
-             //alert(data.html);
              $('#ipComment').val("");
              $('#newComment').append(data.html);
            }

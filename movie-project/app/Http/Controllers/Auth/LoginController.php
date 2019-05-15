@@ -60,8 +60,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-
-        return view('home.home');
+        return redirect('/home/index');
     }
 
     /**

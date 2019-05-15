@@ -10,12 +10,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix'=>'admin'],function(){
-    Route::get('/index',function () {
-        return view('admin.layout');
-    })->name('admin_index');
 
-    Route::get('/dashboard','Admin\DashboardAdminController@index')->name('admin_dashboard');
+Auth::routes();
+Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
+
+    Route::get('/index','Admin\DashboardAdminController@index')->name('admin_index');
 
     Route::group(['prefix'=>'user'],function(){
         Route::get('/list','Admin\UserController@index')->name('admin_user_list');
@@ -145,8 +144,6 @@ Route::group(['prefix'=>'home'],function(){
 
     });
 
-    Route::post('logintest','Home\LoginController@check')->name('home_user_login');
-
     Route::group(['prefix'=>'actor'],function(){
        Route::get('/list', 'Home\ActorController@index')->name('home_actor_list');
        Route::get('/search', 'Home\ActorController@search')->name('home_actor_search');
@@ -202,4 +199,7 @@ Route::group(['prefix'=>'home'],function(){
     });
 });
 
-Auth::routes();
+Route::get('/error', function() {
+    return view('error.error');
+});
+

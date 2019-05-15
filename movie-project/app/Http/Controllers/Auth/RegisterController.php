@@ -84,6 +84,6 @@ class RegisterController extends Controller
     }
     public function showRegistrationForm()
     {
-       return view('home.home');
+       return redirect('/home/index');
     }
 }

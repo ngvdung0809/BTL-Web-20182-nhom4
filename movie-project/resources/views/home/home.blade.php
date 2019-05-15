@@ -36,15 +36,15 @@
                 @foreach ($filmSlide as $film)
                     <div class="movie-item">
                         <div class="mv-img">
-                            <a href="#"><img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 274px; height: 420px"></a>
+                            <a href="{{ route('home_view_film', ['id'=>$film->id]) }}"><img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 274px; height: 420px"></a>
                         </div>
                         <div class="title-in">
                             <div class="cate">
                                 @foreach ($film->type as $type)
-                                    <span class="blue"><a href="#">{{ $type->name }}</a></span>
+                                    <span class="blue"><a href="{{ route('home_search_film', ['name'=>'type', 'name_id'=>$type->id]) }}">{{ $type->name }}</a></span>
                                 @endforeach
                             </div>
-                            <h6><a href="#">{{ $film->name }}</a></h6>
+                            <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                             <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                         </div>
                     </div>
@@ -78,10 +78,10 @@
                                                     <img src="{{ asset('/storage/' . $film->film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->film->id]) }}">{{ $film->film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -100,10 +100,10 @@
                                                     <img src="{{ asset('/storage/' . $film->film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a href="{{ route('home_view_film', ['id'=>$film->film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->film->name }}</a></h6>
+                                                    <h6><ahref="{{ route('home_view_film', ['id'=>$film->film->id]) }}">{{ $film->film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -122,10 +122,10 @@
                                                     <img src="{{ asset('/storage/' . $film->film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->film->id]) }}">{{ $film->film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -166,10 +166,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -188,10 +188,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -210,10 +210,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -232,10 +232,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -268,10 +268,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -290,10 +290,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -312,10 +312,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -334,10 +334,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -370,10 +370,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -392,10 +392,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -414,10 +414,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -436,10 +436,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -472,10 +472,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -494,10 +494,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -516,10 +516,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -538,10 +538,10 @@
                                                     <img src="{{ asset('/storage/' . $film->image) }}" alt="" style="width: 162px; height: 248px">
                                                 </div>
                                                 <div class="hvr-inner">
-                                                    <a  href="#"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                                                    <a  href="{{ route('home_view_film', ['id'=>$film->id]) }}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
                                                 </div>
                                                 <div class="title-in">
-                                                    <h6><a href="#">{{ $film->name }}</a></h6>
+                                                    <h6><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }}</a></h6>
                                                     <p><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                 </div>
                                             </div>
@@ -559,11 +559,19 @@
                         <h4 class="sb-title">Được quan tâm nhiều</h4>
                         @foreach ($person as $person)
                             <div class="celeb-item">
-                                <a href="#"><img src="{{ asset('/storage/' . $person->image) }}" alt="" style="width: 70px; height: 70px"></a>
-                                <div class="celeb-author">
-                                    <h6><a href="#">{{ $person->name }}</a></h6>
-                                    <span>{{ $person->job }}</span>
-                                </div>
+                                @if($person->job ==  Config::get('constants.PERSON.DIRECTOR'))
+                                    <a href="{{ route('home_director_view', ['id'=>$person->id]) }}"><img src="{{ asset('/storage/' . $person->image) }}" alt="" style="width: 70px; height: 70px"></a>
+                                    <div class="celeb-author">
+                                        <h6><a href="{{ route('home_director_view', ['id'=>$person->id]) }}">{{ $person->name }}</a></h6>
+                                        <span>{{ $person->job }}</span>
+                                    </div>
+                                @else
+                                    <a href="{{ route('home_actor_view', ['id'=>$person->id]) }}"><img src="{{ asset('/storage/' . $person->image) }}" alt="" style="width: 70px; height: 70px"></a>
+                                    <div class="celeb-author">
+                                        <h6><a href="{{ route('home_actor_view', ['id'=>$person->id]) }}">{{ $person->name }}</a></h6>
+                                        <span>{{ $person->job }}</span>
+                                    </div>
+                                @endif
                             </div>
                         @endforeach
                     </div>
@@ -571,7 +579,7 @@
                         <h4 class="sb-title">Thẻ nổi bật</h4>
                         <ul class="tag-items">
                             @foreach ($tagFilm as $film)
-                                <li><a href="#">{{ $film->tag }}</a></li>
+                                <li><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->tag }}</a></li>
                             @endforeach
                         </ul>
                     </div>

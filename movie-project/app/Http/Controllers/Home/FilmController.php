@@ -9,6 +9,7 @@ use App\Models\Type;
 use App\Models\Person;
 use App\Models\Adventisment;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Auth;
 
 class FilmController extends HomeController
 {

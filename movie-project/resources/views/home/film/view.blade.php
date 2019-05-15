@@ -48,17 +48,69 @@
                 <div class="movie-single-ct main-content">
                     <h1 class="bd-hd">{{ $film->name }} <span> {{ date('Y', strtotime($film->released)) }}</span></h1>
                     <div class="social-btn">
-                        <a href="#" class="parent-btn"><i class="ion-ios-pricetag-outline"></i> Xem sau</a>
-                        <a href="#" class="parent-btn"><i class="ion-heart"></i> Thích</a>
-                        <div class="hover-bnt">
-                            <a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>Chia sẻ</a>
-                            <div class="hvr-item">
-                                <a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
-                                <a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
-                                <a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
-                                <a href="#" class="hvr-grow"><i class="ion-social-youtube"></i></a>
+                        @guest
+                            <a href="#" class="parent-btn"><i class="ion-ios-pricetag-outline"></i> Xem sau</a>
+                            <a href="#" class="parent-btn"><i class="ion-ios-heart-outline"></i> Thích</a>
+                            <div class="hover-bnt">
+                                <a href="#" class="parent-btn"><i class="ion-android-share"></i>Chia sẻ</a>
+                                <div class="hvr-item">
+                                    <a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
+                                    <a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
+                                    <a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
+                                    <a href="#" class="hvr-grow"><i class="ion-social-youtube"></i></a>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            @if (in_array(Auth::id(), array_pluck($film->user, 'id')))
+                                @foreach ($film->user as $user)
+                                    @if ($user->id == Auth::id())
+                                        @if ($user->pivot->watch_later != 0)
+                                            <a href="#" class="parent-btn"><i class="ion-ios-pricetag"></i> Đã thêm vào Xem sau</a>
+                                        @else
+                                            <a href="#" class="parent-btn"><i class="ion-ios-pricetag-outline"></i> Xem sau</a>
+                                        @endif
+                                        @if ($user->pivot->liked != 0)
+                                            <a href="#" class="parent-btn"><i class="ion-ios-heart"></i> Đã thích</a>
+                                        @else
+                                            <a href="#" class="parent-btn"><i class="ion-ios-heart-outline"></i> Thích</a>
+                                        @endif
+                                        @if ($user->pivot->share != 0)
+                                            <div class="hover-bnt">
+                                                <a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>Đã chia sẻ</a>
+                                                <div class="hvr-item">
+                                                    <a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
+                                                    <a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
+                                                    <a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
+                                                    <a href="#" class="hvr-grow"><i class="ion-social-youtube"></i></a>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="hover-bnt">
+                                                <a href="#" class="parent-btn"><i class="ion-android-share"></i>Chia sẻ</a>
+                                                <div class="hvr-item">
+                                                    <a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
+                                                    <a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
+                                                    <a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
+                                                    <a href="#" class="hvr-grow"><i class="ion-social-youtube"></i></a>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endif
+                                @endforeach
+                            @else
+                                <a href="#" class="parent-btn"><i class="ion-ios-pricetag-outline"></i> Xem sau</a>
+                                <a href="#" class="parent-btn"><i class="ion-ios-heart-outline"></i> Thích</a>
+                                <div class="hover-bnt">
+                                    <a href="#" class="parent-btn"><i class="ion-android-share"></i>Chia sẻ</a>
+                                    <div class="hvr-item">
+                                        <a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
+                                        <a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
+                                        <a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
+                                        <a href="#" class="hvr-grow"><i class="ion-social-youtube"></i></a>
+                                    </div>
+                                </div>
+                            @endif
+                        @endguest
                     </div>
                     <div class="movie-rate">
                         <div class="rate">
@@ -68,14 +120,30 @@
                             </p>
                         </div>
                         <div class="rate-star">
-                            <p>Rate This Movie:  </p>
-                            @for ($i = 0; $i < 10; $i++)
-                                @if ($film->rate - $i > 0)
-                                    <i class="ion-ios-star"></i>
-                                @else
+                            <p>Đánh giá phim:  </p>
+                            @guest
+                                @for ($i = 0; $i < 10; $i++)
                                     <i class="ion-ios-star-outline"></i>
+                                @endfor
+                            @else
+                                @if (in_array(Auth::id(), array_pluck($film->user, 'id')))
+                                    @foreach ($film->user as $user)
+                                        @if ($user->id == Auth::id())
+                                            @for ($i = 0; $i < 10; $i++)
+                                                @if ($user->pivot->point - $i > 0)
+                                                    <i class="ion-ios-star"></i>
+                                                @else
+                                                    <i class="ion-ios-star-outline"></i>
+                                                @endif
+                                            @endfor
+                                        @endif
+                                    @endforeach
+                                @else
+                                    @for ($i = 0; $i < 10; $i++)
+                                        <i class="ion-ios-star-outline"></i>
+                                    @endfor
                                 @endif
-                            @endfor
+                            @endguest
                         </div>
                     </div>
                     <div class="movie-tabs">

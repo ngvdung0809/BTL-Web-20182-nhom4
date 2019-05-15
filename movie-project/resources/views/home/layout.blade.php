@@ -19,8 +19,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="profile" href="#">
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <!--Google Font-->
     <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
 
@@ -73,7 +71,7 @@
             <div class="row">
             	<label for="password">
                     Password:
-                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required />
+                    <input id="password" type="password" class="form-it{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required />
                 </label>
                 @if ($errors->has('password'))
                     <span class="invalid-feedback" role="alert">
@@ -164,7 +162,7 @@
             <div class="row">
                  <label for="name-2">
                     Số điện thoại:
-                    <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone"  placeholder="Vui lòng nhập vào số điện thoại" value="{{ old('phone') }}" required>
+                    <input id="phone" type="text" class="form-it{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone"  placeholder="Vui lòng nhập vào số điện thoại" value="{{ old('phone') }}" required>
                     </select>
                 </label>
 
@@ -178,7 +176,7 @@
             <div class="row">
                 <label for="email-2">
                     Email:
-                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"  placeholder="Vui lòng nhập vào email" value="{{ old('email') }}" required>
+                    <input id="email" type="email" class="form-it{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"  placeholder="Vui lòng nhập vào email" value="{{ old('email') }}" required>
                 </label>
 
                 @if ($errors->has('email'))
@@ -190,7 +188,7 @@
              <div class="row">
                 <label for="password-2">
                     Password:
-                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Vui lòng nhập mật khẩu" value="{{ old('password') }}" required>
+                    <input id="password" type="password" class="form-it{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Vui lòng nhập mật khẩu" value="{{ old('password') }}" required>
                 </label>
 
                 @if ($errors->has('password'))
@@ -202,7 +200,7 @@
              <div class="row">
                 <label for="repassword-2">
                     Nhập lại password:
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Vui lòng nhập lại mật khẩu"required>
+                    <input id="password-confirm" type="password" class="form-it" name="password_confirmation" placeholder="Vui lòng nhập lại mật khẩu"required>
                 </label>
             </div>
            <div class="row">
@@ -307,12 +305,16 @@
 										{{ Auth::user()->username }} <i class="fa fa-angle-down" aria-hidden="true"></i>
 									</a>
 									<ul class="dropdown-menu level1">
-										<li><a href="{{ route('home_user_profile_view_profile',Auth::id()) }}">Thông tin tài khoản</a></li>
-                                        <li class="{{ $active == 'Film Watch Later' ? 'active' : '' }}"><a href="{{ route('home_user_profile_view_film_watch_later', ['user_id'=>$user->id]) }}">Phim xem sau</a></li>
-                                        <li class="{{ $active == 'Favorist Film' ? 'active' : '' }}"><a href="{{ route('home_user_profile_view_favorist_film', ['user_id'=>$user->id]) }}">Phim yêu thích</a></li>
-                                        <li class="{{ $active == 'Film Rate' ? 'active' : '' }}"><a href="{{ route('home_user_profile_view_film_review', ['user_id'=>$user->id]) }}">Phim đã đánh giá</a></li>
-                                        <li class="{{ $active == 'Film Watch History' ? 'active' : '' }}"><a href="{{ route('home_user_profile_view_film_watch_history', ['user_id'=>$user->id]) }}">Lịch sử xem phim</a></li>
-										<li><a href="{{ Auth::logout() }}">Đăng xuất</a></li>
+										<li><a href="{{ route('home_user_profile_view_profile', ['user_id'=>Auth::id()]) }}">Thông tin tài khoản</a></li>
+                                        <li><a href="{{ route('home_user_profile_view_film_watch_later', ['user_id'=>Auth::id()]) }}">Phim xem sau</a></li>
+                                        <li><a href="{{ route('home_user_profile_view_favorist_film', ['user_id'=>Auth::id()]) }}">Phim yêu thích</a></li>
+                                        <li><a href="{{ route('home_user_profile_view_film_review', ['user_id'=>Auth::id()]) }}">Phim đã đánh giá</a></li>
+                                        {{-- <li><a href="{{ route('home_user_profile_view_film_watch_history', ['user_id'=>Auth::id()]) }}">Lịch sử xem phim</a></li> --}}
+										<li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Đăng xuất</a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </li>
 									</ul>
 							</li>
 						@endguest
