@@ -18,7 +18,7 @@
             <p>Khác</p>
             <ul>
                 <li class="{{ $active == 'Change PassWord' ? 'active' : '' }}"><a href="{{ route('home_user_profile_view_change_password', ['user_id'=>$user->id]) }}">Thay đổi mật khẩu</a></li>
-                <li><a href="#">Đăng xuất</a></li>
+                <li><a href="{{ Auth::logout() }}">Đăng xuất</a></li>
             </ul>
         </div>
     </div>

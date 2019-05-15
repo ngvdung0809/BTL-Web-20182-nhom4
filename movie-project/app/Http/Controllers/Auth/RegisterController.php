@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -28,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/home/index';
 
     /**
      * Create a new controller instance.
@@ -49,9 +52,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'username' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string', 'max:255'],
+            'birth_day' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
@@ -64,9 +71,19 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
+            'username' => $data['username'],
             'name' => $data['name'],
+            'gender' => $data['gender'],
+            'birth_day' => $data['birth_day'],
+            'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'image' => Config::get('constants.USER_AVATAR.AVATAR_DEFAULT'),
+            'role' => '0'
         ]);
+    }
+    public function showRegistrationForm()
+    {
+       return view('home.home');
     }
 }

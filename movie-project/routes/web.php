@@ -202,4 +202,4 @@ Route::group(['prefix'=>'home'],function(){
     });
 });
 
-
+Auth::routes();
