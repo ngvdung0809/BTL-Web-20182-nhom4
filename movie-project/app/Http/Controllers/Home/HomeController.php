@@ -13,6 +13,7 @@ use App\Models\UserFilm;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Config;
 use Carbon\Carbon;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -20,7 +21,8 @@ class HomeController extends Controller
     {
         $typeHome = Type::all();
         $countryHome = Country::all();
-        View::share(['typeHome'=>$typeHome, 'countryHome'=>$countryHome]);
+        $adventisment = Adventisment::where('active', Config::get('constants.ADVENTISMENT.ACTIVE'))->first();
+        View::share(['typeHome'=>$typeHome, 'countryHome'=>$countryHome, 'adventisment'=>$adventisment]);
     }
 
     public function showHome()
@@ -51,9 +53,6 @@ class HomeController extends Controller
         $theatersFilmComingSoon = Film::where('theaters_film', Config::get('constants.FILM.THEATERS_FILM'))->where('status', Config::get('constants.FILM_STATUS.TRAILER'))->take(12)->get();
         $theatersFilmRate = Film::where('theaters_film', Config::get('constants.FILM.THEATERS_FILM'))->orderBy('rate', 'DESC')->take(12)->get();
         $theatersFilmView = Film::where('theaters_film', Config::get('constants.FILM.THEATERS_FILM'))->orderBy('view', 'DESC')->take(12)->get();
-
-        //adventisment
-        $adventisment = Adventisment::where('active', Config::get('constants.ADVENTISMENT.ACTIVE'))->first();
 
         //Person
         $person = Person::orderBy('view', 'DESC')->take(7)->get();
@@ -93,8 +92,6 @@ class HomeController extends Controller
             'theatersFilmComingSoon'=>$theatersFilmComingSoon,
             'theatersFilmRate'=>$theatersFilmRate,
             'theatersFilmView'=>$theatersFilmView,
-            //adventisment
-            'adventisment'=>$adventisment,
             //person
             'person'=>$person,
             //tag film

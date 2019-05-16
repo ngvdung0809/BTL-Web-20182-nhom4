@@ -3,6 +3,7 @@
 @section('css')
     <link href="{{ asset('admin/bower_components/select2/dist/css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/plugins/iCheck/all.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/dist/css/AdminLTE.min.css') }}" rel="stylesheet">
 @endsection
 @section('page-header')
@@ -59,6 +60,39 @@
             </div>
 
             <div class="form-group">
+                <div class="col-md-2">
+                    <label>
+                        <input type="checkbox" class="flat-red" name="series_film" value="series_film">
+                        Phim bộ
+                    </label>
+                </div>
+                <div class="col-md-2">
+                    <label>
+                        <input type="checkbox" class="flat-red" name="retail_film" value="retail_film">
+                        Phim lẻ
+                    </label>
+                </div>
+                <div class="col-md-2">
+                    <label>
+                        <input type="checkbox" class="flat-red" name="demo_film" value="demo_film">
+                        Phim thuyết minh
+                    </label>
+                </div>
+                <div class="col-md-2">
+                    <label>
+                        <input type="checkbox" class="flat-red" name="theaters_film" value="theaters_film">
+                        Phim chiếu rạp
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label>
+                        <input type="checkbox" class="flat-red" name="slide" value="slide">
+                        Chiếu trên trang chủ
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label for="image">Ảnh bìa của phim *</label>
                 <div class="box-body">
                     <div class="col-md-4 col-md-offset-4">
@@ -80,7 +114,7 @@
                 <div class="box-body">
                     <div class="col-md-6 col-md-offset-3">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe id="trailer_link_default" class="embed-responsive-item" src="{{ asset('/storage/' . 'film_default/trailer_film_default.mp4') }}" frameborder="0" allowfullscreen="">
+                            <iframe id="trailer_link_default" class="embed-responsive-item" src="{{ asset('/storage/' . 'film_default/trailer_film_default.mp4') }}" frameborder="0" allowfullscreen>
                             </iframe>
                         </div>
                         <div align="center">
@@ -225,6 +259,41 @@
                 @endif
             </div>
 
+            <div class="form-group {{ $errors->first('time') ? 'has-error' : ''}}">
+                <label for="time">Thời lượng</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-tags"></i>
+                    </div>
+                    <input id="time" type="text" class="form-control{{ $errors->has('time') ? ' is-invalid' : '' }}" name="time" placeholder="Vui lòng nhập vào thời lượng cho phim" value="{{ old('time') }}" required>
+                </div>
+
+                @if ($errors->has('time'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('time') }}</strong>
+                    </span>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label>
+                        <input type="checkbox" class="flat-red" name="status" value="{{ Config::get('constants.FILM_STATUS.COMPLETED') }}">
+                        Hoàn tất
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label>
+                        <input type="checkbox" class="flat-red" name="status" value="{{ Config::get('constants.FILM_STATUS.TRAILER') }}">
+                        Chưa phát hành
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label>Đang phát hành</label>
+                    <input type="text" class="flat-red" name="status_text">
+                </div>
+            </div>
+
             <div class="form-group {{ $errors->first('content') ? 'has-error' : ''}}">
                 <label for="content">Mô tả nội dung của phim *</label>
                 <div class="input-group">
@@ -271,5 +340,6 @@
     <script src="{{ asset('admin/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('admin/bower_components/moment/min/moment.min.js') }}"></script>
     <script src="{{ asset('admin/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/iCheck/icheck.min.js') }}"></script>
     <script src="{{ asset('js/admin/film/create.js') }}"></script>
 @endsection

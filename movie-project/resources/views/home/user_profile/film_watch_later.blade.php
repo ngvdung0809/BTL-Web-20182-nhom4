@@ -7,12 +7,14 @@
         <select id="search">
             <option id="start">Chọn trường</option>
             <option data-value="name">Tên phim</option>
+            <option data-value="type">Thể loại</option>
             <option data-value="director">Đạo diễn</option>
             <option data-value="actor">Diễn viên</option>
             <option data-value="publisher">Hãng sản xuất</option>
             <option data-value="country">Quốc gia</option>
             <option data-value="released">Năm phát hành</option>
             <option data-value="rate">Đánh giá</option>
+            <option data-value="status">Trạng thái</option>
         </select>
         <input type="text" placeholder="Tìm kiếm phim yêu thích theo ......" id="search-criteria">
     </div>

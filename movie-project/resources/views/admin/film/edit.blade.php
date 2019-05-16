@@ -3,6 +3,7 @@
 @section('css')
     <link href="{{ asset('admin/bower_components/select2/dist/css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/plugins/iCheck/all.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/dist/css/AdminLTE.min.css') }}" rel="stylesheet">
 @endsection
 @section('page-header')
@@ -56,6 +57,59 @@
                         <strong>{{ $errors->first('tag') }}</strong>
                     </span>
                 @endif
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label>
+                        @if ($film->series_film == Config::get('constants.FILM.SERIES_FILM'))
+                            <input type="checkbox" class="flat-red" name="series_film" value="series_film" checked>
+                        @else
+                            <input type="checkbox" class="flat-red" name="series_film" value="series_film">
+                        @endif
+                        Phim bộ
+                    </label>
+                </div>
+                <div class="col-md-2">
+                    <label>
+                        @if ($film->retail_film == Config::get('constants.FILM.RETAIL_FILM'))
+                            <input type="checkbox" class="flat-red" name="retail_film" value="retail_film" checked>
+                        @else
+                            <input type="checkbox" class="flat-red" name="retail_film" value="retail_film">
+                        @endif
+                        Phim lẻ
+                    </label>
+                </div>
+                <div class="col-md-2">
+                    <label>
+                        @if ($film->demo_film == Config::get('constants.FILM.DEMO_FILM'))
+                            <input type="checkbox" class="flat-red" name="demo_film" value="demo_film" checked>
+                        @else
+                            <input type="checkbox" class="flat-red" name="demo_film" value="demo_film">
+                        @endif
+                        Phim thuyết minh
+                    </label>
+                </div>
+                <div class="col-md-2">
+                    <label>
+                        @if ($film->theaters_film == Config::get('constants.FILM.THEATERS_FILM'))
+                            <input type="checkbox" class="flat-red" name="theaters_film" value="theaters_film" checked>
+                        @else
+                            <input type="checkbox" class="flat-red" name="theaters_film" value="theaters_film">
+                        @endif
+                        Phim chiếu rạp
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label>
+                        @if ($film->slide == Config::get('constants.FILM.SLIDE'))
+                            <input type="checkbox" class="flat-red" name="slide" value="slide" checked>
+                        @else
+                            <input type="checkbox" class="flat-red" name="slide" value="slide">
+                        @endif
+                        Chiếu trên trang chủ
+                    </label>
+                </div>
             </div>
 
             <div class="form-group">
@@ -263,6 +317,53 @@
                 @endif
             </div>
 
+            <div class="form-group {{ $errors->first('time') ? 'has-error' : ''}}">
+                <label for="time">Thời lượng</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-tags"></i>
+                    </div>
+                    <input id="time" type="text" class="form-control{{ $errors->has('time') ? ' is-invalid' : '' }}" name="time" placeholder="Vui lòng nhập vào thời lượng cho phim" value="{{ $film->time }}" required>
+                </div>
+
+                @if ($errors->has('time'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('time') }}</strong>
+                    </span>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label>
+                        @if ($film->status == Config::get('constants.FILM_STATUS.COMPLETED'))
+                             <input type="checkbox" class="flat-red" name="status" value="{{ Config::get('constants.FILM_STATUS.COMPLETED') }}" checked>
+                        @else
+                            <input type="checkbox" class="flat-red" name="status" value="{{ Config::get('constants.FILM_STATUS.COMPLETED') }}">
+                        @endif
+                        Hoàn tất
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label>
+                        @if ($film->status == Config::get('constants.FILM_STATUS.TRAILER'))
+                             <input type="checkbox" class="flat-red" name="status" value="{{ Config::get('constants.FILM_STATUS.TRAILER') }}" checked>
+                        @else
+                            <input type="checkbox" class="flat-red" name="status" value="{{ Config::get('constants.FILM_STATUS.TRAILER') }}">
+                        @endif
+                        Chưa phát hành
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label>Đang phát hành</label>
+                    @if ($film->status == Config::get('constants.FILM_STATUS.TRAILER') || $film->status == Config::get('constants.FILM_STATUS.COMPLETED'))
+                        <input type="text" class="flat-red" name="status_text">
+                    @else
+                        <input type="text" class="flat-red" name="status_text" value="{{ $film->status }}">
+                    @endif
+                </div>
+            </div>
+
             <div class="form-group {{ $errors->first('content') ? 'has-error' : ''}}">
                 <label for="content">Mô tả nội dung của phim *</label>
                 <div class="input-group">
@@ -309,5 +410,6 @@
     <script src="{{ asset('admin/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('admin/bower_components/moment/min/moment.min.js') }}"></script>
     <script src="{{ asset('admin/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/iCheck/icheck.min.js') }}"></script>
     <script src="{{ asset('js/admin/film/edit.js') }}"></script>
 @endsection

@@ -29,11 +29,33 @@ Tập phim
                      </div>
                 </div>
                 <div class="form-group">
-                      <label for="inputPassword3" class="col-sm-2 control-label">Ảnh tập phim*</label>
+                    <label for="inputPassword3" class="col-sm-2 control-label">Ảnh tập phim*</label>
                     <div class="col-sm-10">
-                        <img class="img-responsive" src="{{ asset('/storage/' . 'film_default/image_film_default.jpg') }}" alt="" id="image_default">
-                        <input type="file" id="image" name="image" accept="image/*" required />
+                        <div class="col-md-6 col-md-offset-3">
+                            <img class="img-responsive" src="{{ asset('/storage/' . 'film_default/image_film_default.jpg') }}" alt="" id="image_default" style="max-height: 400px; max-width: 400px;">
+                            <input type="file" id="image" name="image" accept="image/*" required />
+                        </div>
                       </div>
+                </div>
+                <div class="form-group">
+                    <label for="trailer_link" class="col-sm-2 control-label">Video tập phim *</label>
+                    <div class="col-sm-10">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe id="trailer_link_default" class="embed-responsive-item" src="{{ asset('/storage/' . 'film_default/trailer_film_default.mp4') }}" frameborder="0" allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div align="center">
+                                <input type="file" id="trailer_link" name="trailer_link" accept="video/*" required />
+                            </div>
+
+                            @if ($errors->has('trailer_link'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('trailer_link') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">Mô tả tập phim*</label>

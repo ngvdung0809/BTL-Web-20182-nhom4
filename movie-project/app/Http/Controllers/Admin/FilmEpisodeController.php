@@ -42,7 +42,15 @@ class FilmEpisodeController extends Controller
        $filmEpisode->film_id=$id;
        $filmEpisode->content=$request->content;
        $filmEpisode->save();
-       return redirect()->route('admin_film_episode_create',['id'=>$id])->with('success', 'Thêm tập phim thành công');
+       if ($request->hasFile('trailer_link')) {
+            $server = new Server();
+            $server->name = 'LOCAL';
+            $server->episode_id = $filmEpisode->id;
+            $pathEpisodeFilm = Storage::disk('public')->put(Config::get('constants.FILM_EPISODE.FILM_EPISODE_FOLDER_VIDEO'), $request->trailer_link);
+            $server->link = $pathEpisodeFilm;
+            $server->save();
+        }
+       return redirect()->route('admin_film_view',['id'=>$id])->with('success', 'Thêm tập phim thành công');
 
     }
 
@@ -84,5 +92,5 @@ class FilmEpisodeController extends Controller
         return redirect()->route('admin_film_view',['id'=>$filmId])->with('success', 'Xóa tập phim thành công');
     }
 
-    
+
 }
