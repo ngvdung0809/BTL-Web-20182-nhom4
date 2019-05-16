@@ -48,7 +48,7 @@
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-sm-1">
-                                                        <img src="{{ asset('/storage/' . $episode->image) }}" alt="703728" width="80%" style="border-radius: 3px;">
+                                                        <img src="{{ asset('/storage/' . $episode->image) }}" alt="703728" style="border-radius: 3px; width: 70px; height: 70px">
                                                     </div>
                                                     <div class="col-md-3">
                                                         <p>Tập {{$episode->episode}}</p>
@@ -64,8 +64,12 @@
                 </div>
             </div>
             <br>
-            @foreach ($filmEpisode->server as $server )
-            <button type="button" class="change-server" link="{{$server->link}}">{{$server->name}}</button>
+            @foreach ($filmEpisode->server as $key=>$server )
+            @if ($key == 0)
+                <button type="button" class="change-server" link="{{asset('/storage/'.$server->link)}}">{{$server->name}}</button>
+            @else
+                <button type="button" class="change-server" link="{{$server->link}}">{{$server->name}}</button>
+            @endif
             @endforeach
 
             <p></p>

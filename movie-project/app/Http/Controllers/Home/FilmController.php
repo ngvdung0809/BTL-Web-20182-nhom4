@@ -8,6 +8,7 @@ use App\Models\Film;
 use App\Models\Type;
 use App\Models\Person;
 use App\Models\Adventisment;
+use App\Models\UserFilm;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Auth;
 
@@ -145,5 +146,57 @@ class FilmController extends HomeController
 
         //return
         return view('home.film.list', ['films'=>$films, 'typePage'=>$typePage]);
+    }
+
+    public function watchLaterFilm(Request $request, $userId, $filmId)
+    {
+        if ($request->ajax()) {
+            $userFilm = UserFilm::where('user_id', $userId)->where('film_id', $filmId)->first();
+            if(!empty($userFilm)){
+                if($userFilm->watch_later == 1){
+                    $userFilm->watch_later = 0;
+                    $userFilm->save();
+                    return $userFilm;
+                }else{
+                    $userFilm->watch_later = 1;
+                    $userFilm->save();
+                    return $userFilm;
+                }
+            }else{
+                $userFilm = new UserFilm();
+                $userFilm->user_id = $userId;
+                $userFilm->film_id = $filmId;
+                $userFilm->watch_later = 1;
+                $userFilm->save();
+                return $userFilm;
+            }
+        }
+        return null;
+    }
+
+    public function likeFilm(Request $request, $userId, $filmId)
+    {
+        if ($request->ajax()) {
+            $userFilm = UserFilm::where('user_id', $userId)->where('film_id', $filmId)->first();
+            if(!empty($userFilm)){
+                if($userFilm->liked == 1){
+                    $userFilm->liked = 0;
+                    $userFilm->save();
+                    return $userFilm;
+                }else{
+                    $userFilm->liked = 1;
+                    $userFilm->save();
+                    return $userFilm;
+                }
+            }else{
+                $userFilm = new UserFilm();
+                $userFilm->user_id = $userId;
+                $userFilm->film_id = $filmId;
+                $userFilm->liked = 1;
+                $userFilm->save();
+                return $userFilm;
+            }
+        }
+        return null;
     }
 }

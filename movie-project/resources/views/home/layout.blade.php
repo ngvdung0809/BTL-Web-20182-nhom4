@@ -25,6 +25,7 @@
 	<!-- Mobile specific meta -->
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<meta name="format-detection" content="telephone-no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<!-- CSS files -->
 	<link rel="stylesheet" href="{{ asset('home/css/plugins.css') }}">
@@ -364,20 +365,36 @@
 						        <!-- Modal body -->
 						        <div class="modal-body">
 						          <h3>Đoàn Văn Phú</h3>
-						          <p><i class="icon ion-person"></i> MSSV: </p>
+						          <p><i class="icon ion-person"></i> MSSV: 20166578</p>
 						          <p><i class="icon ion-android-create"></i> Công việc:</p>
+                                  <ul>
+                                    <li><i class="icon ion-ios-arrow-right"></i> Trang admin: layout admin, User, Country, Film and Review Film</li>
+                                    <li><i class="icon ion-ios-arrow-right"></i> Trang home: layout home, User Profile, Film</li>
+                                  </ul>
 						          <br>
 						          <h3>Nguyễn Văn Huy</h3>
-						          <p><i class="icon ion-person"></i> MSSV: </p>
+						          <p><i class="icon ion-person"></i> MSSV: 20166195</p>
 						          <p><i class="icon ion-android-create"></i> Công việc:</p>
+                                  <ul>
+                                    <li><i class="icon ion-ios-arrow-right"></i> Trang admin: Publisher, Comment</li>
+                                    <li><i class="icon ion-ios-arrow-right"></i> Trang home: Publisher, View Publiser</li>
+                                  </ul>
 						          <br>
 						          <h3>Nguyễn Việt Dũng</h3>
-						          <p><i class="icon ion-person"></i> MSSV: </p>
+						          <p><i class="icon ion-person"></i> MSSV: 20165886</p>
 						          <p><i class="icon ion-android-create"></i> Công việc:</p>
+                                  <ul>
+                                    <li><i class="icon ion-ios-arrow-right"></i> Trang admin: Adventisement, Fake Database</li>
+                                    <li><i class="icon ion-ios-arrow-right"></i> Trang home: Login, Logout, Contact</li>
+                                  </ul>
 						          <br>
 						          <h3>Lê Khắc Toàn</h3>
-						          <p><i class="icon ion-person"></i> MSSV: </p>
+						          <p><i class="icon ion-person"></i> MSSV: 20166845</p>
 						          <p><i class="icon ion-android-create"></i> Công việc:</p>
+                                  <ul>
+                                    <li><i class="icon ion-ios-arrow-right"></i> Trang admin: Type Film, Contact, Film Episode, Dashboard</li>
+                                    <li><i class="icon ion-ios-arrow-right"></i> Trang home: Film Episode, Comment for user</li>
+                                  </ul>
 						          <br>
 						          <h3>Lý Bảo Long</h3>
 						          <p><i class="icon ion-person"></i> MSSV: 20166381</p>
@@ -442,7 +459,7 @@
 			<div class="flex-child-ft item5">
 				<h4>TRỢ GIÚP</h4>
 				<ul>
-                    <li><a href="#">Hỏi đáp</a></li>
+                    <li><a href="{{route('home_contact_gopy')}}">Hỏi đáp</a></li>
                     <li><a data-toggle="modal" href="#ContactModal">Liên hệ</a>
 						<div class="modal" id="ContactModal">
 						    <div class="modal-dialog">

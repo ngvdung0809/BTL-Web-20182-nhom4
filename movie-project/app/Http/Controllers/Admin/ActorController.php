@@ -12,7 +12,7 @@ use App\Models\Country;
 
 class ActorController extends Controller
 {
-     /**     
+     /**
      * @return \Illuminate\Http\Response
      */
      //show the list of actors
@@ -22,16 +22,16 @@ class ActorController extends Controller
             $getcountry = Country::find($person->country_id)->name;
             $person->country_id = $getcountry;
             return $person;
-        });       
+        });
         return view('admin.actor.list', ['persons' => $persons]);
-    }   
+    }
 
     /**
      * create new data.
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function create()
     {
         $getcountries = Country::all();
@@ -44,22 +44,14 @@ class ActorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
+
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            //'gender' => ['string', 'max:255'],
-            //'birth_day' => ['date_format:Y-m-d'],
             'email' => ['required', 'string', 'max:255'],
-            'country_id' => ['required', 'integer'],            
-            //'hobby' => ['string', 'max:255'],
-            //'forte' => ['string', 'max:255'],
-            'job' => ['required', 'string', 'max:255'],
-            //'story' => ['string'],
-            'view' => ['integer'],
-            //'description' => ['string']
+            'country_id' => ['required', 'integer'],
         ]);
 
         $person = new Person();
@@ -78,9 +70,8 @@ class ActorController extends Controller
         $person->country_id = $request->country_id;
         $person->hobby = $request->hobby;
         $person->forte = $request->forte;
-        $person->job = $request->job;
+        $person->job = 'actor';
         $person->story = $request->story;
-        $person->view = $request->view;
         $person->description = $request->description;
         $person->save();
 
@@ -117,22 +108,13 @@ class ActorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   
+
     public function update(Request $request, $id)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            //'gender' => ['string', 'max:255'],
-            //'birth_day' => ['date_format:Y-m-d'],
             'email' => ['required', 'string', 'max:255'],
             'country_id' => ['required', 'integer'],
-            
-            //'hobby' => ['string', 'max:255'],
-            //'forte' => ['string', 'max:255'],
-            'job' => ['required', 'string', 'max:255'],
-            //'story' => ['string'],
-            'view' => ['integer'],
-            //'description' => ['string']
         ]);
 
         $person = Person::find($id);
@@ -142,13 +124,13 @@ class ActorController extends Controller
             $person->image = $path;
         }else{
             $oldperson = Person::find($id);
-            $person->image = $oldperson->image;            
+            $person->image = $oldperson->image;
         }
 
-        if(($person->name == $request->name) && ($person->gender == $request->gender) 
+        if(($person->name == $request->name) && ($person->gender == $request->gender)
     		&& ($person->birth_day == $request->birth_day) && ($person->email == $request->email)
     		&& ($person->country_id == $request->country_id) && ($person->hobby == $request->hobby)
-            && ($person->forte == $request->forte) && ($person->story == $request->story) 
+            && ($person->forte == $request->forte) && ($person->story == $request->story)
             && ($person->view == $request->view) && ($person->description == $request->description))
             return redirect()->back()->with('error', 'Bạn không sửa đổi thông tin gì !!!');
 
@@ -156,12 +138,10 @@ class ActorController extends Controller
         $person->gender = $request->gender;
         $person->birth_day = $request->birth_day;
         $person->email = $request->email;
-        $person->country_id = $request->country_id;        
+        $person->country_id = $request->country_id;
         $person->hobby = $request->hobby;
         $person->forte = $request->forte;
-        $person->job = $request->job;
         $person->story = $request->story;
-        $person->view = $request->view;
         $person->description = $request->description;
         $person->save();
 
@@ -173,7 +153,7 @@ class ActorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-  
+
      public function destroy($id)
     {
         $person = Person::find($id);

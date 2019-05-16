@@ -25,7 +25,7 @@
             </div>
         </div>
 <form  method="post" action="{{ route('admin_director_store') }}" enctype="multipart/form-data">
-        <div class="box-body">           
+        <div class="box-body">
                 @csrf
                 <div class="box-body">
                     <div class="form-group {{ $errors->first('name') ? 'has-error' : ''}}">
@@ -67,7 +67,7 @@
                             @foreach($getcountries as $getcountry)
                             <option value="{{$getcountry->id}}">{{$getcountry->name}}</option>
                             @endforeach
-                        </select>                        
+                        </select>
                         @if ($errors->has('country_id'))
                             <span class="help-block">{{ $errors->first('country_id') }}</span>
                         @endif
@@ -107,27 +107,11 @@
                         @endif
                     </div>
 
-                    <div class="form-group {{ $errors->first('job') ? 'has-error' : ''}}">
-                        <label for="job">Job*</label>
-                        <input class="form-control" type="text" id="job" name="job" placeholder="director" value="director" >
-                        @if ($errors->has('job'))
-                            <span class="help-block">{{ $errors->first('job') }}</span>
-                        @endif
-                    </div>
-
                     <div class="form-group {{ $errors->first('story') ? 'has-error' : ''}}">
                         <label for="story">Story</label>
                         <input class="form-control" type="text" id="story" name="story" placeholder="Vui lòng nhập vào tiểu sử" value="{{ old('story') }}" >
                         @if ($errors->has('story'))
                             <span class="help-block">{{ $errors->first('story') }}</span>
-                        @endif
-                    </div>
-
-                    <div class="form-group {{ $errors->first('view') ? 'has-error' : ''}}">
-                        <label for="view">View</label>
-                        <input class="form-control" type="text" id="view" name="view" placeholder="0" value="0" >
-                        @if ($errors->has('view'))
-                            <span class="help-block">{{ $errors->first('view') }}</span>
                         @endif
                     </div>
 
@@ -142,7 +126,7 @@
 
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Tạo</button>
-                </div>            
+                </div>
         </div>
     </form>
     </div>

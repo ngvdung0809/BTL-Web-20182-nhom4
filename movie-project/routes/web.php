@@ -138,12 +138,6 @@ Route::group(['prefix'=>'home'],function(){
         Route::post('/baoloistore','Home\ContactController@baoloistore')->name('home_baoloi_store');
     });
 
-    Route::group(['prefix' => 'user'], function () {
-        Route::get('/signin','Home\SigninController@signin')->name('home_user_signin');
-        Route::post('/store','Home\SigninController@store')->name('home_user_dangkytk');
-
-    });
-
     Route::group(['prefix'=>'actor'],function(){
        Route::get('/list', 'Home\ActorController@index')->name('home_actor_list');
        Route::get('/search', 'Home\ActorController@search')->name('home_actor_search');
@@ -189,6 +183,9 @@ Route::group(['prefix'=>'home'],function(){
             Route::get('/rate', 'Home\UserProfileController@showRateFilm')->name('home_user_profile_view_film_review');
             Route::get('watch_history', 'Home\UserProfileController@showFilmWatchHistory')->name('home_user_profile_view_film_watch_history');
         });
+
+        Route::post('/watch_later/film/{film_id}', 'Home\FilmController@watchLaterFilm');
+        Route::post('/like/film/{film_id}', 'Home\FilmController@likeFilm');
     });
 
     Route::group(['prefix'=>'/film'], function(){

@@ -56,6 +56,7 @@ return [
 
     'FILM_EPISODE' => [
         'FILM_EPISODE_FOLDER_IMAGE' => 'film_episode_folder_image',
+        'FILM_EPISODE_FOLDER_VIDEO' => 'film_episode_folder_video',
     ],
 
     'USER_FILM' => [

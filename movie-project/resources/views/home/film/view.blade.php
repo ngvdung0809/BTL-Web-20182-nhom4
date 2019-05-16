@@ -49,15 +49,15 @@
                     <h1 class="bd-hd">{{ $film->name }} <span> {{ date('Y', strtotime($film->released)) }}</span></h1>
                     <div class="social-btn">
                         @guest
-                            <a href="#" class="parent-btn"><i class="ion-ios-pricetag-outline"></i> Xem sau</a>
-                            <a href="#" class="parent-btn"><i class="ion-ios-heart-outline"></i> Thích</a>
+                            <a class="parent-btn" id="user_watch_later" data-user_id="-1"><i class="ion-ios-pricetag-outline"></i> Xem sau</a>
+                            <a class="parent-btn" id="user_like" data-user_id="-1"><i class="ion-ios-heart-outline"></i> Thích</a>
                             <div class="hover-bnt">
-                                <a href="#" class="parent-btn"><i class="ion-android-share"></i>Chia sẻ</a>
+                                <a class="parent-btn user_share" data-user_id="-1"><i class="ion-android-share"></i>Chia sẻ</a>
                                 <div class="hvr-item">
-                                    <a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
-                                    <a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
-                                    <a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
-                                    <a href="#" class="hvr-grow"><i class="ion-social-youtube"></i></a>
+                                    <a class="hvr-grow user_share" data-user_id="-1"><i class="ion-social-facebook"></i></a>
+                                    <a class="hvr-grow user_share" data-user_id="-1"><i class="ion-social-twitter"></i></a>
+                                    <a class="hvr-grow user_share" data-user_id="-1"><i class="ion-social-googleplus"></i></a>
+                                    <a class="hvr-grow user_share" data-user_id="-1"><i class="ion-social-youtube"></i></a>
                                 </div>
                             </div>
                         @else
@@ -65,48 +65,48 @@
                                 @foreach ($film->user as $user)
                                     @if ($user->id == Auth::id())
                                         @if ($user->pivot->watch_later != 0)
-                                            <a href="#" class="parent-btn"><i class="ion-ios-pricetag"></i> Đã thêm vào Xem sau</a>
+                                            <a class="parent-btn" id="user_watch_later" data-value="{{ $user->pivot->watch_later }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-pricetag"></i> Đã thêm vào Xem sau</a>
                                         @else
-                                            <a href="#" class="parent-btn"><i class="ion-ios-pricetag-outline"></i> Xem sau</a>
+                                            <a class="parent-btn" id="user_watch_later" data-value="{{ $user->pivot->watch_later }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-pricetag-outline"></i> Xem sau</a>
                                         @endif
                                         @if ($user->pivot->liked != 0)
-                                            <a href="#" class="parent-btn"><i class="ion-ios-heart"></i> Đã thích</a>
+                                            <a class="parent-btn" id="user_like" data-value="{{ $user->pivot->liked }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-heart"></i> Đã thích</a>
                                         @else
-                                            <a href="#" class="parent-btn"><i class="ion-ios-heart-outline"></i> Thích</a>
+                                            <a class="parent-btn" id="user_like" data-value="{{ $user->pivot->liked }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-heart-outline"></i> Thích</a>
                                         @endif
                                         @if ($user->pivot->share != 0)
                                             <div class="hover-bnt">
-                                                <a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>Đã chia sẻ</a>
+                                                <a class="parent-btn user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-android-share-alt"></i>Đã chia sẻ</a>
                                                 <div class="hvr-item">
-                                                    <a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
-                                                    <a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
-                                                    <a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
-                                                    <a href="#" class="hvr-grow"><i class="ion-social-youtube"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-facebook"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-twitter"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-googleplus"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-youtube"></i></a>
                                                 </div>
                                             </div>
                                         @else
                                             <div class="hover-bnt">
-                                                <a href="#" class="parent-btn"><i class="ion-android-share"></i>Chia sẻ</a>
+                                                <a class="parent-btn user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-android-share"></i>Chia sẻ</a>
                                                 <div class="hvr-item">
-                                                    <a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
-                                                    <a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
-                                                    <a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
-                                                    <a href="#" class="hvr-grow"><i class="ion-social-youtube"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-facebook"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-twitter"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-googleplus"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-youtube"></i></a>
                                                 </div>
                                             </div>
                                         @endif
                                     @endif
                                 @endforeach
                             @else
-                                <a href="#" class="parent-btn"><i class="ion-ios-pricetag-outline"></i> Xem sau</a>
-                                <a href="#" class="parent-btn"><i class="ion-ios-heart-outline"></i> Thích</a>
+                                <a class="parent-btn" id="user_watch_later" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-pricetag-outline"></i> Xem sau</a>
+                                <a class="parent-btn" id="user_like" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-heart-outline"></i> Thích</a>
                                 <div class="hover-bnt">
-                                    <a href="#" class="parent-btn"><i class="ion-android-share"></i>Chia sẻ</a>
+                                    <a class="parent-btn user_share" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-android-share"></i>Chia sẻ</a>
                                     <div class="hvr-item">
-                                        <a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
-                                        <a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
-                                        <a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
-                                        <a href="#" class="hvr-grow"><i class="ion-social-youtube"></i></a>
+                                        <a class="hvr-grow user_share" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-facebook"></i></a>
+                                        <a class="hvr-grow user_share" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-twitter"></i></a>
+                                        <a class="hvr-grow user_share" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-googleplus"></i></a>
+                                        <a class="hvr-grow user_share" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-youtube"></i></a>
                                     </div>
                                 </div>
                             @endif
@@ -481,4 +481,5 @@
     <script src="{{ asset('home/bower_components/twbs-pagination/jquery.twbsPagination.min.js') }}"></script>
     <script src="{{ asset('js/home/film/view.js') }}"></script>
     <script src="{{ asset('js/home/film/list.js') }}"></script>
+    <script src="{{ asset('js/home/film/user.js') }}"></script>
 @endsection

@@ -12,7 +12,7 @@ use App\Models\Country;
 
 class DirectorController extends Controller
 {
-     /**     
+     /**
      * @return \Illuminate\Http\Response
      */
      //show the list of directors
@@ -38,7 +38,7 @@ class DirectorController extends Controller
         return view('admin.director.create', ['getcountries' => $getcountries]);
     }
 
- 
+
     /**
      * Store new data.
      *
@@ -49,16 +49,8 @@ class DirectorController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            //'gender' => ['string', 'max:255'],
-            //'birth_day' => ['date_format:Y-m-d'],
             'email' => ['required', 'string', 'max:255'],
-            'country_id' => ['required', 'integer'],            
-            //'hobby' => ['string', 'max:255'],
-            //'forte' => ['string', 'max:255'],
-            'job' => ['required', 'string', 'max:255'],
-            //'story' => ['string'],
-            'view' => ['integer'],
-            //'description' => ['string']
+            'country_id' => ['required', 'integer'],
         ]);
 
         $person = new Person();
@@ -72,12 +64,11 @@ class DirectorController extends Controller
         $person->gender = $request->gender;
         $person->birth_day = $request->birth_day;
         $person->email = $request->email;
-        $person->country_id = $request->country_id;        
+        $person->country_id = $request->country_id;
         $person->hobby = $request->hobby;
         $person->forte = $request->forte;
-        $person->job = $request->job;
+        $person->job = 'director';
         $person->story = $request->story;
-        $person->view = $request->view;
         $person->description = $request->description;
         $person->save();
 
@@ -85,7 +76,7 @@ class DirectorController extends Controller
     }
 
 
- 
+
     /**
      * Display the specified resource.
      *
@@ -106,11 +97,11 @@ class DirectorController extends Controller
     public function edit($id)
     {
         $getcountries = Country::all();
-        $person = Person::find($id);       
+        $person = Person::find($id);
         return view('admin.director.edit', ['person' => $person, 'getcountries' => $getcountries]);
     }
 
- 
+
     /**
      * Update the specified resource in storage.
      *
@@ -122,16 +113,8 @@ class DirectorController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            //'gender' => ['string', 'max:255'],
-            //'birth_day' => ['date_format:Y-m-d'],
             'email' => ['required', 'string', 'max:255'],
             'country_id' => ['required', 'integer'],
-            //'hobby' => ['string', 'max:255'],
-            //'forte' => ['string', 'max:255'],
-            'job' => ['required', 'string', 'max:255'],
-            //'story' => ['string'],
-            'view' => ['integer'],
-            //'description' => ['string']
         ]);
 
         $person = Person::find($id);
@@ -142,10 +125,10 @@ class DirectorController extends Controller
             $oldperson = Person::find($id);
             $person->image = $oldperson->image;
         }
-        if(($person->name == $request->name) && ($person->gender == $request->gender) 
+        if(($person->name == $request->name) && ($person->gender == $request->gender)
             && ($person->birth_day == $request->birth_day) && ($person->email == $request->email)
             && ($person->country_id == $request->country_id) && ($person->hobby == $request->hobby)
-            && ($person->forte == $request->forte) && ($person->story == $request->story) 
+            && ($person->forte == $request->forte) && ($person->story == $request->story)
             && ($person->view == $request->view) && ($person->description == $request->description))
             return redirect()->back()->with('error', 'Bạn không sửa đổi thông tin gì !!!');
 
@@ -156,16 +139,14 @@ class DirectorController extends Controller
         $person->country_id = $request->country_id;
         $person->hobby = $request->hobby;
         $person->forte = $request->forte;
-        $person->job = $request->job;
         $person->story = $request->story;
-        $person->view = $request->view;
         $person->description = $request->description;
         $person->save();
 
         return redirect()->route('admin_director_list')->with('success', 'Thông tin '.$person->name.' đã được cập nhật thành công');
     }
 
- 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -179,5 +160,5 @@ class DirectorController extends Controller
 
         return redirect()->route('admin_director_list')->with('success', 'Thông tin '. $person->name.' đã được xóa thành công');
     }
- 
+
 }
