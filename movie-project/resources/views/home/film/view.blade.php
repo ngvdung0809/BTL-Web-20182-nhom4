@@ -123,7 +123,7 @@
                             <p>Đánh giá phim:  </p>
                             @guest
                                 @for ($i = 0; $i < 10; $i++)
-                                    <i class="ion-ios-star-outline"></i>
+                                <a class="user_rate" id="user_rate_{{ $i }}" data-user_id="-1"><i class="ion-ios-star-outline"></i></a>
                                 @endfor
                             @else
                                 @if (in_array(Auth::id(), array_pluck($film->user, 'id')))
@@ -131,16 +131,16 @@
                                         @if ($user->id == Auth::id())
                                             @for ($i = 0; $i < 10; $i++)
                                                 @if ($user->pivot->point - $i > 0)
-                                                    <i class="ion-ios-star"></i>
+                                                    <a class="user_rate" id="user_rate_{{ $i }}" data-value="{{ $i }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-star"></i></a>
                                                 @else
-                                                    <i class="ion-ios-star-outline"></i>
+                                                    <a class="user_rate" id="user_rate_{{ $i }}"><i class="ion-ios-star-outline"></i></a>
                                                 @endif
                                             @endfor
                                         @endif
                                     @endforeach
                                 @else
                                     @for ($i = 0; $i < 10; $i++)
-                                        <i class="ion-ios-star-outline"></i>
+                                        <a class="user_rate" id="user_rate_{{ $i }}" data-value="{{ $i }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-star-outline"></i></a>
                                     @endfor
                                 @endif
                             @endguest

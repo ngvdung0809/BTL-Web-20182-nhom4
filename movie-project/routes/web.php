@@ -186,6 +186,7 @@ Route::group(['prefix'=>'home'],function(){
 
         Route::post('/watch_later/film/{film_id}', 'Home\FilmController@watchLaterFilm');
         Route::post('/like/film/{film_id}', 'Home\FilmController@likeFilm');
+        Route::post('/rate/film/{film_id}', 'Home\FilmController@rateFilm');
     });
 
     Route::group(['prefix'=>'/film'], function(){

@@ -56,7 +56,6 @@ $(document).ready(function(){
                 dataType: 'json',
                 data: formData,
                 success: function(data) {
-                    console.log(data);
                     if(data.liked == 1){
                         $('#user_like').empty();
                         $('#user_like').append('<i class="ion-ios-heart"></i> Đã Thích');
@@ -77,13 +76,38 @@ $(document).ready(function(){
     });
 
     $('.social-btn').on('click', '.user_share', function(){
-        let user_id = $(this).data('user_id');
-        if(user_id == -1){
+        let userId = $(this).data('user_id');
+        if(userId == -1){
             toastr.error('Bạn hãy đăng nhập để thực hiện chức năng chia sẻ phim');
         }else{
-            let film_id = $(this).data('film_id');
+            let filmId = $(this).data('film_id');
             let value = $(this).data('value');
             toastr.error('Chức năng này tạm thời chưa hoạt động');
+        }
+    });
+
+    $('.movie-rate').on('click', '.user_rate', function(){
+        let userId = $(this).data('user_id');
+        if(userId == -1){
+            toastr.error('Bạn hãy đăng nhập để để thực hiện chức năng đánh giá');
+        }else{
+            let filmId = $(this).data('film_id');
+            let value = $(this).data('value');
+            let formData = {
+                value: value,
+            };
+            $.ajax({
+                url: '/home/user/' + userId + '/rate/film/' + filmId,
+                type: "POST",
+                dataType: 'json',
+                data: formData,
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function (data) {
+                    toastr.error('Lỗi khi thực hiện chức năng này');
+                }
+            });
         }
     });
 });

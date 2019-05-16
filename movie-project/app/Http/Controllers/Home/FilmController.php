@@ -199,4 +199,24 @@ class FilmController extends HomeController
         }
         return null;
     }
+
+    public function rateFilm(Request $request, $userId, $filmId)
+    {
+        if ($request->ajax()) {
+            $userFilm = UserFilm::where('user_id', $userId)->where('film_id', $filmId)->first();
+            if(!empty($userFilm)){
+                $userFilm->point = $request->value;
+                $userFilm->save();
+                return $userFilm;
+            }else{
+                $userFilm = new UserFilm();
+                $userFilm->user_id = $userId;
+                $userFilm->film_id = $filmId;
+                $userFilm->point = $request->value;
+                $userFilm->save();
+                return $userFilm;
+            }
+        }
+        return null;
+    }
 }
