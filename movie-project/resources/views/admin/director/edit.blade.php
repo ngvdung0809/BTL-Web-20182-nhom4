@@ -45,9 +45,9 @@
                         @endif
                     </div>
 
-                   <div class="form-group {{ $errors->first('birth_day') ? 'has-error' : ''}}">                    
+                   <div class="form-group {{ $errors->first('birth_day') ? 'has-error' : ''}}">
                         <label for="birth_day">Birth day</label>
-                        @if ( is_null($person->birth_day))                            
+                        @if ( is_null($person->birth_day))
                              <input class="form-control" type="date" id="birth_day" name="birth_day" placeholder="Vui lòng nhập vào ngày sinh" value="" min="1990-01-01" max="2020-12-31" >
                             @if ($errors->has('birth_day'))
                                 <span class="help-block">{{ $errors->first('birth_day') }}</span>
@@ -75,7 +75,7 @@
                             @foreach($getcountries as $getcountry)
                             <option value="{{$getcountry->id}}">{{$getcountry->name}}</option>
                             @endforeach
-                        </select>                        
+                        </select>
                         @if ($errors->has('country_id'))
                             <span class="help-block">{{ $errors->first('country_id') }}</span>
                         @endif
@@ -117,27 +117,11 @@
                         @endif
                     </div>
 
-                    <div class="form-group {{ $errors->first('job') ? 'has-error' : ''}}">
-                        <label for="job">Job*</label>
-                        <input class="form-control" type="text" id="job" name="job" placeholder="director" value="director" >
-                        @if ($errors->has('job'))
-                            <span class="help-block">{{ $errors->first('job') }}</span>
-                        @endif
-                    </div>
-
                     <div class="form-group {{ $errors->first('story') ? 'has-error' : ''}}">
                         <label for="story">Story</label>
                         <input class="form-control" type="text" id="story" name="story" placeholder="Vui lòng nhập vào tiểu sử" value="{{ $person->story }}" >
                         @if ($errors->has('story'))
                             <span class="help-block">{{ $errors->first('story') }}</span>
-                        @endif
-                    </div>
-
-                    <div class="form-group {{ $errors->first('view') ? 'has-error' : ''}}">
-                        <label for="view">View</label>
-                        <input class="form-control" type="text" id="view" name="view" placeholder="0" value="0" >
-                        @if ($errors->has('view'))
-                            <span class="help-block">{{ $errors->first('view') }}</span>
                         @endif
                     </div>
 
@@ -153,7 +137,7 @@
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Sửa</button>
                 </div>
-            
+
         </div>
     </form>
     </div>

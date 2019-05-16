@@ -47,7 +47,7 @@ class Film extends Model
 
     public function user()
     {
-        return $this->beLongsToMany('App\Models\User', 'user_film', 'film_id', 'user_id')->withPivot('id', 'liked', 'view', 'share', 'point');
+        return $this->beLongsToMany('App\Models\User', 'user_film', 'film_id', 'user_id')->withPivot('id', 'watch_later', 'liked', 'view', 'share', 'point');
     }
 
     public function film_episode(){

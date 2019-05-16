@@ -194,6 +194,56 @@
                                 <div class="box box-solid">
                                     <div class="box-header with-border">
                                         <i class="fa fa-edit text-info"></i>
+                                        <h3 class="box-title"> Trạng thái của phim</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        @if ($film->status == Config::get('constants.FILM_STATUS.COMPLETED'))
+                                            <p class="text-muted">Hoàn thành</p>
+                                        @elseif ($film->status == Config::get('constants.FILM_STATUS.TRAILER'))
+                                            <p class="text-muted">Chưa phát hành</p>
+                                        @else
+                                            <p class="text-muted">{{ $film->status }}</p>
+                                        @endif
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        <i class="fa fa-clock-o text-info"></i>
+                                        <h3 class="box-title"> Thời lượng phim</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <p class="text-muted">{{ $film->time }}</p>
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        <i class="fa fa-edit text-info"></i>
+                                        <h3 class="box-title"> Loại phim</h3>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        @if ($film->series_film == Config::get('constants.FILM.SERIES_FILM'))
+                                            <p class="text-muted">Phim bộ</p>
+                                        @endif
+                                        @if ($film->retail_film == Config::get('constants.FILM.RETAIL_FILM'))
+                                            <p class="text-muted">Phim lẻ</p>
+                                        @endif
+                                         @if ($film->demo_film == Config::get('constants.FILM.DEMO_FILM'))
+                                            <p class="text-muted">Phim thuyết minh</p>
+                                        @endif
+                                        @if ($film->theaters_film == Config::get('constants.FILM.THEATERS_FILM'))
+                                            <p class="text-muted">Phim chiếu rạp</p>
+                                        @endif
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        <i class="fa fa-edit text-info"></i>
                                         <h3 class="box-title"> Nội dung phim</h3>
                                     </div>
                                     <!-- /.box-header -->

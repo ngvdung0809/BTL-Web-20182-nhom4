@@ -1,5 +1,7 @@
 @extends('home.layout')
-@section('title', 'Chi tiết phim')
+@section('title')
+    Chi tiết phim {{ $film->name }}
+@endsection
 @section('css')
 @endsection
 @section('search')
@@ -7,12 +9,14 @@
         <select id="search">
             <option id="start">Chọn trường</option>
             <option data-value="name">Tên phim</option>
+            <option data-value="type">Thể loại</option>
             <option data-value="director">Đạo diễn</option>
             <option data-value="actor">Diễn viên</option>
             <option data-value="publisher">Hãng sản xuất</option>
             <option data-value="country">Quốc gia</option>
             <option data-value="released">Năm phát hành</option>
             <option data-value="rate">Đánh giá</option>
+            <option data-value="status">Trạng thái</option>
         </select>
         <input type="text" placeholder="Tìm kiếm phim yêu thích theo ......" id="search-criteria">
     </div>
@@ -44,16 +48,69 @@
                 <div class="movie-single-ct main-content">
                     <h1 class="bd-hd">{{ $film->name }} <span> {{ date('Y', strtotime($film->released)) }}</span></h1>
                     <div class="social-btn">
-                        <a href="#" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
-                        <div class="hover-bnt">
-                            <a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>share</a>
-                            <div class="hvr-item">
-                                <a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
-                                <a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
-                                <a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
-                                <a href="#" class="hvr-grow"><i class="ion-social-youtube"></i></a>
+                        @guest
+                            <a class="parent-btn" id="user_watch_later" data-user_id="-1"><i class="ion-ios-pricetag-outline"></i> Xem sau</a>
+                            <a class="parent-btn" id="user_like" data-user_id="-1"><i class="ion-ios-heart-outline"></i> Thích</a>
+                            <div class="hover-bnt">
+                                <a class="parent-btn user_share" data-user_id="-1"><i class="ion-android-share"></i>Chia sẻ</a>
+                                <div class="hvr-item">
+                                    <a class="hvr-grow user_share" data-user_id="-1"><i class="ion-social-facebook"></i></a>
+                                    <a class="hvr-grow user_share" data-user_id="-1"><i class="ion-social-twitter"></i></a>
+                                    <a class="hvr-grow user_share" data-user_id="-1"><i class="ion-social-googleplus"></i></a>
+                                    <a class="hvr-grow user_share" data-user_id="-1"><i class="ion-social-youtube"></i></a>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            @if (in_array(Auth::id(), array_pluck($film->user, 'id')))
+                                @foreach ($film->user as $user)
+                                    @if ($user->id == Auth::id())
+                                        @if ($user->pivot->watch_later != 0)
+                                            <a class="parent-btn" id="user_watch_later" data-value="{{ $user->pivot->watch_later }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-pricetag"></i> Đã thêm vào Xem sau</a>
+                                        @else
+                                            <a class="parent-btn" id="user_watch_later" data-value="{{ $user->pivot->watch_later }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-pricetag-outline"></i> Xem sau</a>
+                                        @endif
+                                        @if ($user->pivot->liked != 0)
+                                            <a class="parent-btn" id="user_like" data-value="{{ $user->pivot->liked }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-heart"></i> Đã thích</a>
+                                        @else
+                                            <a class="parent-btn" id="user_like" data-value="{{ $user->pivot->liked }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-heart-outline"></i> Thích</a>
+                                        @endif
+                                        @if ($user->pivot->share != 0)
+                                            <div class="hover-bnt">
+                                                <a class="parent-btn user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-android-share-alt"></i>Đã chia sẻ</a>
+                                                <div class="hvr-item">
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-facebook"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-twitter"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-googleplus"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-youtube"></i></a>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="hover-bnt">
+                                                <a class="parent-btn user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-android-share"></i>Chia sẻ</a>
+                                                <div class="hvr-item">
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-facebook"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-twitter"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-googleplus"></i></a>
+                                                    <a class="hvr-grow user_share" data-value="{{ $user->pivot->share }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-youtube"></i></a>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endif
+                                @endforeach
+                            @else
+                                <a class="parent-btn" id="user_watch_later" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-pricetag-outline"></i> Xem sau</a>
+                                <a class="parent-btn" id="user_like" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-heart-outline"></i> Thích</a>
+                                <div class="hover-bnt">
+                                    <a class="parent-btn user_share" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-android-share"></i>Chia sẻ</a>
+                                    <div class="hvr-item">
+                                        <a class="hvr-grow user_share" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-facebook"></i></a>
+                                        <a class="hvr-grow user_share" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-twitter"></i></a>
+                                        <a class="hvr-grow user_share" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-googleplus"></i></a>
+                                        <a class="hvr-grow user_share" data-value="-1" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-social-youtube"></i></a>
+                                    </div>
+                                </div>
+                            @endif
+                        @endguest
                     </div>
                     <div class="movie-rate">
                         <div class="rate">
@@ -63,14 +120,30 @@
                             </p>
                         </div>
                         <div class="rate-star">
-                            <p>Rate This Movie:  </p>
-                            @for ($i = 0; $i < 10; $i++)
-                                @if ($film->rate - $i > 0)
-                                    <i class="ion-ios-star"></i>
+                            <p>Đánh giá phim:  </p>
+                            @guest
+                                @for ($i = 0; $i < 10; $i++)
+                                <a class="user_rate" id="user_rate_{{ $i }}" data-user_id="-1"><i class="ion-ios-star-outline"></i></a>
+                                @endfor
+                            @else
+                                @if (in_array(Auth::id(), array_pluck($film->user, 'id')))
+                                    @foreach ($film->user as $user)
+                                        @if ($user->id == Auth::id())
+                                            @for ($i = 0; $i < 10; $i++)
+                                                @if ($user->pivot->point - $i > 0)
+                                                    <a class="user_rate" id="user_rate_{{ $i }}" data-value="{{ $i }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-star"></i></a>
+                                                @else
+                                                    <a class="user_rate" id="user_rate_{{ $i }}"><i class="ion-ios-star-outline"></i></a>
+                                                @endif
+                                            @endfor
+                                        @endif
+                                    @endforeach
                                 @else
-                                    <i class="ion-ios-star-outline"></i>
+                                    @for ($i = 0; $i < 10; $i++)
+                                        <a class="user_rate" id="user_rate_{{ $i }}" data-value="{{ $i }}" data-user_id="{{ Auth::id() }}" data-film_id="{{ $film->id }}"><i class="ion-ios-star-outline"></i></a>
+                                    @endfor
                                 @endif
-                            @endfor
+                            @endguest
                         </div>
                     </div>
                     <div class="movie-tabs">
@@ -80,7 +153,7 @@
                                 <li><a href="#reviews"> Đánh giá và Bình luận</a></li>
                                 <li><a href="#cast">  Diễn viên </a></li>
                                 <li><a href="#season"> Tập phim</a></li>
-                                <li ><a href="#moviesrelated"> Phim liên quan</a></li>
+                                <li><a href="#moviesrelated"> Phim liên quan</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div id="overview" class="tab active">
@@ -89,18 +162,24 @@
                                             <p>{{ $film->content }}</p>
                                             <div class="title-hd-sm">
                                                 <h4>Tập mới nhất hiện tại</h4>
-                                                <a href="#" class="time">Xem tất cả các tập<i class="ion-ios-arrow-right"></i></a>
+                                                <a class="time">Xem tất cả các tập<i class="ion-ios-arrow-right"></i></a>
                                             </div>
                                             <div class="mvcast-item">
                                                 <div class="cast-it">
                                                     <div class="cast-left series-it">
-                                                        <img src="/home/images/uploads/season.jpg" alt="">
-                                                        <div>
-                                                            <a href="#">Season 10</a>
-                                                            <p>21 Episodes</p>
-                                                            <p>Season 10 of The Big Bang Theory premiered on
-                                                            September 19, 2016.</p>
-                                                        </div>
+                                                        @if (count($film->film_episode) > 0)
+                                                            @foreach ($film->film_episode as $key=>$value)
+                                                                @if ($key == (count($film->film_episode) - 1))
+                                                                    <img src="{{ asset('/storage/' . $value->image) }}" alt="" style="width: 100px; height: 160px;">
+                                                                    <div>
+                                                                        <a href="{{ route('watch_film', ['id'=>$value->id]) }}">Tập {{ $value->episode }}</a>
+                                                                        <p>{{ $value->content }}</p>
+                                                                    </div>
+                                                                @endif
+                                                            @endforeach
+                                                        @else
+                                                            <h3>Đang cập nhật ....</h3>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,7 +192,7 @@
                                                     @if($value < 8)
                                                         <div class="cast-it">
                                                             <div class="cast-left">
-                                                                <img src="{{ asset('/storage/' . $actor->image) }}" alt="" style="width: 40px; height: 40px">
+                                                                <img src="{{ asset('/storage/' . $actor->image) }}" alt="" style="width: 60px; height: 60px">
                                                                 <a href="#">{{ $actor->name }}</a>
                                                             </div>
                                                             <p>{{ $actor->job }}</p>
@@ -122,39 +201,48 @@
                                                 @endforeach
                                             </div>
                                             <div class="title-hd-sm">
-                                                <h4>Đánh giá và bình luận của người xem</h4>
-                                                <a href="#" class="time">Xem tất cả {{ count($film->comments) }} bình luận <i class="ion-ios-arrow-right"></i></a>
+                                                <h4>Đánh giá và bình luận mới nhất</h4>
+                                                <a href="#" class="time">Xem tất cả bình luận và đánh giá  <i class="ion-ios-arrow-right"></i></a>
                                             </div>
-                                            <div class="mv-user-review-item">
-                                                <h3>Đáng giá quan điểm</h3>
-                                                <div class="no-star">
-                                                    <i class="ion-android-star"></i>
-                                                    <i class="ion-android-star"></i>
-                                                    <i class="ion-android-star"></i>
-                                                    <i class="ion-android-star"></i>
-                                                    <i class="ion-android-star"></i>
-                                                    <i class="ion-android-star"></i>
-                                                    <i class="ion-android-star"></i>
-                                                    <i class="ion-android-star"></i>
-                                                    <i class="ion-android-star"></i>
-                                                    <i class="ion-android-star last"></i>
-                                                </div>
-                                                <p class="time">
-                                                    17 December 2016 by <a href="#"> hawaiipierson</a>
-                                                </p>
-                                                <p>This is by far one of my favorite movies from the MCU. The introduction of new Characters both good and bad also makes the movie more exciting. giving the characters more of a back story can also help audiences relate more to different characters better, and it connects a bond between the audience and actors or characters. Having seen the movie three times does not bother me here as it is as thrilling and exciting every time I am watching it. In other words, the movie is by far better than previous movies (and I do love everything Marvel), the plotting is splendid (they really do out do themselves in each film, there are no problems watching it more than once.</p>
-                                            </div>
+                                            @foreach ($film->user as $key => $user)
+                                                @if($key > (count($film->user) - 5))
+                                                    <div class="mv-user-review-item">
+                                                        <div class="user-infor">
+                                                            <img src="{{ asset('/storage/' . $user->image) }}" alt="" style="width: 100px; height: 100px">
+                                                            <div>
+                                                                <h3>{{ $user->name }}</h3>
+                                                                <div class="no-star">
+                                                                    @for ($i = 0; $i < 10; $i++)
+                                                                        @if ($user->pivot->point - $i > 0)
+                                                                            <i class="ion-android-star"></i>
+                                                                        @else
+                                                                            <i class="ion-android-star last"></i>
+                                                                        @endif
+                                                                    @endfor
+                                                                </div>
+                                                                @foreach ($user->comment as $comment)
+                                                                    <p class="time">
+                                                                        {{ $comment->pivot->created_at }}
+                                                                    </p>
+                                                                    <p>{{ $comment->pivot->comment }}</p>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br><br><br>
+                                                @endif
+                                            @endforeach
                                         </div>
                                         <div class="col-md-4 col-xs-12 col-sm-12">
                                             <div class="sb-it">
                                                 <h6>Đạo diễn: </h6>
-                                                <p><a href="#">{{ $film->director->name }}</a></p>
+                                                <p><a href="{{ route('home_director_view', ['id'=>$film->director_id]) }}">{{ $film->director->name }}</a></p>
                                             </div>
                                             <div class="sb-it">
                                                 <h6>Thể loại</h6>
                                                 <p>
                                                     @foreach ($film->type as $type)
-                                                        <a href="#">{{ $type->name }} </a>
+                                                        <a href="{{ route('home_search_film', ['name'=>'type', 'name_id'=>$type->id]) }}">{{ $type->name }} </a>
                                                     @endforeach
                                                 </p>
                                             </div>
@@ -164,18 +252,14 @@
                                             </div>
                                             <div class="sb-it">
                                                 <h6>Thời lượng</h6>
-                                                <p>22 min</p>
-                                            </div>
-                                            <div class="sb-it">
-                                                <h6>MMPA đánh giá:</h6>
-                                                <p>TV-14</p>
+                                                <p>{{ $film->time }}</p>
                                             </div>
                                             <div class="sb-it">
                                                 <h6>Từ khóa</h6>
                                                 <p class="tags">
-                                                    <span class="time"><a href="#">{{ $film->tag }}</a></span>
+                                                    <span class="time"><a href="{{ route('home_search_film', ['name'=>'tag', 'name_id'=>$film->tag]) }}">{{ $film->tag }}</a></span>
                                                     @foreach ($film->type as $type)
-                                                        <span class="time"><a href="#">{{ $type->name }}</a></span>
+                                                        <span class="time"><a href="{{ route('home_search_film', ['name'=>'type', 'name_id'=>$type->id]) }}">{{ $type->name }}</a></span>
                                                     @endforeach
                                                 </p>
                                             </div>
@@ -194,7 +278,6 @@
                                                 <h3>Bình luận phim</h3>
                                                 <h2>{{ $film->name }}</h2>
                                             </div>
-                                            <a href="#" class="redbtn">Bình luận</a>
                                         </div>
                                         <div class="topbar-filter">
                                             <p style="width: 500px">{{ count($film->user) }} đánh giá và {{ count($film->comments) }} bình luận</p>
@@ -216,7 +299,7 @@
                                             <div class="comment-disactive" id="comment_{{ $key }}">
                                                 <div class="mv-user-review-item">
                                                     <div class="user-infor">
-                                                        <img src="{{ asset('/storage/' . $user->image) }}" alt="" style="width: 42px; height: 42px">
+                                                        <img src="{{ asset('/storage/' . $user->image) }}" alt="" style="width: 100px; height: 100px">
                                                         <div>
                                                             <h3 class="user_comment">{{ $user->name }}</h3>
                                                             <div class="no-star">
@@ -230,7 +313,7 @@
                                                             </div>
                                                             @foreach ($user->comment as $comment)
                                                                 <p class="time time_comment">
-                                                                    {{ $comment->pivot->updated_at }}
+                                                                    {{ $comment->pivot->created_at }}
                                                                 </p>
                                                                 <p>{{ $comment->pivot->comment }}</p>
                                                             @endforeach
@@ -260,8 +343,8 @@
                                         <div class="mvcast-item">
                                             <div class="cast-it">
                                                 <div class="cast-left">
-                                                    <img src="{{ asset('/storage/' . $film->director->image) }}" alt="" style="width: 40px; height: 40px">
-                                                    <a href="#">{{ $film->director->name }}</a>
+                                                    <img src="{{ asset('/storage/' . $film->director->image) }}" alt="" style="width: 200px; height: 200px">
+                                                    <a href="{{ route('home_director_view', ['id'=>$film->director_id]) }}">{{ $film->director->name }}</a>
                                                 </div>
                                                 <p>{{ $film->director->job }}</p>
                                             </div>
@@ -271,15 +354,13 @@
                                         </div>
                                         <div class="mvcast-item">
                                             @foreach ($film->actor as $value => $actor)
-                                                @if($value < 8)
-                                                    <div class="cast-it">
-                                                        <div class="cast-left">
-                                                            <img src="{{ asset('/storage/' . $actor->image) }}" alt="" style="width: 40px; height: 40px">
-                                                            <a href="#">{{ $actor->name }}</a>
-                                                        </div>
-                                                        <p>{{ $actor->job }}</p>
+                                                <div class="cast-it">
+                                                    <div class="cast-left">
+                                                        <img src="{{ asset('/storage/' . $actor->image) }}" alt="" style="width: 200px; height: 200px">
+                                                        <a href="{{ route('home_actor_view', ['id'=>$actor->id]) }}">{{ $actor->name }}</a>
                                                     </div>
-                                                @endif
+                                                    <p>{{ $actor->job }}</p>
+                                                </div>
                                             @endforeach
                                         </div>
                                     </div>
@@ -290,9 +371,9 @@
                                             <div class="mvcast-item">
                                                 <div class="cast-it">
                                                     <div class="cast-left series-it">
-                                                        <img src="{{ asset('storage/' . $film->image) }}" alt="">
+                                                        <img src="{{ asset('storage/' . $film->image) }}" alt="" style="width: 250px; height: 300px">
                                                         <div>
-                                                            <a href="#">{{ $film->episode }}</a>
+                                                            <a href="{{ route('watch_film', ['id'=>$film->id]) }}">Tập {{ $film->episode }}</a>
                                                             <p>{{ $film->content }}</p>
                                                         </div>
                                                     </div>
@@ -306,17 +387,19 @@
                                         <h3>Các phim liên quan đến phim</h3>
                                         <h2>{{ $film->name }}</h2>
                                         <div class="topbar-filter">
-                                            <p style="width: 300px">Có <span>{{ count($filmRalated) }}</span> phim</p>
+                                            <p style="width: 400px">Có <span>{{ count($filmRalated) }}</span> phim</p>
                                             <label style="width: 170px">Sắp xếp theo:</label>
                                             <select id="sort">
                                                 <option id="show">Chọn trường</option>
                                                 <option data-value="name">Tên phim</option>
+                                                <option data-value="type">Thể loại</option>
                                                 <option data-value="director">Đạo diễn</option>
                                                 <option data-value="actor">Diễn viên</option>
                                                 <option data-value="publisher">Hãng sản xuất</option>
                                                 <option data-value="country">Quốc gia</option>
                                                 <option data-value="released">Năm phát hành</option>
                                                 <option data-value="rate">Đánh giá</option>
+                                                <option data-value="status">Trạng thái</option>
                                             </select>
                                             <label style="width: 100px">Thứ tự:</label>
                                             <select id="sort_by">
@@ -330,20 +413,46 @@
                                                 <div class="movie-item-style-2">
                                                     <img src="{{ '/storage/'.$film->image }}" alt="" style="height: 400px; width: 250px">
                                                     <div class="mv-item-infor">
-                                                        <h6 class="name"><a href="#">{{ $film->name }} <span class="released time sm"> ( {{ date('Y', strtotime($film->released)) }} )</span></a></h6>
+                                                        <h6 class="name"><a href="{{ route('home_view_film', ['id'=>$film->id]) }}">{{ $film->name }} <span class="released time sm"> ( {{ date('Y', strtotime($film->released)) }} )</span></a></h6>
+                                                        @if ($film->series_film == Config::get('constants.FILM.SERIES_FILM'))
+                                                            <p class="time sm-text" style="width: 100px"><a href="{{ route('home_search_film', ['name'=>'series_film', 'name_id'=>Config::get('constants.FILM.SERIES_FILM')]) }}">Phim bộ</a></p>
+                                                        @endif
+                                                        @if ($film->retail_film == Config::get('constants.FILM.RETAIL_FILM'))
+                                                            <p class="time sm-text" style="width: 100px"><a href="{{ route('home_search_film', ['name'=>'retail_film', 'name_id'=>Config::get('constants.FILM.RETAIL_FILM')]) }}">Phim lẻ</a></p>
+                                                        @endif
+                                                        @if ($film->demo_film == Config::get('constants.FILM.DEMO_FILM'))
+                                                            <p class="time sm-text" style="width: 150px"><a href="{{ route('home_search_film', ['name'=>'demo_film', 'name_id'=>Config::get('constants.FILM.DEMO_FILM')]) }}">Phim thuyết minh</a></p>
+                                                        @endif
+                                                        @if ($film->theaters_film == Config::get('constants.FILM.THEATERS_FILM'))
+                                                            <p class="time sm-text" style="width: 150px"><a href="{{ route('home_search_film', ['name'=>'theaters_film', 'name_id'=>Config::get('constants.FILM.THEATERS_FILM')]) }}">Phim chiếu rạp</a></p>
+                                                        @endif
                                                         <p class="time sm-text">Đánh giá</p>
                                                         <p class="rate"><i class="ion-android-star"></i><span>{{ $film->rate }}</span> /10</p>
                                                         <p class="time sm-text">Nội dung</p>
                                                         <p class="describe">{{ $film->content }}</p>
-                                                        <p class="run-time"> Thời lượng: 2h21’.<span>MMPA: PG-13.</span><span>Ngày phát hành: {{ date('d/m/Y', strtotime($film->released)) }}</span></p>
-                                                        <p class="publisher">Hãng sản xuất: <a href="#">{{ $film->publisher->name }}</a></p>
-                                                        <p class="director">Đạo diễn: <a href="#">{{ $film->director->name }}</a></p>
-                                                        <p class="actor">Diễn viên:
-                                                            @foreach ($film->actor as $actor)
-                                                                <a href="#">{{ $actor->name }}</a>
+                                                        <p class="run-time"> Thời lượng: {{ $film->time }}.<span>Ngày phát hành: {{ date('d/m/Y', strtotime($film->released)) }}</span></p>
+                                                        <p class="status">Trạng thái:
+                                                            @if ($film->status == Config::get('constants.FILM_STATUS.COMPLETED'))
+                                                                Hoàn tất
+                                                            @elseif($film->status == Config::get('constants.FILM_STATUS.TRAILER'))
+                                                                Chưa phát hành
+                                                            @else
+                                                                {{ $film->status }}
+                                                            @endif
+                                                        </p>
+                                                        <p class="type">
+                                                            @foreach ($film->type as $type)
+                                                                <a href="{{ route('home_search_film', ['name'=>'type', 'name_id'=>$type->id]) }}"> {{ $type->name }} </a>
                                                             @endforeach
                                                         </p>
-                                                        <p class="country">Quốc gia: <a href="#">{{ $film->country->name }}</a></p>
+                                                        <p class="publisher">Hãng sản xuất: <a href="{{ route('home_publisher_view', ['id'=>$film->publisher_id]) }}">{{ $film->publisher->name }}</a></p>
+                                                        <p class="director">Đạo diễn: <a href="{{ route('home_director_view', ['id'=>$film->director_id]) }}">{{ $film->director->name }}</a></p>
+                                                        <p class="actor">Diễn viên:
+                                                            @foreach ($film->actor as $actor)
+                                                                <a href="{{ route('home_actor_view', ['id'=>$actor->id]) }}">{{ $actor->name }}</a>
+                                                            @endforeach
+                                                        </p>
+                                                        <p class="country">Quốc gia: <a href="{{ route('home_search_film', ['name'=>'country_id', 'name_id'=>$film->country_id]) }}">{{ $film->country->name }}</a></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -372,4 +481,5 @@
     <script src="{{ asset('home/bower_components/twbs-pagination/jquery.twbsPagination.min.js') }}"></script>
     <script src="{{ asset('js/home/film/view.js') }}"></script>
     <script src="{{ asset('js/home/film/list.js') }}"></script>
+    <script src="{{ asset('js/home/film/user.js') }}"></script>
 @endsection

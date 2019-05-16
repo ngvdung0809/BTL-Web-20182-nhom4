@@ -10,12 +10,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix'=>'admin'],function(){
-    Route::get('/index',function () {
-        return view('admin.layout');
-    })->name('admin_index');
 
-     Route::get('/dashboard','Admin\DashboardAdminController@index')->name('admin_dashboard');
+Auth::routes();
+Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
+
+    Route::get('/index','Admin\DashboardAdminController@index')->name('admin_index');
 
     Route::group(['prefix'=>'user'],function(){
         Route::get('/list','Admin\UserController@index')->name('admin_user_list');
@@ -38,7 +37,7 @@ Route::group(['prefix'=>'admin'],function(){
     });
 
     Route::group(['prefix' => 'type'], function () {
-        Route::get('list','Admin\TypeController@GetListType')->name('admin_typet_list');
+        Route::get('list','Admin\TypeController@GetListType')->name('admin_type_list');
         Route::get('create','Admin\TypeController@GetNewType')->name('admin_type_create');
         Route::post('create','Admin\TypeController@PostNewType')->name('admin_type_store');
         Route::get('edit/{id}','Admin\TypeController@GetEditType')->name('admin_type_edit');
@@ -119,12 +118,12 @@ Route::group(['prefix'=>'admin'],function(){
 
 
      Route::group(['prefix'=>'server'],function(){
-            Route::get('/list','Admin\ServerController@index')->name('admin_server_list');
-            Route::get('/create','Admin\ServerController@create')->name('admin_server_create');
-            Route::post('/store','Admin\ServerController@store')->name('admin_server_store');
-            Route::get('/edit/{id}','Admin\ServerController@edit')->name('admin_server_edit');
-            Route::post('/update/{id}','Admin\ServerController@update')->name('admin_server_update');
-            Route::post('/delete/{id}','Admin\ServerController@destroy')->name('admin_server_delete');
+        Route::get('/list','Admin\ServerController@index')->name('admin_server_list');
+        Route::get('/create','Admin\ServerController@create')->name('admin_server_create');
+        Route::post('/store','Admin\ServerController@store')->name('admin_server_store');
+        Route::get('/edit/{id}','Admin\ServerController@edit')->name('admin_server_edit');
+        Route::post('/update/{id}','Admin\ServerController@update')->name('admin_server_update');
+        Route::post('/delete/{id}','Admin\ServerController@destroy')->name('admin_server_delete');
     });
 
 });
@@ -138,14 +137,6 @@ Route::group(['prefix'=>'home'],function(){
         Route::post('/gopystore','Home\ContactController@gopystore')->name('home_gopy_store');
         Route::post('/baoloistore','Home\ContactController@baoloistore')->name('home_baoloi_store');
     });
-
-    Route::group(['prefix' => 'user'], function () {
-        Route::get('/signin','Home\SigninController@signin')->name('home_user_signin');
-        Route::post('/store','Home\SigninController@store')->name('home_user_dangkytk');
-        
-    });
-
-    Route::post('logintest','Home\LoginController@check')->name('home_user_login');
 
     Route::group(['prefix'=>'actor'],function(){
        Route::get('/list', 'Home\ActorController@index')->name('home_actor_list');
@@ -192,12 +183,21 @@ Route::group(['prefix'=>'home'],function(){
             Route::get('/rate', 'Home\UserProfileController@showRateFilm')->name('home_user_profile_view_film_review');
             Route::get('watch_history', 'Home\UserProfileController@showFilmWatchHistory')->name('home_user_profile_view_film_watch_history');
         });
+
+        Route::post('/watch_later/film/{film_id}', 'Home\FilmController@watchLaterFilm');
+        Route::post('/like/film/{film_id}', 'Home\FilmController@likeFilm');
+        Route::post('/rate/film/{film_id}', 'Home\FilmController@rateFilm');
     });
 
     Route::group(['prefix'=>'/film'], function(){
         Route::get('/list', 'Home\FilmController@index')->name('home_list_film');
         Route::get('{id}/view', 'Home\FilmController@view')->name('home_view_film');
+        Route::get('/search/{name}/{name_id}', 'Home\FilmController@searchFilm')->name('home_search_film');
+        Route::get('/search_like', 'Home\FilmController@searchFilmLike')->name('home_search_like_film');
     });
 });
 
+Route::get('/error', function() {
+    return view('error.error');
+});
 

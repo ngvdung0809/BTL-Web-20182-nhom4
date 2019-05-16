@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Config;
 use App\Models\User;
 use App\Models\Country;
+use Auth;
 
 class UserController extends Controller
 {

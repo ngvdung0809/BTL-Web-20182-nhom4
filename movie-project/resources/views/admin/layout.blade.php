@@ -94,7 +94,7 @@ desired effect
                                             <a href="#">
                                                 <div class="pull-left">
                                                     <!-- User Image -->
-                                                    <img src="#" class="img-circle" alt="Avatar">
+                                                    <img src="{{ asset('/storage/' . Auth::user()->image) }}" class="img-circle" alt="Avatar">
                                                 </div>
                                                 <!-- Message title and timestamp -->
                                                 <h4>
@@ -180,18 +180,18 @@ desired effect
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="#" class="user-image" alt="Avatar">
+                                <img src="{{ asset('/storage/' . Auth::user()->image) }}" class="user-image" alt="Avatar">
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">#name</span>
+                                <span class="hidden-xs">{{ Auth::user()->name }}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="#" class="img-circle" alt="Avatar">
+                                    <img src="{{ asset('/storage/' . Auth::user()->image) }}" class="img-circle" alt="Avatar">
 
                                     <p>
-                                        #Name
-                                        <small>Member since Nov. 2012</small>
+                                        {{ Auth::user()->name }}
+                                        <small>{{ Auth::user()->created_at }}</small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -212,13 +212,13 @@ desired effect
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="#" class="btn btn-default btn-flat">Hồ sơ người dùng</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="#" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            Log out
+                                            Đăng xuất
                                         </a>
-                                        <form id="logout-form" action="#" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>
                                     </div>
@@ -242,10 +242,10 @@ desired effect
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="#" class="img-circle" alt="Avatar">
+                        <img src="{{ asset('/storage/' . Auth::user()->image) }}" class="img-circle" alt="Avatar">
                     </div>
                     <div class="pull-left info">
-                        <p>#Name</p>
+                        <p>{{ Auth::user()->name }}</p>
                         <!-- Status -->
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
@@ -264,7 +264,7 @@ desired effect
 
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header">HEADER</li>
+                    <li class="header">Quản trị hệ thống</li>
                     <li class="treeview">
                         <a href="#"><i class="fa fa-user"></i> <span>Quản lý người dùng</span>
                             <span class="pull-right-container">
@@ -283,8 +283,8 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-list"></i><span> #Name</span></a></li>
-                            <li><a href="#"><i class="fa fa-plus"></i><span>#Name</span></a></li>
+                            <li><a href="{{ route('admin_director_list') }}"><i class="fa fa-list"></i><span>Danh sách đạo diễn</span></a></li>
+                            <li><a href="{{ route('admin_director_create') }}"><i class="fa fa-plus"></i><span>Thêm đạo diễn mới</span></a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -294,8 +294,8 @@ desired effect
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-list"></i><span> #Name</span></a></li>
-                            <li><a href="#"><i class="fa fa-plus"></i><span>#Name</span></a></li>
+                            <li><a href="{{ route('admin_actor_list') }}"><i class="fa fa-list"></i><span>Danh sách diễn viên mới</span></a></li>
+                            <li><a href="{{ route('admin_actor_create') }}"><i class="fa fa-plus"></i><span>Thêm diễn viên mới</span></a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -306,7 +306,7 @@ desired effect
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="{{ route('admin_publisher_list')}}"><i class="fa fa-list"></i><span>Danh sách nhà sản xuất</span></a></li>
-                            <li><a href="#"><i class="fa fa-plus"></i><span>Thêm mới</span></a></li>
+                            <li><a href="{{ route('admin_publisher_create') }}"><i class="fa fa-plus"></i><span>Thêm nhà sản xuất mới</span></a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -316,8 +316,8 @@ desired effect
                           </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="/admin/type/list"><i class="fa fa-list"></i><span>Danh sách thể loại</span></a></li>
-                            <li><a href="/admin/type/create"><i class="fa fa-plus"></i><span>Thêm thể loại</span></a></li>
+                            <li><a href="{{ route('admin_type_list') }}"><i class="fa fa-list"></i><span>Danh sách thể loại</span></a></li>
+                            <li><a href="{{ route('admin_type_create') }}"><i class="fa fa-plus"></i><span>Thêm thể loại</span></a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -340,30 +340,18 @@ desired effect
                         <ul class="treeview-menu">
                             <li><a href="{{ route('admin_film_list') }}"><i class="fa fa-list"></i><span>Danh sách phim</span></a></li>
                             <li><a href="{{ route('admin_film_create') }}"><i class="glyphicon glyphicon-plus-sign"></i><span>Thêm phim</span></a></li>
-                            <li class="treeview">
-                                <a href="#"><i class="fa fa-file-movie-o "></i> <span>Quản lý chi tiết phim</span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-list"></i><span>#Name</span></a></li>
-                                    <li><a href="#">#Name</a></li>
-                                    <li><a href="#">#Name</a></li>
-                                </ul>
-                            </li>
                         </ul>
                     </li>
 
                     <li class="treeview">
-                        <a href="#"><i class="fa fa-server"></i> <span>Quản lý link phim</span>
+                        <a href="#"><i class="fa fa-server"></i> <span>Quản lý server link phim</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-list"></i><span>#Name</span></a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-plus-sign"></i><span>#Name</span></a></li>
+                            <li><a href="{{ route('admin_server_list') }}"><i class="fa fa-list"></i><span>Danh sách server</span></a></li>
+                            <li><a href="{{ route('admin_server_create') }}"><i class="glyphicon glyphicon-plus-sign"></i><span>Thêm server mới</span></a></li>
                         </ul>
                     </li>
 
@@ -442,10 +430,10 @@ desired effect
         <footer class="main-footer">
             <!-- To the right -->
             <div class="pull-right hidden-xs">
-                #Name
+                Version 1.0.0
             </div>
             <!-- Default to the left -->
-            <strong>#Name<a href="#">#Name</a>.</strong> #Name
+            <strong>Copyright © 2018-2020.<a href="#">Almsaeed Studio</a>.</strong> All rights reserved.
         </footer>
 
         <!-- Control Sidebar -->

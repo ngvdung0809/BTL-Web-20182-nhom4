@@ -24,6 +24,11 @@ $(document).ready(function () {
         maxDate: new Date(),
         useCurrent: false,
     });
+
+    $('input[type="checkbox"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass   : 'iradio_flat-green'
+    });
 });
 
 function readURLImage(input) {

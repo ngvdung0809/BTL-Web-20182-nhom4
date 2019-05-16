@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Models\FilmEpisode;
 use App\Models\Server;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Home\HomeController;
 
